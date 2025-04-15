@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+:root{
+    --font-family: 'EB Garamond', serif;
+    --font-txt: 'Figtree', serif;
+    --dark-bg: #222831;
+    --dark-fg: #31363F;
+    --dark-fg1: #5b606893;
+    --dark-txt: #9DB2BF;
+    --dark-accent: #DDE6ED;
+
+    --dark-text1: #000;
+
+    --white-bg: #FBFBFB;
+    --white-fg: #E8F9FF;
+    --white-txt: #FFF;
+    --white-05:rgb(204, 195, 195);
+    --white-accent: #FF6500;
+    
+    --white-06:rgba(127, 122, 122, 0.5);
+    --error-msg: #ff0000;
+
+
+
+  /* DaschBoard */
+
+
+    --default-bg-color: #0c0f1d;
+    --header-bg-transparent: linear-gradient( 
+                              180deg, rgba(0,0,0,0.6) 0%,
+                              rgba(0,0,0,0) 100%);
+    --account-center-bg-mask: linear-gradient( 
+                              180deg, rgba(0,0,0,0) 0%,
+                              rgba(0,0,0,0.8) 100%);
+    --primary-white-color: #1b1d2a;
+    --minor-font-color: rgba(255, 255, 255, 0.45);
+    --default-gray: #343746;
+    --patch-font-color-new: rgba(255, 255, 255, 0.65);
+    --patch-font-color: #76777f;
+    --default-icon-color: #5c5f6b;
+    --defaul-dark-color-05: rgba(255, 255, 255, 0.85); 
+    --default-font-color-new: rgba(255, 255, 255, 0.85);
+    --select-arrow-color: #5c5f6b;
+    --line-color: #5c5f6b;
+    --search-line-color: #5c5f6b;
+    --reddot-border-color: #242734;
+}
+
+body{
+    box-shadow: none;
+    overflow-x: hidden;
+    background:var(--dark-bg) !important;
+    font-family: var(--font-txt) !important;
+}
+
+a,
+button{
+    border: none;
+    outline: none;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+a{
+    color: var(--white-05) !important;
+}
+
+p{
+  unicode-bidi: isolate;
+  margin-inline-end: 0px;
+  margin-inline-start: 0px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-bottom: 0 !important;
+}
+[role=button]{
+  cursor: pointer;
+}
+
+button, input, textarea{
+  color: inherit;
+  font: inherit;
+}
+input, textarea{
+  caret-color: var(--default-font-color-new)
+}
+
+button, input, select{
+  margin: 0;
+}
+
+img{
+  border-style: none;
+}
+
+form{
+  unicode-bidi: isolate;
+}
+
+ol, ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul, li{
+  list-style: none;
+}
+
+/* animation */
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes slideInTab {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+
+
+
+  /* Webkit */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--dark-fg1);
+    border-radius: 4px;
+  }
+  
+
+  ::-webkit-scrollbar-button {
+    display: none;
+    height: 0;
+    width: 0;
+  }
+  
+  
+
+
+
+
+  @media screen and (max-width: 1023px){
+    .bot-layer{
+      width: 100%;
+
+    }
+  }
+  @media screen and (max-width: 1287px){
+    .bot-layer{
+      width: 100%;
+      height: 405px;
+
+      .header_inner{
+        width: 992px;
+      }
+    }
+    .bot-layer img {
+      width: 100%;
+      height: auto;
+      min-height: 405px;
+      -o-object-fit: cover;
+      object-fit: cover;
+  }
+
+  .bot-layer .bot-mask{
+    top: auto;
+    bottom: 0;
+    transform: translateY(0);
+  }
+
+  .account-center-topinfo_container{
+    max-width: 1207px;
+  }
+  .atr-group-b .root-page-container_right{
+    margin-left: 24px;
+  }
+
+  .atr-layout{
+    width: 896px;
+  }
+
+  .atr-group-b .main-page_container_content{
+    max-width: 1207px;
+    padding: 0 40px 0;
+  }
+  .atr-group-b .main-page_container_content{
+    padding: 0 40px 0;
+  }
+
+  }
+
+  @media screen and (max-width: 2000px){
+    .bot-layer{
+      width: 100%;
+    }
+    .bot-layer .bot-mask{
+      top: auto;
+      bottom: 0;
+      transform: translateY(0);
+    }
+  }

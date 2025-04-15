@@ -1,0 +1,50 @@
+:root {
+    --font-primary: "CustomFont", sans-serif;
+    --linear-bg: linear-gradient(135deg, 
+        #301F3E 0%,  
+        #402A48 26%,  
+        #C28399 100%
+    );
+    --linear-bg1: #1a1919;
+
+
+    --color-text: #FFFEFF;
+    --color-border: #fffffff1;
+    --color-input: #dcd7c98c;
+    --color-link:#6A0DAD;
+    --color-error:rgb(255 0 0);
+    --color-acent: #ffb507;
+}
+
+@font-face {
+    font-family: "CustomFont";
+    src: 
+         url("/frontend/static/font/EB_Garamond/EBGaramond-VariableFont_wght.ttf") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    scroll-behavior: smooth;
+    touch-action: manipulation;
+}
+
+html,
+body{
+    display: flex;
+    position: relative;
+    background: var(--linear-bg);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: var(--font-primary);
+   
+}

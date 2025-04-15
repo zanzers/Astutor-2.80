@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% set namespace = 'home' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+
+  <!-- home Content -->
+<section class="home-section bg-gradient section-active" id="home-section" data-content="Home" >
+  <div class="main-container justify-content-center align-items-center d-flex flex-row">
+
+    <div class="main-content_left d-flex align-content-center justify-content-center p-5">
+
+      <div class="hero-wrp">
+        <h1 class="hero-title">
+          Learn faster with expert tutors in Palawan, tailored to your needs.
+        </h1>
+        <p class="hero-subtext mt-3">
+          Take online lessons designed to match your academic level, and help you find the right tutor</span>.
+  
+        </p>
+      </div>
+    
+      <a href="{{ url_for('public_routes.signup') }}" class="join-btn d-flex justify-content-center align-items-center">
+        <span class="wiggle-text">Join Us</span>
+      </a>
+      
+      
+  
+      <div class="stats d-flex justify-content-center gap-5">
+                    <div class="stat-box ms-5 me-1">
+                          <h2 class="count-total expert-tutors" >1+</h2>
+                          <p class="count-title">Expert Tutors</p>
+                    </div>
+
+                    <div class="stat-box ms-5 me-1">
+                          <h2 class="count-total subjects">1+</h2>
+                          <p class="count-title">Subjects</p>
+                    </div>
+
+                    <div class="stat-box ms-5">
+                          <h2 class="count-total lessons">20min</h2>
+                          <p class="count-title">Trial Lessons</p>
+                    </div>
+            </div>
+    </div>
+  
+    <div class="main-content_right d-flex align-items-center justify-content-center">
+      <div class="slide-wrp">
+        <div id="slide">
+          <div class="item" style="background-image: url(/static/slide-img/li5.jpg);"></div>  
+          <div class="item" style="background-image: url(/static/slide-img/li1.jpg);"></div>
+          <div class="item" style="background-image: url(/static/slide-img/li2.jpg);"></div>
+          <div class="item" style="background-image: url(/static/slide-img/li3.jpg);"></div>
+          <div class="item" style="background-image: url(/static/slide-img/li4.jpg);"></div>
+        </div>
+      </div>
+  </div>
+  
+</section>
+
+
+
+{% endblock %}

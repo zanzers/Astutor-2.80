@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@barba/core": "^2.10.3",
+    "flatpickr": "^4.6.13"
+  }
+}

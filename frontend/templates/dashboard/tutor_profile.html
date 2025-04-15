@@ -1,0 +1,283 @@
+{% extends 'dashboard.html'%}
+{% set namespace = 'tutor_profile'%}
+{% block title %}Tutor Profile {% endblock %}
+
+{% block main %}
+
+<div id="header" class="header">
+    <div class="header_wrp ">
+        <div class="header_inner">
+            <div class="header_left">
+                <div class="header-logo">
+                    <i class="atr-icon iconfont icon-logo">Astutor</i>
+                </div>
+                <div class="header-tab-wrp">
+                    <div class="header-tab">
+                        <p class="active-tab"></p>
+                        <p class="header-tab-name">Profile</p>
+                    </div>
+                    <div class="header-tab">
+                        <p class="header-tab-name">Catergory</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header_main">
+                <div class="atr-search-bar">
+                    <form>
+                        <div class="atr-search-input">
+                            <div class="search_seive">
+                                <div class="atr-category-selector">
+                                    <div class="atr-selected">
+                                        <div class="atr-selected_container">
+                                            <div class="atr-selected_label">
+                                                <svg class="category-icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);">
+                                                    <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm10 10h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zM17 3c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zM7 13c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <div class="atr-selected_icon">
+                                                <i class='bx bxs-down-arrow'></i>
+                                            </div>
+
+                                            <span class="atr-selected_line"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="atr-autocomplete_label" style="overflow: hidden;">
+                                <div class="atr-autocomplete">
+                                    <div class="atr-autocomplete_wrp">
+                                        <input type="text" placeholder="Find Tutor" class="atr-autocomplete_input">
+                                        <div role="button" class="atr-autocomplete_clear" style="display: none;">
+                                            <i class='bx bx-x'></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                            <i class='bx bx-search' role="button"></i>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="header_right">
+                <div class="header-item header-message">
+                    <div role="button" title="Message" class="header-item_button">
+                        <div class="header-item_icon">
+                            <i class='bx bxs-chat icon-chat'></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-item header-notification">
+                    <span class="header-notification_num" data-count="1"></span>
+                    <div class="header-item_button" role="button" title="Message Notification">
+                        <div class="header-item_icon">
+                            <i class='bx bx-bell'></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-item header-account">
+                    <div class="header-avatar">
+                        <div class="atr-avatar atr-avatar_28">
+                            <img lazy="loaded" src="/static/slide-img/default-img.png" class="atr-avatar_img">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="root-page-container">
+
+    <div class="default-layout_topInfo">
+        <div data-top="356" class="atr-topinfo-wrp height" style="height: auto;">
+            <div class="atr-topinfo position-relative top-auto" style="height: auto; opacity: 1; display: block;">
+                <div class="atr-topinfo_container root-topinfo_container">
+                    <div class="account-center-topinfo_container">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-page_container_content">
+
+        <div class="root-page-container_left root-page-container_left-bg">
+
+            <div class="atr-layout atr-account-center">
+                <div class="atr-main_page atr-main_layout">
+                    <div class="atr-page-header atr-account-center_tab atr-page-header-md atr-page-header-block">
+                        <div class="atr-page-header-mask">
+                            <div class="atr-page-header-wrp">
+                                <div class="atr-page-header_content line">
+                                    <div class="atr-switch_tab" id="atr-switch_tab">
+
+                                        <ul class="atr-switch-tab_list root-atr-switch-tab_list">
+                                            
+                                            <li class="atr-switch-tab_tag atr-switch-tab_tag-active" data-target="about-section">
+                                                <span class="atr-switch-tab_label">
+                                                    <span>About</span>
+                                                </span>
+                                                <span class="atr-switch-tab_line"></span>
+                                            </li>
+                                            <li class="atr-switch-tab_tag" data-target="photo-section">
+                                                <span class="atr-switch-tab_label">
+                                                    <span>Photo</span>
+                                                </span>
+                                            
+                                            </li>
+
+                                            <li class="atr-switch-tab_tag" data-target="education-section">
+                                                <span class="atr-switch-tab_label">
+                                                    <span>Education</span>
+                                                </span>
+                                            
+                                            </li>
+
+                                            <li class="atr-switch-tab_tag" data-target="video-section">
+                                                <span class="atr-switch-tab_label">
+                                                    <span>Video</span>
+                                                </span>
+                                            
+                                            </li>
+
+                                            <li class="atr-switch-tab_tag" data-target="availability-section">
+                                                <span class="atr-switch-tab_label">
+                                                    <span>Availability</span>
+                                                </span>
+                                            
+                                            </li>
+
+                                            <li class="atr-switch-tab_tag" data-target="setup-section">
+                                                <span class="atr-switch-tab_label">
+                                                    <span>Setup</span>
+                                                </span>
+                                            
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- root-atr-page-header-wrp -->
+                    <div class="atr-account-center-content">
+                        <div class="atr-account-center-content-container">
+
+                            <div class="atr-acount-center-content-container-fillup">
+
+                                  <div class="form-section" id="about-section">
+                                        <h2>About</h2>
+                                        <span>Start by creating your tutor profile. Your progress will be saved automatically as you go. You can return and continue at any time. </span>
+                                        <form action="form-action" id="about-form" autocomplete="off">
+                                            
+                                            <div class="form-group">
+                                                <label for="fname"> First Name </label>
+                                                <input type="text" id="fname" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="lname"> Last Name </label>
+                                                <input type="text" id="lname" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email"> Email </label>
+                                                <input type="email" id="email" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subTeach"> Subject You Teach </label>
+                                                <select class="form-control" id="subject" required>
+                                                    <option value="">Select a subject</option>
+                                                    <option value="math">Math</option>
+                                                    <option value="english">English</option>
+                                                    <option value="science">Science</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="phone"> Phone <small> (optional) </small></label>
+                                                <input type="tel" id="phone" class="form-control" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="checkbox" id="confirm-age" name="confirm-age" class="form-control" required>
+                                                <label for="first-name"> I confirm I'am over 18 </label>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary">Save and Continue</button>
+
+                                        </form>
+                                  </div>
+
+                                  <div class="form-section d-none" id="photo-section">
+
+                                    <h2>Profile Photo</h2>
+                                    <p>Choose a photo that helps learners get to know you better.</p>
+                                
+                                    <div class="row align-items-center">
+                                        <!-- Photo Upload Box -->
+                                        <div class="col-md-4">
+                                            <div class="photo-upload-box text-center">
+                                                <label for="profile-photo" class="upload-label">
+                                                    <img src="/static/slide-img/default-img.png" alt="Upload" class="img-fluid mb-2" id="photo-preview" />
+                                                    <input type="file" id="profile-photo" accept="image/*" hidden />
+                                                    <div class="btn btn-outline-primary">Upload Photo</div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                
+                                        <!-- Basic Info Display -->
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" id="display-name" class="form-control" disabled value="Marcelo">
+                                            </div>
+                                
+                                            <div class="form-group">
+                                                <label>Subject</label>
+                                                <input type="text" id="display-subject" class="form-control" disabled value="P.E">
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <button type="submit" class="btn btn-primary mt-4">Save and Continue</button>
+                                    
+                                  </div>
+                                  <div class="form-section d-none" id="education-section">
+                                    <h2>Education</h2>
+                                  </div>
+                                  <div class="form-section d-none" id="video-section">
+                                    <h2>Video</h2>
+                                  </div>
+                                  <div class="form-section d-none" id="availability-section">
+                                    <h2>Availability</h2>
+                                  </div>
+                                  <div class="form-section d-none" id="setup-section">
+                                    <h2>Setup</h2>
+                                  </div>
+
+
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="root-page-container_right"></div>
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}

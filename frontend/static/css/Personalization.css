@@ -1,0 +1,173 @@
+.personalization{
+    width: 100%;
+    height: 100vh;
+}
+.header-item{
+    position: relative;
+    margin-right: 24px;
+    cursor: pointer;
+}
+.header-item:last-child{
+    margin-right: 14px;
+}
+.header-item_icon{
+    height: 34px;
+    width: 34px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+svg.header-item-icons{
+    width: 24px;
+    height: 24px;
+}
+
+
+.header-item_icon:hover{
+   background: var(--white-06);
+   border-radius: 50%;
+}
+
+/* sections */
+.process-container{
+    width: 100%;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--dark-bg);
+    
+}
+.walkthrough-steps{
+    list-style: none;
+    padding: 18px;
+    margin: 0;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+ 
+}
+
+.step {
+    width: 124px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--white-06);
+    font-size: 16px;
+    font-weight: 600; 
+  }
+
+  .walkthrough-steps svg.next-arrow{
+    fill: var(--white-05);
+  }
+
+  /* .step-done{
+    color: green !important;
+  } */
+  .active{
+    color: var(--white-txt);
+    border-bottom: 2px solid var(--white-accent);
+  }
+
+  .check-icons{
+    margin-right: 10px;
+  }
+
+
+  .step-content::before{
+
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    vertical-align: middle;
+    justify-content: center;
+    align-content: center;
+
+  }
+
+.step.complete .step-content::before{
+
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);"><path d="M7 5c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2H7zm0 12V7h10l.002 10H7z"></path><path d="M10.996 12.556 9.7 11.285l-1.4 1.43 2.704 2.647 4.699-4.651-1.406-1.422z"></path></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 2px;
+    margin-bottom: 2px;
+
+  }
+
+  .step.complete .step-content {
+    color: var(--white-txt) !important;
+}
+
+
+
+
+  .step:not(.active):not(.completed) .step-content {
+    color: #aaa; /* dim text for future steps */
+  }
+
+  /* changing Main */
+
+  .main-content{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .journey-card{
+    flex-direction: column;
+    position: relative;
+    display: flex;
+    top: 60px;
+    width: 34%;
+    height: 100%;
+    border-radius: 10px;
+    color: var(--white-txt);
+  }
+
+  .journey-card h2{
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1px;
+  }
+
+  .journey-card span{
+    margin: 10px 0 34px;
+  }
+
+  
+
+  .btn-path {
+    width: 100%;
+    height: 40px;
+    background-color: var(--dark-fg1);
+    color: var(--white-txt) !important;
+    font-size: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: 
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.btn-path:hover {
+    /* border-color: var(--white-txt); */
+    background-color: var(--white-06); 
+    color: var(--white-txt);
+    box-shadow: 0px 0px 0px 2px var(--white-accent);
+}
