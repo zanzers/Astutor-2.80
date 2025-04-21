@@ -26,22 +26,23 @@ $(document).ready(function(){
 
         });
 
+        // save the education info 
 
-        $.ajax({
-            url: '/api/getting-started/education',
-            method: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                console.log(response);
-                // cosole.log the message only as prof of success
+        // $.ajax({
+        //     url: '',
+        //     method: 'POST',
+        //     data: formData,
+        //     contentType: false,
+        //     processData: false,
+        //     success: function (response) {
+        //         console.log(response);
+        //         // cosole.log the message only as prof of success
                  
-            },
-            error: function (xhr) {
+        //     },
+        //     error: function (xhr) {
                
-            }
-        });
+        //     }
+        // });
         
         })
 

@@ -16,8 +16,15 @@
     </div>
   </div>
 
+  <div class="form-group preference-selector">
+    <p>Preferred Method:</p>
+    <div class="pref-btn-group">
+      <button class="pref-btn" data-pref="online">Online</button>
+      <button class="pref-btn" data-pref="InPerson">In Person</button>
+    </div>
+  </div>
 
-<!-- Time Selector -->
+  
 <div class="form-group">
   <div class="time-selector">
     <p>Select time for: <span id="selectedDay"></span></p>
@@ -28,24 +35,19 @@
   </div>
 </div>
 
-<div class="form-group mt-3">
-  <h5>Confirmed Availabilities</h5>
+
+
+<div class="form-group confirm_schedule d-none mt-3">
+  <h5>Confirmed Schedule</h5>
   <ul id="availabilitySummary" class="list-group"></ul>
 </div>
 
 
-  <div class="form-group preference-selector">
-    <p>Preferred Method:</p>
-    <div class="pref-btn-group">
-      <button class="pref-btn" data-pref="online">Online</button>
-      <button class="pref-btn" data-pref="f2f">Face-to-Face</button>
-      <button class="pref-btn" data-pref="both">Both</button>
-    </div>
-  </div>
+<div class="form-group avail-message"></div>
 
-  <!-- Nav Buttons -->
+
   <div class="form-group btn-groups">
     <button type="button" id="btn-next" class="btn btn-secondary">Back</button>
-    <button type="submit" id="btn-prev" class="btn btn-primary">Save and Continue</button>
+    <button type="submit" id="btn-prev" class="btn btn-avail btn-primary">Save and Continue</button>
   </div>
 </div>

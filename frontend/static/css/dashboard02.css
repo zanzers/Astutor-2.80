@@ -74,3 +74,14 @@
 .pref-btn {
   cursor: pointer;
 }
+
+
+.pref-btn.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+
+  .avail-message{
+    color: var(--error-msg);
+  }

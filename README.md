@@ -7,7 +7,7 @@
 
 # ✅ To Do
 
-> ✅ = Done ❌ = Pending
+> 1 = Done 0 = Pending
 
 > eg. R -> rick, M -> mike
 
@@ -16,11 +16,11 @@
 
 | Title        | Status | Group    | Frontend Path                                |
 |--------------|--------|----------|----------------------------------------------|
-| Video        | ❌     |          | `static/api/tutor_scripts/api_video.js`      |
-| Education    | ❌     |          | `static/api/tutor_scripts/api_education`     |
-| Availability | ❌     |          | *(path TBD)*                                 |
-| Profile Pic  | ✅     |          | `static/api/api_profile.js`                  |
-| Setup        | ❌     |          | *(path TBD)*                                 |
+| Video        | 0      |          | `static/api/tutor_scripts/api_video.js`      |
+| Education    | 0      |          | `static/api/tutor_scripts/api_education.js`  |
+| Availability | 0      |          | `static/api/tutor_scripts/api_avil`           |
+| Profile Pic  | 0      |          | `static/api/api_profile.js`                  |
+| Setup        | 0      |          | *(path TBD)*                                 |
 
 
 ---

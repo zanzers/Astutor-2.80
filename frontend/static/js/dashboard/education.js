@@ -29,7 +29,7 @@ $(document).ready(function() {
         
 
         $clone.find('.form-group').first().before('<hr>');
-        // $clone.find('.form-group').first().before('<hr>');
+
     
         $('.education-wrapper').append($clone);
         credentialCounter++;

@@ -62,7 +62,7 @@ $(document).ready(function () {
             const videoURL = URL.createObjectURL(blob);
             $video.get(0).srcObject = null;
             $video.attr('src', videoURL).prop('controls', true);
-            $video.data('videoBlob', blob); // store blob for later upload
+            $video.data('videoBlob', blob); 
             $btn.text('Re-record').data('step', 'restart').prop('disabled', false);
             $errorBox.addClass('d-none').text('');
           };
