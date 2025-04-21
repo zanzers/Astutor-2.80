@@ -2,8 +2,8 @@ from flask import Flask
 from jinja2 import ChoiceLoader, FileSystemLoader
 from public.libraries.auth.routes import routes
 from public.libraries.public.public_routes import public_routes
-from public.libraries.dashboard_route.dashboard_routes import dashboard_routes
-
+from public.tutor_Dashboard.tutor_routes import tutor_routes
+from public.student_Dashboard.student_routes import student_routes
 
 app = Flask(__name__, static_folder="../frontend/static")
 
@@ -17,8 +17,9 @@ app.jinja_loader = template_loader
 
 
 app.register_blueprint(public_routes)
-app.register_blueprint(dashboard_routes)
-app.register_blueprint(routes)
+app.register_blueprint(tutor_routes)
+app.register_blueprint(student_routes)
+
 
 
 

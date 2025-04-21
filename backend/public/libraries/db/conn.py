@@ -50,7 +50,7 @@ def db_read(query, param=None):
 
     except mysql.connector.Error as e:
         print(f'Error: {e}')
-        return HTTPStatus.INTERNAL_SERVER_ERROR
+        return None
 
     finally:
          cursor.close()
@@ -81,5 +81,8 @@ def db_write(query, param=None):
             return HTTPStatus.INTERNAL_SERVER_ERROR
 
         finally:
+            last_id = cursor.lastrowid
             cursor.close()
             conn.close()
+
+            return last_id

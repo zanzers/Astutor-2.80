@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/_root.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard000.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard01.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard02.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/`.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -21,8 +25,9 @@
 
             {% block main %}
             
-            <div id="header" class="header header-transparent">
-                <div class="header_wrp header_wrp-transparent">
+
+            <div id="header" class="header">
+                <div class="header_wrp ">
                     <div class="header_inner">
                         <div class="header_left">
                             <div class="header-logo">
@@ -38,7 +43,7 @@
                                 </div>
                             </div>
                         </div>
-
+            
                         <div class="header_main">
                             <div class="atr-search-bar">
                                 <form>
@@ -56,7 +61,7 @@
                                                         <div class="atr-selected_icon">
                                                             <i class='bx bxs-down-arrow'></i>
                                                         </div>
-
+            
                                                         <span class="atr-selected_line"></span>
                                                     </div>
                                                 </div>
@@ -77,7 +82,7 @@
                                 </form>
                             </div>
                         </div>
-
+            
                         <div class="header_right">
                             <div class="header-item header-message">
                                 <div role="button" title="Message" class="header-item_button">
@@ -86,7 +91,7 @@
                                     </div>
                                 </div>
                             </div>
-
+            
                             <div class="header-item header-notification">
                                 <span class="header-notification_num" data-count="1"></span>
                                 <div class="header-item_button" role="button" title="Message Notification">
@@ -98,7 +103,7 @@
                             <div class="header-item header-account">
                                 <div class="header-avatar">
                                     <div class="atr-avatar atr-avatar_28">
-                                        <img lazy="loaded" src="/static/slide-img/12.jpg" class="atr-avatar_img">
+                                        <img lazy="loaded" src="/static/slide-img/default-img.png" class="atr-avatar_img">
                                     </div>
                                 </div>
                             </div>
@@ -107,99 +112,82 @@
                     </div>
                 </div>
             </div>
-
-
-            <div class="bot-layer account-center-bg top-0">
-                <div class="bot-layer-bg_wrp">
-                    <img src="/static/slide-img/bg3.jpg">
-                </div>
-
-            </div>
-
-            <div class="root-page-container root-page">
-
+            
+            <div class="root-page-container">
+            
                 <div class="default-layout_topInfo">
                     <div data-top="356" class="atr-topinfo-wrp height" style="height: auto;">
                         <div class="atr-topinfo position-relative top-auto" style="height: auto; opacity: 1; display: block;">
                             <div class="atr-topinfo_container root-topinfo_container">
                                 <div class="account-center-topinfo_container">
-
+            
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+            
                 <div class="main-page_container_content">
-
+            
                     <div class="root-page-container_left root-page-container_left-bg">
-
-                        <div class="atr-layout atr-accout-center">
+            
+                        <div class="atr-layout atr-account-center">
                             <div class="atr-main_page atr-main_layout">
                                 <div class="atr-page-header atr-account-center_tab atr-page-header-md atr-page-header-block">
                                     <div class="atr-page-header-mask">
                                         <div class="atr-page-header-wrp">
                                             <div class="atr-page-header_content line">
                                                 <div class="atr-switch_tab" id="atr-switch_tab">
+            
                                                     <ul class="atr-switch-tab_list root-atr-switch-tab_list">
                                                         
-                                                        <li class="atr-switch-tab_tag atr-switch-tab_tag-active">
+                                                        <li class="atr-switch-tab_tag atr-switch-tab_tag-active" data-target="about-section">
                                                             <span class="atr-switch-tab_label">
-                                                                <span>About</span>
+                                                                <span>Start your journey</span>
                                                             </span>
                                                             <span class="atr-switch-tab_line"></span>
                                                         </li>
-                                                        <li class="atr-switch-tab_tag">
-                                                            <span class="atr-switch-tab_label">
-                                                                <span>Photo</span>
-                                                            </span>
-                                                        
-                                                        </li>
-    
-                                                        <li class="atr-switch-tab_tag">
-                                                            <span class="atr-switch-tab_label">
-                                                                <span>Education</span>
-                                                            </span>
-                                                        
-                                                        </li>
-
-                                                        <li class="atr-switch-tab_tag">
-                                                            <span class="atr-switch-tab_label">
-                                                                <span>Video</span>
-                                                            </span>
-                                                        
-                                                        </li>
-
-                                                        <li class="atr-switch-tab_tag">
-                                                            <span class="atr-switch-tab_label">
-                                                                <span>Availability</span>
-                                                            </span>
-                                                        
-                                                        </li>
-
-                                                        <li class="atr-switch-tab_tag">
-                                                            <span class="atr-switch-tab_label">
-                                                                <span>Setup</span>
-                                                            </span>
-                                                        
-                                                        </li>
-
+                                        
+            
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="atr-account-center-content root-atr-page-header-wrp"></div>
+            
+                                
+                                <!-- root-atr-page-header-wrp -->
+                                <div class="atr-account-center-content">
+                                    <div class="atr-account-center-content-container">
+            
+                                        <div class="atr-acount-center-content-container-fillup">
+            
+                                              <div class="form-section" id="about-section">
+                                                    <h2>Your journey Start here!</h2>
+                                                    <span>Whether you're here to learn or teach, 
+                                                        Astutor is your space to grow. Connect, share, and thrive in a community that values knowledge and purpose.
+                                                    </span>
+                                                    <div class="path-choose d-flex flex-column gap-3">
+                
+                                                        <button id="studentBtn" class="btn-path userTypeBtn  mx-2"> Student</button>
+                                                        <button id="tutorBtn" class="btn-path userTypeBtn  mx-2">Tutor</button>
+                                                        </div>
+                                              </div>
+            
+            
+                                        </div>  
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
+            
                     </div>
+            
 
-                    <div class="root-page-container_right"></div>
-
+            
                 </div>
-
+            
             </div>
 
             
@@ -217,5 +205,11 @@
 
 <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/dashboard/utility.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dashboard/education.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dashboard/video.js') }}"></script>
+    <script src="{{ url_for('static', filename='api/api_tutor_profile.js') }}"></script>
+    <script src="{{ url_for('static', filename='api/tutor_scripts/api_tutor_profile.js') }}"></script>
+    <script src="{{ url_for('static', filename='api/tutor_scripts/api_avil.js') }}"></script>
+    <script src="{{ url_for('static', filename='api/tutor_scripts/api_video.js') }}"></script>
 </body>
 </html>

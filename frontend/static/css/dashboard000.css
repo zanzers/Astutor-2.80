@@ -1,4 +1,4 @@
-.atr-group-b .root-page-container{
+_.atr-group-b .root-page-container{
     position: relative;
     margin-top: 300px;
     padding-top: 0;
@@ -359,8 +359,10 @@ i.bx{
     white-space: nowrap;
 }
 .atr-avatar_img{
+    border: 1px solid var(--white-accent);
     width: 100%;
     height: 100%;
+    object-fit: cover;
     border-radius: 50%;
     box-shadow: inset 0 0 0 1px var(--default-gray);
     vertical-align: top;
@@ -642,17 +644,6 @@ i.bx{
     cursor: pointer;
 }
 
-.atr-switch-tab_line{
-    position: absolute;
-    bottom: 0;
-    left: calc(50% - 8px);
-    display: block;
-    width: 16px;
-    height: 4px;
-    border-radius: 2px;
-    background-color: var(--white-accent);
-}
-
 .atr-group-b .atr-switch_tab .atr-switch-tab_list .atr-switch-tab_tag-active{
     color: var(--defaul-dark-color-05);
 }
@@ -672,31 +663,3 @@ i.bx{
     color: var(--defaul-dark-color-05);
 }
 
-
-
-
-/* Account-Content */
-.atr-group-b .root-page-container_left .atr-account-center .atr-account-center-content-container{
-    border-radius: 0;
-}
-
-.atr-acount-center-content-container-fillup{
-    /* background: red; */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.form-group label{
-    color: var(--white-txt);
-}
-.form-section h2, span{
-    color: var(--white-txt);
-}
-
-input[type="checkbox"]{
-    width: 14px;
-    height: 14px;   
-}

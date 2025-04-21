@@ -1,0 +1,76 @@
+.avail_wrp,
+.time-selector,
+.preference-selector {
+  margin-bottom: 20px;
+}
+
+.section-label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.days-selector,
+.time-btn-group,
+.pref-btn-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.day-btn,
+.time-btn,
+.pref-btn {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: var(--dark-text1);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.day-btn:hover,
+.time-btn:hover,
+.pref-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.day-btn.active,
+.time-btn.active,
+.pref-btn.active {
+  background-color: var(--white-accent);
+  color: var(--dark-text1);
+  border-color: var(--white-05);
+}
+
+#selectedDay {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.btn-groups {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+
+.day-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+
+  .time-btn.selected {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+  }
+  
+
+  .day-btn,
+.time-btn,
+.pref-btn {
+  cursor: pointer;
+}

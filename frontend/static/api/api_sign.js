@@ -65,7 +65,7 @@ function initSignupApi(){
                     }
     
 
-    errorMsg.empty();
+errorMsg.empty();
     errorMsgContainer.removeClass("show");
 
 
@@ -90,12 +90,14 @@ function initSignupApi(){
 
     function message(response){
         const redirectUrl = response.redirect_url;
-        const username = response.username;
-        const otp = response.otp;
-        const expiryTime = response.time;
+        const username = response.name;
+        const userId = response.id;
+        const email = response.email;
 
-   
-        const messageText = `Welcome ${username}! Your OTP is ${otp}, which expires in ${expiryTime} seconds.`;
+        sessionStorage.setItem("tempName", username)
+        sessionStorage.setItem("tempEmail", email)
+        sessionStorage.setItem("userID", userId)
+        const messageText = `Welcome ${username}! Email: ${email}`;
 
         return { result_Message: messageText, url: redirectUrl };
 

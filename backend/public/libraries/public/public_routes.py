@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from public.libraries.auth.sign import *
-# from public.libraries.auth.auth_token import *
+from public.libraries.auth.auth_token import *
 
 
 
@@ -21,6 +21,13 @@ def signup():
         return response
     
     return render_template("account.html")
+
+
+
+@public_routes.route("/api/getting-Started")
+@requires_auth
+def gettingStarteed():
+    return render_template("getting-started.html")
 
 
 

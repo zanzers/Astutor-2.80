@@ -1,0 +1,306 @@
+
+
+.path-choose {
+    font-weight: 600;
+    color: var(--dark-text1);
+    letter-spacing: 1px;
+}
+.atr-switch-tab_line{
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 8px);
+    width: 16px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--white-accent);
+}
+
+.atr-switch-tab_tag.done .atr-switch-tab_line {
+    display: block;
+}
+
+
+.atr-switch-tab_tag.atr-switch-tab_tag-active .atr-switch-tab_line {
+    display: none;
+}
+
+.atr-group-b .root-page-container_left .atr-account-center .atr-account-center-content-container{
+    border-radius: 0;
+}
+
+.atr-acount-center-content-container-fillup{
+   color: var(--white-txt);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form-group label{
+    color: var(--white-txt);
+}
+
+input[type="checkbox"]{
+    width: 18px !important;
+    height: auto;   
+    display: inline-block;
+    appearance: checkbox !important;
+    --webkit-appearance: checkbox !important;
+    margin-right: 10px;
+    opacity: 1 !important;
+}
+.check-age{
+    display: flex;
+    flex-direction: row;
+    gap: 20px ;
+    padding: 14px;
+}
+.btn-groups{
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: row;
+    gap: 24px;
+}
+.separator_line{
+    width: 100%;
+    height: 1px;
+    margin: 8px;
+    background-color: var(--white-05);
+}
+
+.form-group.photo_upload {
+    gap: 14px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.user{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+img#photo-preview {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--white-accent);
+
+}
+.upload-input{
+    width: 100%;
+    font-family: inherit;
+    padding: 6px;
+    border: 1px solid var(--white-txt);
+    border-radius: 8px;
+}
+
+.upload-input input[type="file"] {
+    width: 20rem;
+}
+
+i.bx.bx-x.photo-clear {
+    position: relative;
+    left: 21.5rem;
+}
+
+
+.form-group.upload-btn {
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    z-index: 900;
+}
+
+/* EDUCATION */
+
+.form-group.deploma-upload {
+    background: var(--dark-fg1);
+    padding: 6px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+select.form-control {
+    appearance: auto !important;
+    -webkit-appearance: auto !important;
+    -moz-appearance: auto !important;
+    background-image: none !important; /* If Bootstrap added a custom arrow */
+}
+
+.add-education-btn{
+    background: transparent;
+}
+
+
+/* VIDEO */
+
+.form-section{
+    width: 100%;
+}
+
+.left-container,
+.right-container{
+    width: 50%;
+
+}
+
+.left-container{
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 16 / 9;
+    border: 2px dotted var(--dark-txt);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 5px;
+    background-color: #000;
+  }
+  
+  #recordVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .video-overlay-msg,
+  .countdown {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 2;
+    letter-spacing: 1px;
+  }
+  
+  .countdown {
+    font-size: 40px;
+    color: red;
+  }
+  
+  #timer {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-weight: 400;
+    font-size: 14px;
+    background-color: var(--dark-fg1);
+    color: var(--white-txt);
+    padding: 5px 10px;
+    border-radius: 8px;
+    z-index: 5;
+  }
+  .record-btn {
+    border-radius: 4px;
+    margin: 20px 0 0 10px;
+    margin-top: 20px;
+    height: 34px !important;
+    width: 250px !important;
+    background: var(--white-05) !important;
+}
+.recod-txt{
+    color: var(--dark-text1);
+    font-weight: 500;
+}
+
+.record-btn:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.6; /* optional for visual feedback */
+  }
+  
+  .link-group{
+    margin-top: 16px;
+    padding: 5px;
+    font-size: 16px;
+  }
+.video-link_wrp{
+    margin-top: 10px;
+    display: none;
+}
+
+.right-container{
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.video_require{
+    background: var(--white-05);
+    padding: 16px;
+    margin: 4px;
+    max-width: 300px;
+    width: 100%;
+    color: var(--dark-text1);
+    border-radius: 8px;
+
+
+}
+.text-require{
+    font-size: 14px;
+}
+.title-require{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.requirements-list {
+    padding-left: 20px;
+    color: var(--white-txt);
+  }
+  
+  .require-list .title-require {
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--white-txt);
+  }
+  
+  .requirements-icon{
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .requirements-title{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+
+  .requirements-list li::marker {
+    color: var(--white-txt) !important; /* or any color code like #333 */
+    font-size: 1rem; /* optional: adjust bullet size */
+  }
+  
+  ul, li {
+    padding-bottom: 10px;
+    list-style-type: disc !important;
+  }
+
+  .video-error{
+    font-size: 14px;
+    color: var( --error-msg);
+  }

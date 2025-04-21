@@ -1,0 +1,51 @@
+# OBJECTIVES: 
+# frontend -> static -> api:
+# Payment
+# otp -> email
+# libraries -> fucntion -> utility.py -> generate_otp()
+
+# gcash-> phone number -> PIN: 
+
+# name:
+# email:
+
+# Payment Method:
+
+# Gcash -> input number: 
+#     -> QR code 
+
+#     -> Payment Student -> QR code
+
+
+
+
+# DIM -> tutorID:  {name, email, OTP -> gchash setup }
+        
+#         tutor - > 
+
+
+
+# chat -> transaction -> {tutorID form -> name, email , gcash} -> match! 
+
+# tutor -> dashboard -> wait approaval admin ? approve {Crefied icons}
+#                    -> create subject -> students util approve 
+#                    -> appear subjects in home page-> {admin}
+
+#                    -> create subjects add (topic) -> preafer : online ? f2f -> description -> payment per hour -> 1K -> 
+#                     CRUD
+
+
+# admin -> fillout all students, tutor infomation -> section for approval -> diploma_userID.png
+#         -> approve -> tutor Crefied icon -> delete deploma,        
+
+
+# student -> view subjects , enrol, review , task , message 
+
+
+
+
+
+
+
+
+

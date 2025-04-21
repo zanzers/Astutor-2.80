@@ -31,17 +31,20 @@ def user():
 
             insert_query = """ INSERT INTO user (username, email, password) VALUES(%s, %s, %s)"""
             db_write(insert_query, (username, email, encrypt_password))
+            userId = get_user_id(username, email)
 
-            print(f"Generated token for {email}: {token}")
+            print(f"Generated token for {email}: {token}", "User ID:", userId)
 
             response = make_response(jsonify({
                  "message": "Registration successful!",
                  "success": True,
                  "token": token,
                  "name": username,
+                 "id": userId,
                  "email": email,
                 "redirect_url": "/api/getting-Started"
              }))
+
 
             response.set_cookie(
                 "auth_token",
@@ -64,6 +67,24 @@ def user():
         }), HTTPStatus.INTERNAL_SERVER_ERROR
 
 
+
+
+# User ID to referene
+def get_user_id(name, email):
+
+    try:
+
+        query = """ SELECT id FROM user WHERE username = %s AND email = %s"""
+        result = db_read(query,(name, email))
+
+        if result:
+            return result[0]['id']
+        else:
+            return None
+    except Exception as e:
+        print("Error getting user ID: ", str(e))
+        return None
+    
 
 
 
