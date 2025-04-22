@@ -166,7 +166,7 @@ $(document).ready(function () {
           }
       
 
-        let avail_form = {
+      let avail_form = {
             tutorID: tutorID,
             availability: availabilityList
           };

@@ -153,7 +153,7 @@
                                                 <span class="atr-switch-tab_line"></span>
                                             </li>
 
-                                            <li class="atr-switch-tab_tag" data-target="setup-section">
+                                            <li class="atr-switch-tab_tag " data-target="setup-section">
                                                 <span class="atr-switch-tab_label">
                                                     <span>Setup</span>
                                                 </span>
@@ -187,6 +187,26 @@
                                   {% endblock %}
 
                             </div>  
+
+                            <div class="form-group reviewOverlay d-none">
+                               
+                                <div id="reviewOverlay" class="overlay d-none">
+                                    <div class="review-card">
+                                    <h3 class="mb-3">Registration Under Review</h3>
+                                    <p class="text-muted">
+                                        Astutor will review and process your registration. This takes a day or two depending on the number of requests we receive.
+                                    </p>
+                                    <p class="text-muted">
+                                        In the meantime, you may start creating your subjects. However, these won’t be visible until you receive your <strong>certified badge</strong>.
+                                    </p>
+                                    <p class="fw-bold">Thank you for your understanding.</p>
+                                    <button id="proceedBtn" class="btn btn-primary mt-3">Proceed</button>
+                                    </div>
+                                </div>
+  
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

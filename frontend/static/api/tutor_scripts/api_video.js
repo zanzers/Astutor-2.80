@@ -125,9 +125,14 @@ $(document).ready(function () {
   
 
     $btnVideo.on('click', function () {
+      const id= sessionStorage.getItem("userID");
       const videoBlob = $video.data('videoBlob');
       const formData = new FormData();
       formData.append('video', videoBlob, 'video.webm'); 
+      formData.append(id)
+
+
+      console.log("Video:", formData)
   
 
 

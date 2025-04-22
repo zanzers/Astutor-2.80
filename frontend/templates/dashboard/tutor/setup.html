@@ -1,9 +1,117 @@
-                                  
-                                  <!-- SETUP PAYMENT -->
-                                  <div class="form-section d-none" id="setup-section">
-                                    <h2>Setup</h2>
-                                    <div class="form-group btn-groups">
-                                        <button type="button" id="btn-next" class="btn btn-primary btn-prev"> Back </button>
-                                        <button type="submit" id="btn-prev" class="btn btn-primary btn-next">Save</button>
-                                    </div>
-                                  </div>
+ <!-- SETUP PAYMENT -->
+<div class="form-section d-none" id="setup-section">
+  <h2>Setup Your Payment & Pricing</h2>
+
+
+  <div class="form-group">
+    <label for="pricing">Set your rate (per 50-minute lesson)</label>
+    <div class="input-group">
+      <span class="input-group-text">₱</span>
+      <input type="number" id="pricing" class="form-control" placeholder="Enter your rate" min="50" step="10" required>
+    </div>
+  </div>
+
+
+  <div class="form-group commission-info mt-3">
+    <label>Astutor Structure</label>
+    <div class="alert alert-info small">
+      <p>We use the funds to help us grow our platform, to  bring in more students, and improve the learning experience.</p>
+      <ul>
+        <li><strong>Trial Lesson:</strong> 100% commission (used to acquire new students).</li>
+        <li><strong>Regular Lessons:</strong> Commission ranges from <strong>18% to 33%</strong> depending on total teaching hours. The more you teach, the lower the fee.</li>
+      </ul>
+    </div>
+  </div>
+
+
+      <div class="form-group">
+        <p><u class="clickable" role="button" id="togglePaymentDetails">Add Online Payment</u></p>
+      </div>
+
+
+
+      <div class="payment-details d-none" id="paymentDetailsForm">
+           <div class="divider"></div>
+
+           <div class="DIM-text alert alert-info mb-5">
+             Astutor uses <strong>DIM (Detail Integration Matching)</strong> to protect your online transactions. The information you provide will be securely encrypted and used to verify every future payment request. 
+           </div>
+
+
+
+           <div class="form-group payment_container">
+
+          
+
+              <div class="form-group d-none otp_wrp">
+                <h4 class="payment_verify">Verify Account</h4>
+                <span>first Verify your account, we sent your OTP to: <span class="payment_email" data-emial="nowell@gmail.com">nowell@gmail.com</span></span>
+           
+              <div class="form-group">
+                <div id="otpBox" class="d-flex gap-2 mb-2">
+                  <input type="number" maxlength="1" class="otp-input text-center" />
+                  <input type="number" maxlength="1" class="otp-input text-center" />
+                  <input type="number" maxlength="1" class="otp-input text-center" />
+                  <input type="number" maxlength="1" class="otp-input text-center" />
+                  <input type="number" maxlength="1" class="otp-input text-center" />
+                </div>
+                <button type="button" class="btn btn-outline-primary" id="verifyOtpBtn">Verify</button>
+                <div id="otpStatus" class="mt-2 text-danger d-none">Invalid OTP. Try again.</div>
+              </div>
+              </div>
+
+            <div class="form-group d-none pref_payment">
+
+                 <div class="form-group">
+                     <label for="paymentMethod">Preferred Payment Method</label>
+                     <select class="form-control" id="paymentMethod" required>
+                       <option disabled selected>Select a method</option>
+                       <option value="gcash">GCash</option>
+                       <option value="paymaya">PayMaya</option>
+                     </select>
+                   </div>
+                
+                   <div class="form-group mt-3">
+                     <label for="paymentNumber">Phone Number</label>
+                     <div class="input-group">
+                       <span class="input-group-text">+64</span>
+                       <input type="number" class="form-control" id="paymentNumber" required>
+                     </div>
+                   </div>
+                
+                    <div class="error-payment"></div>
+                   <button type="button" class="btn btn-outline-primary" id="MethodBtn">Continue</button>
+            </div>
+
+
+            <div class="container  mt-4">
+              <div class="card" style="width: 100%; max-width: 500px; margin: auto;">
+                <button type="button" class="btn btn-secondary" id="goBackBtn"><i class='bx bx-left-arrow-alt'></i></button>
+                  <div class="card-body">
+                      <h4 class="card-title text-center">Account Confirmation</h4>
+                      
+                      <div class="form-group">
+                          <p><strong>Name:</strong> <span id="confirmedName"></span></p>
+                          <p><strong>Lastname:</strong> <span id="confirmedLastname"></span></p>
+                          <p><strong>Email:</strong> <span id="confirmedEmail"></span></p>
+                          <p><strong>Gcash Number:</strong> <span id="confirmedPhoneNumber"></span></p>
+                          <p><strong>Pricing:</strong> <span id="confirmedPricing"></span></p>
+                      </div>
+                    
+                  </div>
+              </div>
+          </div>
+        
+            </div>
+
+      </div>
+
+  <div class="form-group btn-groups mt-4">
+    <button type="button" id="btn-next" class="btn btn-secondary btn-prev">Back</button>
+    <button type="submit" id="btn-prev" class="btn btn-primary complete_registration btn-next">Complete Registration</button>
+  </div>
+
+
+
+  
+</div>

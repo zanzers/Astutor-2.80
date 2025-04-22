@@ -46,6 +46,40 @@
 
 
 
+wait let's add  a Add Online Payment -> like this with underline when click it show 
+
+Payment form:
+Astutor use DIM(detail integration matching) the input are increpted and everytime transaction are process Online Astutor will request the same information you input here for your security. 
+
+
+the idea behind DIM is to every transaction a form will pop out this form will use the setup they input here 
+so that each transaction is verify that is them and not someone the promblem is if each transaction I dont know 
+if user want to full fill this information every single time right?
+
+cause the name details integration matching are here in this part!
+
+
+Name:
+LastName:
+email:
+
+we sent your OTP at:
+OTP: 
+
+after they provide the right OTP this will show up
+
+payment -> drop down Gcash, Paymaya
+
+enter your phone number
+
++64 | 
+
+
+
+upoad Qr code (if applicated)
+
+
+
 
 
 

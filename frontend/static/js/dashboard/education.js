@@ -24,7 +24,7 @@ $(document).ready(function() {
     
 
         $clone.attr('data-credential-id', credentialCounter);
-        $clone.find('form')[0].reset(); // reset form inputs
+        $clone.find('form')[0].reset();
         $clone.find('input[type="file"]').val('');
         
 
