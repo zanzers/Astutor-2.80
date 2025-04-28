@@ -11,7 +11,7 @@ tutor_routes = Blueprint("tutor_routes", __name__)
 
 # TUTOR ROUTES AND OTHER PARTS:
 @tutor_routes.route("/api/getting-started/tutor", methods=["GET", "POST"])
-@requires_auth
+# @requires_auth
 def tutorProfile():    
     return render_template("tutor_profile.html")
 
@@ -33,10 +33,22 @@ def education_info():
     return result
 
 
+@tutor_routes.route("/api/getting-started/avail", methods=['GET', 'POST'])
+def avail():
+    
+    print("avail")
+    response = avail()
+    result = response.get_json()
+
+    print(response)
+    return result
 
 
 
-# GLOBAL FUNCTION and GLOBAL ROUTES NOTE: DONT TOUCH ask the project manager!!!!!!
+
+
+# GLOBAL FUNCTION and GLOBAL ROUTES 
+# NOTE: DONT TOUCH unless you have permission or ask the project manager!!!!!!
 
 @tutor_routes.route("/api/getting-started/subjects", methods = ["GET"])
 def get_subjects():
@@ -61,8 +73,58 @@ def serve_userImage(user_id, filename):
 
 
 
-# @tutor_routes.route("/api/getting-started/student", methods=["GET"])
+@tutor_routes.route("/api/dashboard/Astutor-tutor", methods=["GET"])
 # @requires_auth
-# def studentProfile():
-#     return render_template("student_profile.html")    
+def tutorDashboard():
+    return render_template("tutor_dashboard.html")    
 
+
+@tutor_routes.route('/api/dashboard/create-lesson', methods=['GET'])
+# @requires_auth
+def create_lesson():
+
+
+    return render_template("create_lesson.html")
+
+
+
+
+
+
+
+
+
+
+# simulation test for Create Lesson
+
+# fecth data
+@tutor_routes.route('/api/dashboard/test', methods=['POST'])
+# @requires_auth
+def simulatuion_test():
+
+    data = request.get_json()
+    print("Create fetch Data Recieved:", data)
+
+    return  jsonify({
+        'default_subject': 'Nowell',
+         "subjects": ["English", "Science", "Filipino", "Math", "Nowell"],
+         "schedule": [
+             "Mon, Tue, Wed | online at Morning 6am - 12pm",
+             "Sun, Sat | F2F at Afternoon 12pm - 6pm"
+         ],
+        'rate': '150'
+    })
+
+# save data
+@tutor_routes.route('/api/dashboard/test1', methods=['POST'])
+# @requires_auth
+def simulatuion_test1():
+
+    data = request.get_json()
+    print("Create Save Data Recieved:", data)
+    return  jsonify({
+        'return_url': '/api/dashboard/Astutor-tutor',
+        'message': 'Save Success',
+         "success": True,
+    
+    })

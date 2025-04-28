@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/_root.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard000.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/root_page.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/root_page1.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/root_page2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/root_page3.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/root_page4.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Astutor|{% block title %} Home {% endblock %}</title>
+</head>
+<body>
+
+
+<div class="_nuxt">
+
+
+    <div class="_layout">
+        <div class="root atr-group-b">
+
+
+            
+            <div id="header" class="header header-transparent">
+                <div class="header_wrp header_wrp-transparent">
+                    <div class="header_inner">
+                        <div class="header_left">
+                            <div class="header-logo">
+                                <i class="atr-icon iconfont icon-logo">Astutor</i>
+                            </div>
+                            <div class="header-tab-wrp">
+                                <div class="header-tab">
+                                    <p class="active-tab"></p>
+                                    <p class="header-tab-name">Profile</p>
+                                </div>
+                                <div class="header-tab">
+                                    <p class="header-tab-name">Catergory</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="header_main">
+                            <div class="atr-search-bar">
+                                <form>
+                                    <div class="atr-search-input">
+                                        <div class="search_seive">
+                                            <div class="atr-category-selector">
+                                                <div class="atr-selected">
+                                                    <div class="atr-selected_container">
+                                                        <div class="atr-selected_label">
+                                                            <svg class="category-icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);">
+                                                                <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm10 10h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zM17 3c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zM7 13c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4z">
+                                                                </path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="atr-selected_icon">
+                                                            <i class='bx bxs-down-arrow'></i>
+                                                        </div>
+
+                                                        <span class="atr-selected_line"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label class="atr-autocomplete_label" style="overflow: hidden;">
+                                            <div class="atr-autocomplete">
+                                                <div class="atr-autocomplete_wrp">
+                                                    <input type="text" placeholder="Find Tutor" class="atr-autocomplete_input">
+                                                    <div role="button" class="atr-autocomplete_clear" style="display: none;">
+                                                        <i class='bx bx-x'></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <i class='bx bx-search' role="button"></i>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="header_right">
+                            <div class="header-item header-message">
+                                <div role="button" title="Message" class="header-item_button">
+                                    <div class="header-item_icon">
+                                        <i class='bx bxs-chat icon-chat'></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="header-item header-notification">
+                                <span class="header-notification_num" data-count="1"></span>
+                                <div class="header-item_button" role="button" title="Message Notification">
+                                    <div class="header-item_icon">
+                                        <i class='bx bx-bell'></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header-item header-account">
+                                <div class="header-avatar">
+                                    <div class="atr-avatar atr-avatar_28">
+                                        <img lazy="loaded" src="/static/slide-img/12.jpg" class="atr-avatar_img">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+                <!-- Main content -->
+              {% block header %}
+                <div class="bot-layer account-center-bg top-0">
+                    <div class="bot-layer-bg_wrp">
+                        <img src="/static/slide-img/bg3.jpg">
+                    </div>
+    
+                </div>
+    
+    
+                <div class="root-page">
+                    <div class="top-bar">
+                        <div data-top="356" class="top-bar-wrp" style="height: auto;">
+                            <div class="topbar" style="position:  relative; top: auto; height: auto; opacity: 1; display: block;">
+                                <div class="topbar-content">
+                                    <div class="account-topbar-container">
+                                        <div class="account-avatar_wpr">
+                                            <div class="topbar-avatar account-avatar atr-avatar">
+                                                <img src="/static/slide-img/12.jpg"  lazy="loaded" class="atr-avatar_img">
+                                            </div>
+                                        </div>
+                                        <div class="account-user_wpr">
+                                            <div class="account-rows account-rows--top">
+                                                <div class="account-rows-1">
+                                                    <span class="userFullname">xiianger</span>
+                                                </div>
+                                                <div class="account-rows-2">
+                                                    <i class='my-userIcons bx bxs-graduation'></i>
+                                                    <p class="userType">Tutor</p>
+                                                </div>
+                                            </div>
+                                            <div class="account-rows account-rows--bottom">
+                                                <div class="account-info-items">
+                                                    <div class="acount-info-number">0</div>
+                                                    <div class="acount-info-name">Reviews</div>
+                                                    <div class="acount-info-slit">|</div>
+    
+                                                </div>
+                                                <div class="account-info-items">
+                                                    <div class="acount-info-number">0</div>
+                                                    <div class="acount-info-name">Lessons</div>
+                                                    <div class="acount-info-slit">|</div>
+    
+                                                </div>
+                                                <div class="account-info-items">
+                                                    <div class="acount-info-number">0</div>
+                                                    <div class="acount-info-name">Save</div>
+                                                    <div class="acount-info-slit">|</div>
+    
+                                                </div>
+                                                <div class="account-info-items">
+                                                    <div class="acount-info-number">0</div>
+                                                    <div class="acount-info-name">50min rate</div>
+                                             
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="account-btn_wpr">
+                                            <div class="account-options">
+                                                <div class="userSwap">
+                                                    <button class="hyl-button account-center-select-menu normal__stella_primary_dark hyl-button__lg hyl-button-loading__lg">
+                                                        <span class="userSwaper">
+                                                            Tutor
+                                                            <i class='bx bx-transfer-alt'></i>
+                                                        </span>
+                                                    </button>
+                                                    <div class="float-dialog" style="right: 0px;  display: none;">
+                                                        <ul class="account-submenu">
+                                                            <span class="swaptext">Want to switch to a student account?</span>
+                                                            <br>
+                                                            <a href="#" class="swaptext text-primary text-decoration-underline">Learn more</a>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="main-root_page-content">
+    
+                        <div class="main_content-left main_root-left-bg">
+                            <div class="atr-layout atr-account-center">
+                                <div class="account-main_page atr-layout-main">
+
+                                    <div class="account-page_header acount-tab account-header_md account-header_block">
+                                        <div class="account-page_header-mask">
+                                            <div class="account-page_header-wrp">
+                                                <div class="page-header_content line">
+                                                    <div class="account-switch_tab" id="account-switch_tab">
+                                                        <ul class="account-switch-tab_list">
+                                                            <li class="account-switch-tab_tag account-tab_tab-active">
+                                                                <span class="account-switch-tab_label">
+                                                                    <span>About</span>
+                                                                </span>
+                                                                <span class="switch-tab_line"></span>
+                                                            </li>
+                                                            <li class="account-switch-tab_tag account-tab_tab-active">
+                                                                <span class="account-switch-tab_label">
+                                                                    <span>Lessons</span>
+                                                                </span>
+                                                                
+                                                            </li>
+                                                    
+                                                            <li class="account-switch-tab_tag account-tab_tab-active">
+                                                                <span class="account-switch-tab_label">
+                                                                    <span>Chat</span>
+                                                                </span>
+                                                                
+                                                            </li>
+                                                            <li class="account-switch-tab_tag account-tab_tab-active">
+                                                                <span class="account-switch-tab_label">
+                                                                    <span>Notification</span>
+                                                                </span>
+                                                                
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+
+                                    <div class="account-page_content">
+
+                                        <div class="account-main-content account-center-list">
+
+                                            <div class="about-data about-log">
+                                             <div class="about-video-preview">
+                                                <iframe 
+                                                id="youtube-preview"
+                                                width="100%"
+                                                height="100%"
+                                                src="https://www.youtube.com/embed/RedfbOyx9Q4"
+                                                frameborder="0"
+                                                allowfullscreen
+                                                style="display: block;"
+                                                ></iframe>
+
+                                                <video  
+                                                id="upload-preview"
+                                                width="100%"
+                                                height="300"
+                                                controls
+                                                style="display: none;" ></video>
+                                             </div>
+
+                                             <div class="about-details">
+
+                                                <div class="about-details_wrp">
+                                                    <div class="about-header">
+                                                      <h3>About Me</h3>
+                                                      <div class="edit-about-container" style="position: relative;">
+                                                        <i class='bx bx-dots-horizontal bx-rotate-90 edit-about' style='color:#ffffff; cursor:pointer; margin-left: 8px;'></i>
+                                                  
+                                                  
+                                                        <div class="edit-menu" style="display: none; position: absolute; top: 25px; right: 0; background: #333; padding: 5px 10px; border-radius: 5px; z-index: 10;">
+                                                          <span class="edit-option" style="color: white; cursor: pointer;">Edit</span>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  
+                                                    <div class="about-content">
+                                                      <p class="about-placeholder">
+                                                        Share more about yourself! Mention your experience, teaching style, and what makes your lessons special to attract future students.
+                                                      </p>
+                                                    </div>
+                                                    <span class="about-count-tip"  style="display:none;">0/200</span>
+                                                  </div>
+                                                  
+
+                                              </div>
+                                              
+
+                                            </div>
+
+
+                                            <!-- Lessons Filter -->
+                                            <div class="lesson-data lesson-log" style="display: none;">
+                                                
+                                                <div class="lesson-list_container">
+
+                                                    <div class="lessons-items">
+                                                        
+                                                        <div class="lesson-wrp">
+                                                            <div class="lesson_header">
+                                                            <h2 class="subject-type">Math</h2>
+                                                           <div class="option_container">
+                                                            <i class='bx bx-video' data-tooltip="call"></i>
+                                                            <i id="edit-lesson" class='edit-lesson bx bx-dots-horizontal-rounded' data-tooltip="Edit Menu"></i>
+                                                           </div>
+                                                        </div>
+
+                                                        <div class="lesson-option_dropdown d-none">
+                                                            <span class="dropdown-option edit-option-lesson">Edit</span>
+                                                            <span class="dropdown-option delete-option-lesson">Delete</span>
+                                                        </div>
+
+                                                        <div class="lesson-body_content">
+                                                            
+                                                            <div class="lesson_topic">Topic
+                                                                <div class="topic_container">
+                                                                    <div class="topic_box">
+                                                                        Data Structures and Algorithms       
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="lesson_topic">Description
+                                                                
+                                                                <div class="description-container">
+                                                                    <div class="description-box">
+                                                                        DSA is the foundation of efficient problem-solving and software development. Mastering DSA enhances logical thinking and coding skills.
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <div class="lesson_topic">Schedule
+                                                                    <div class="schedule-container">
+
+                                                                        <div class="schedule-box">
+                                                                            <div class="schedule-days">Monday, Tue, Wed</div>
+                                                                            <div class="schedule-method">Online</div>
+                                                                            <div class="schedule-time">Morning 6–12PM</div>
+                                                                          </div>
+                                                                        
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                            <div class="lesson_topic">Enrolled 
+                                                                
+                                                                <div class="enrolled_profile-container">
+                                                                    <div class="enrolled-box">
+                                                                        <img src="profile1.jpg" class="enrolled_profile">
+                                                                        <img src="profile2.jpg" class="enrolled_profile">
+                                                                        <img src="profile3.jpg" class="enrolled_profile">
+                                                                        <img src="profile4.jpg" class="enrolled_profile">
+                                                                        <span class="enrolled_more">+5 more</span>
+                                                                      </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="chat-data chat-log" style="display: none;">
+                                                <div class="chat-room-container">
+                                        
+
+                                                    <div class="chat-contacts">
+                                                        <input type="text" class="chat-search" placeholder="Search contacts...">
+                                                        <div class="contact-list-container">
+
+                                                            <div class="contact-item unread">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <div class="contact-info">
+                                                                    <span class="contact-name">Xi</span>
+                                                                    <p class="current-msg">Hello, how are you?</p>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                            <div class="contact-item read">
+                                                                <img src="/static/slide-img/13.jpg" class="contact-pic">
+                                                                <div class="contact-info">
+                                                                    <span class="contact-name">Alice</span>
+                                                                    <p class="current-msg">See you later!</p>
+                                                                </div>
+                                                            </div>
+                                                          
+
+                    
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                            <div class="contact-item">
+                                                                <img src="/static/slide-img/12.jpg" class="contact-pic">
+                                                                <span class="contact-name">XI2</span>
+                                                            </div>
+                                                     
+
+                                                        </div>
+                                                    </div>
+                                                
+                                               
+                                                    <div class="chat-main">
+                                                     
+                                                        <div class="chat-header">
+                                                            <img src="/static/slide-img/12.jpg" class="chat-header-pic">
+                                                            <span class="chat-header-name">Xi</span>
+                                                            <i class="bx bx-dots-horizontal-rounded chat-header-menu"></i>
+
+
+
+                                                            <div class="chat_menu-option d-none">
+                                                                <span class="chat-menu-item">Add Transaction</span>
+                                                            </div>
+                                                        </div>
+                                                
+
+
+
+
+                                                       
+                                                        <div class="chats-container">
+                                                            <div class="chats-wrp">
+                                                               
+
+                                                                <div class="chat-message">
+                                                                    <img src="/static/slide-img/12.jpg" class="chat-msg-pic">
+                                                                    <div class="chat-msg-content">
+                                                                        <span class="chat-msg-name">Alice</span>
+                                                                        <p>Hello!</p>
+                                                                    </div>
+                                                                </div>
+                                                
+                                                                <div class="chat-message">
+                                                                    <img src="/static/slide-img/12.jpg" class="chat-msg-pic">
+                                                                    <div class="chat-msg-content">
+                                                                        <span class="chat-msg-name">You</span>
+                                                                        <p>What time?</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                
+                                                        <div class="chat-footer">
+                                                            <input type="text" class="chat-input" placeholder="Type a message...">
+                                                            <button class="chat-send-btn">Send</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+
+
+
+
+                                            <div class="notification-data notification-log" style="display: none;">
+                                                noti
+                                            </div>
+
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main_content-right">
+                            <div class="right_layout-sub">
+                                <div class="right-stickly-scroll-wrp" style="height: 1539px;">
+    
+                                    <div class="right-stickly-scroll right-wrp" style="padding-bottom: 80px;">
+    
+                                        <div class="side-section create_lesson-card">
+                                            <div class="side-section_header">
+                                                <h2 class="section-title">
+                                                    <div class="create-title">
+                                                        <span><i class='creat-icon bx bxs-edit-alt'></i>Create Lesson</span>
+                                                    </div>
+                                                </h2>
+                                            </div>
+                                            <div class="side-section_body">
+                                                <div class="create-data"></div>
+                                                <button class="atr-button normal-primary atr-button-L " aria-label style="width: 304px;">
+                                                    <span> Create</span>
+                                                </button>
+                                            </div>
+                                            <div class="side-section_footer"></div>
+                                        </div>
+                                        <div class="side-section create_task-card">
+                                            <div class="side-section_header">
+                                                <h2 class="section-title">
+                                                    <div class="create-title">
+                                                        <span><i class='bx bx-task'></i>Create Task</span>
+                                                    </div>
+                                                </h2>
+                                            </div>
+                                            <div class="side-section_body">
+                                                <div class="create-data"></div>
+                                                <button class="atr-button normal-primary atr-button-L " aria-label style="width: 304px;">
+                                                    <span> Create</span>
+                                                </button>
+                                            </div>
+                                            <div class="side-section_footer"></div>
+                                        </div>
+                                    </div>
+    
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
+
+                {% endblock %}
+            </div>
+
+            
+            
+            
+            
+            {% block content%}
+
+            {% include 'tutor/transaction-modal.html' %}
+
+        
+          {% endblock %}
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dashboard/utility.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dashboard/tutor_1.js') }}"></script>
+<script src="{{ url_for('static', filename='api/tutor_scripts/api_create_lesson.js') }}"></script>
+<script src="{{ url_for('static', filename='api/tutor_scripts/api_edit_lesson.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dashboard/tutor_dashboard.js') }}"></script>
+</body>
+</html>

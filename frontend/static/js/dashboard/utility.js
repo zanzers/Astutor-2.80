@@ -81,7 +81,7 @@ $(document).ready(function(){
         window.location.href = `/api/getting-started/${userType}`;
     })
 
-    $('')
+
 })
 
 

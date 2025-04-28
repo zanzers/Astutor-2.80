@@ -16,7 +16,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 def generate_token(username):
     payload = {
         "username": username,
-        "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+        "exp": datetime.datetime.utcnow() + datetime.timedelta(hours=10)
     }
     token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
     return token

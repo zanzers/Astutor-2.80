@@ -121,7 +121,7 @@ $(document).ready(function () {
     function resetSelection() {
       selectedDays.clear();
       selectedTime = '';
-      selectedPref = ''; // ✅ ADDED: Reset preference
+      selectedPref = ''; 
       timeButtons.forEach(btn => btn.classList.remove('selected'));
       document.querySelectorAll('.pref-btn').forEach(btn => btn.classList.remove('selected')); // ✅ ADDED
       updateSelectedDayLabel();

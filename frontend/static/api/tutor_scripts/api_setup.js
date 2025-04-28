@@ -17,7 +17,7 @@ $(document).ready(function() {
 
         // check the request userId and generate the OTP 
         // along side of  the email then return the value.
-        // Note in the backend safe the email and OTP and compare them
+        // Note in the backend save the email and OTP and compare them
         // if the user request the verification see at line 40;
 
         // $.ajax({
@@ -27,7 +27,7 @@ $(document).ready(function() {
         //   data: JSON.stringify(otpData),
         //   success: function (response) {
 
-            // console.log('Server response:', response);
+        //     console.log('Server response:', response);
         //     alert(`Email: ${response.email}, OTP: ${response.otp}`);
      
         //   },
@@ -37,8 +37,6 @@ $(document).ready(function() {
         //   }
         // });
     });
-
-
 
     // Verified OTP
     $('#verifyOtpBtn').on('click', function(){
@@ -175,6 +173,13 @@ $(document).ready(function() {
             // show reviewOverlay()
             // $('.reviewOverlay').removeClass('d-none');
         }
+    })
+
+
+    
+    // DONT TOUCH!
+    $('.proceed_btn').on('click', function(){
+        window.location.href = `/api/dashboard/Astutor-tutor`;
     })
 
 })

@@ -57,3 +57,12 @@ def tutor_education():
         return jsonify({'status': 'error', 'message': str(e)}), HTTPStatus.INTERNAL_SERVER_ERROR
 
 
+
+def avail():
+
+
+    data = request.get_json()
+    tutorId = data.get("tutorID", "").strip()
+
+
+    print(tutorId)
