@@ -7,10 +7,8 @@ import re
 
 
 def generate_otp() -> tuple[str, int]:
-    expriry_time = 120
     otp_code = str(random.randint(10000, 99999))
-    generated_at = int(time.time())
-    return otp_code, expriry_time,generated_at
+    return otp_code
 
 
 def hash_password(password: str) -> str:

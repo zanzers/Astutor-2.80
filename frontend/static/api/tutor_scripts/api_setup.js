@@ -8,8 +8,7 @@ $(document).ready(function() {
     $('#togglePaymentDetails').on('click', function(){
 
         const otpData = {
-            userId: id,
-            tutorID: tutorID
+            userId: id
         };
 
         console.log("Request OTP: ", otpData)
@@ -20,27 +19,30 @@ $(document).ready(function() {
         // Note in the backend save the email and OTP and compare them
         // if the user request the verification see at line 40;
 
-        // $.ajax({
-        //   url: '',
-        //   type: 'POST',
-        //   contentType: 'application/json',
-        //   data: JSON.stringify(otpData),
-        //   success: function (response) {
+        $.ajax({
+          url: '/api/getting-started/setup',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify(otpData),
+          success: function (response) {
 
-        //     console.log('Server response:', response);
-        //     alert(`Email: ${response.email}, OTP: ${response.otp}`);
+            $('.payment_email').text(response.email)
+
+            console.log('Server response:', response);
+            alert(`Email: ${response.email}, OTP: ${response.otp}`);
      
-        //   },
-        //   error: function (xhr, status, error) {
-        //     alert('Failed to request OTP. Please try again.');
-        //     console.error('Error:', error);
-        //   }
-        // });
+          },
+          error: function (xhr, status, error) {
+            alert('Failed to request OTP. Please try again.');
+            console.error('Error:', error);
+          }
+        });
     });
 
     // Verified OTP
     $('#verifyOtpBtn').on('click', function(){
 
+        let email = $('.payment_email').text()
         let otpCode = '';
 
         $('.otp-input').each(function(){
@@ -49,8 +51,7 @@ $(document).ready(function() {
         
         
         const otpValidation = {
-            userId: id,
-            tutorID: tutorID,
+            email: email,
             otpInput: otpCode
         }
         
@@ -60,23 +61,23 @@ $(document).ready(function() {
         // return success: true
 
 
-         // $.ajax({
-        //   url: '',
-        //   type: 'POST',
-        //   contentType: 'application/json',
-        //   data: JSON.stringify(otpValidation),
-        //   success: function (response) {
-        // 
-        //     alert(`Email Verifired`)
-        //     console.log('Server response:', response);
-        //     $('.otp_wrp').addClass('d-none');
-        //      $('.pref_payment').removeClass('d-none');
+         $.ajax({
+          url: '/api/getting-started/verify',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify(otpValidation),
+          success: function (response) {
+        
+            alert(`Email Verified`)
+            console.log('Server response:', response);
+            $('.otp_wrp').addClass('d-none');
+             $('.pref_payment').removeClass('d-none');
 
-        //   },
-        //   error: function (xhr, status, error) {
-        //     console.error('Error:', error);
-        //   }
-        // });
+          },
+          error: function (xhr, status, error) {
+            console.error('Error:', error);
+          }
+        });
 
 
     });
@@ -87,7 +88,7 @@ $(document).ready(function() {
         const methodSelected = $('#paymentMethod').val();
         const pricing  = $('#pricing').val();
         let number = $('#paymentNumber').val();
-        const fullNumber = `+64${number}`;
+        const fullNumber = `+63${number}`;
         $('.error-payment').text('');
         $('#paymentMethod, #paymentNumber').removeClass('is-invalid');
 
@@ -101,6 +102,7 @@ $(document).ready(function() {
         }
 
         const accountData = {
+            userId: id,
             tutorID: tutorID,
             pricing: pricing,
             paymentMethod: methodSelected,
@@ -115,65 +117,101 @@ $(document).ready(function() {
         // success: true | name, lastname(if tutor), email, Gcash number and pricing;
         
 
-         // $.ajax({
-        //   url: '',
-        //   type: 'POST',
-        //   contentType: 'application/json',
-        //   data: JSON.stringify(accountData),
-        //   success: function (response) {
-        // 
-        //     console.log('response:', response);
-        //     alert(`Phone Number: ${response.number}, Name: ${response.name}`);
-        //     $('.pref_payment').addClass('d-none');
-        //     $('.confirmation').removeClass('d-none');
+         $.ajax({
+          url: '/api/getting-started/without_the_account',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify(accountData),
+          success: function (response) {
         
-        //     $('#confirmedName').text(response.name);
-        //     $('#confirmedLastname').text(response.lastname);
-        //     $('#confirmedEmail').text(response.email);
-        //     $('#confirmedPhoneNumber').text(response.number);
-        //     $('#confirmedPricing').text(response.pricing);
-        //     $('.complete_registration').prop('disabled', false);
-         //    accountSetup = true;
-        //   },
-        //   error: function (xhr, status, error) {
-        //     console.error('Error:', error);
-        //   }
-        // });
+            console.log('response:', response);
+            $('.pref_payment').addClass('d-none');
+            $('.confirmation').removeClass('d-none');
+        
+            $('#confirmedFirstname').text(response.firstname);
+            $('#confirmedLastname').text(response.lastname);
+            $('#confirmedEmail').text(response.email);
+            $('#confirmedPhoneNumber').text(response.number);
+            $('#confirmedRate').text(response.rate);
+            $('.complete_registration').prop('disabled', false);
+            $('.container').removeClass('d-none')
+            accountSetup = true;
+            alert(`Phone Number: ${response.number}, Name: ${response.firstname}`);
+          },
+          error: function (xhr, status, error) {
+            console.error('Error:', error);
+          }
+        });
 
     })
 
     // Complete
-    $('#complete_registration').on('click', function(){
+    $('.complete_registration').on('click', function(){
+
+        console.log("object");
+        
         const pricing  = $('#pricing').val();
 
         const pricingData = {
-            tutorID: id,
+            tutorID: tutorID,
             pricing: pricing
         }
 
         if(!accountSetup){
-            // only save the pricing and show reviewOverlay if success it show the confirmation
+           
 
-        // $.ajax({
-        //   url: '',
-        //   type: 'POST',
-        //   contentType: 'application/json',
-        //   data: JSON.stringify(pricingData),
-        //   success: function (response) {
-        // 
-        //     console.log('response:', response);
-        //     $('.reviewOverlay').removeClass('d-none');
-        
-        //   },
-        //   error: function (xhr, status, error) {
-        //     console.error('Error:', error);
-        //   }
-        // });
+            console.log("acount1")
+            $.ajax({
+                url: '/api/getting-started/without_the_account',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(pricingData),
+                success: function (response) {
+              
+                  console.log('response:', response);
+                  $('.reviewOverlay').removeClass('d-none');
+              
+                },
+                error: function (xhr, status, error) {
+                  console.error('Error:', error);
+                }
+              });
+
         } else {
-            // show reviewOverlay()
-            // $('.reviewOverlay').removeClass('d-none');
-        }
-    })
+            console.log("acount2")
+            const con_fname = $('#confirmedFirstname').text()
+            const con_lname = $('#confirmedLastname').text()
+            const con_email = $('#confirmedEmail').text()
+            const con_number = $('#confirmedPhoneNumber').text()
+
+            const confirm_data = {
+                fname: con_fname,
+                lname: con_lname,
+                email: con_email,
+                number: con_number
+
+      
+             
+
+            }
+
+            $.ajax({
+                url: '/api/getting-started/confirmation',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(confirm_data),
+                success: function (response) {
+              
+                  console.log('response:', response);
+                  $('.reviewOverlay').removeClass('d-none');
+              
+                },
+                error: function (xhr, status, error) {
+                  console.error('Error:', error);
+                }
+              });
+            } 
+    }) 
 
 
     
@@ -182,7 +220,7 @@ $(document).ready(function() {
         window.location.href = `/api/dashboard/Astutor-tutor`;
     })
 
-})
+}) 
 
 
 

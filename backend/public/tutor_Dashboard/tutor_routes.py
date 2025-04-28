@@ -43,8 +43,40 @@ def avail():
     print(response)
     return result
 
+@tutor_routes.route("/api/getting-started/setup", methods=['GET', 'POST'])
+def setup():
+    response = request_otp()
+    result = response.get_json()
+    print(result)
+    return result
+    
+@tutor_routes.route("/api/getting-started/verify", methods=['POST'])
+def verify():
+    response = verify_otp()
+    result = response.get_json()
+    print(result)
+    return result
 
+@tutor_routes.route("/api/getting-started/payment_method", methods=['POST'])
+def payment_method():
+    response = payment()
+    result = response.get_json()
+    print(result)
+    return result
 
+@tutor_routes.route("/api/getting-started/confirmation", methods=['POST'])
+def confirmation_method():
+    response = confirm()
+    result = response.get_json()
+    print(result)
+    return result
+
+@tutor_routes.route("/api/getting-started/without_the_account", methods=['POST'])
+def without_method():
+    response = without_account()
+    result = response.get_json()
+    print(result)
+    return result
 
 
 # GLOBAL FUNCTION and GLOBAL ROUTES 
@@ -128,3 +160,4 @@ def simulatuion_test1():
          "success": True,
     
     })
+
