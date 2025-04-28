@@ -246,8 +246,6 @@ def confirm():
      lname = data.get("lname")
      email = data.get("email")
      number = data.get("number")
-     print("asdgfsdjkfhusdkfgsdjhfgjgdjgdhgj" )
-     print(fname, lname, email, number)
 
      try:
           insert_query = """INSERT INTO dmi (firstname, lastname, email, number) VALUES ( %s, %s , %s, %s)"""
@@ -268,8 +266,6 @@ def without_account():
           data = request.get_json()
           tutorId = data.get("tutorID")
           pricing = data.get("pricing")
-          print("hskdvdvhdfjkhdfhvdjkfvdjkvhdjhkdjhkdfv")
-          print(tutorId, pricing)
 
           try:
                insert_query = """INSERT INTO rate(tutor_id, per_rate) VALUES (%s, %s)"""
@@ -290,4 +286,22 @@ def without_account():
 
          
 
+
+def load_user():
+
+      data = request.get_json()
+      userId = data.get("userId")
+      print("Load fucnrtion", userId)
+
+
+      read_query =""" SELECT username, image_path From user where id = %s"""
+      user = db_read(read_query, (userId,))
+      print("User", user)
+
+
+      return jsonify({
+           "name": user['username'],
+           "img_url": user['image_path']
+      })
+     
 

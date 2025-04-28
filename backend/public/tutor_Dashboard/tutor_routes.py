@@ -61,7 +61,7 @@ def verify():
 def payment_method():
     response = payment()
     result = response.get_json()
-    print(result)
+    print("payment",result)
     return result
 
 @tutor_routes.route("/api/getting-started/confirmation", methods=['POST'])
@@ -77,6 +77,28 @@ def without_method():
     result = response.get_json()
     print(result)
     return result
+
+
+
+@tutor_routes.route('/api/dashboard/load_profile', methods = ['GET'])
+def load_profile():
+    print("LOAD USER")
+    response = load_user()
+    load_profile = response.get_json()
+    return load_profile
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # GLOBAL FUNCTION and GLOBAL ROUTES 
@@ -138,8 +160,8 @@ def simulatuion_test():
     print("Create fetch Data Recieved:", data)
 
     return  jsonify({
-        'default_subject': 'Nowell',
-         "subjects": ["English", "Science", "Filipino", "Math", "Nowell"],
+        'default_subject': 'Computer',
+         "subjects": ["English", "Science", "Filipino", "Math", "Computer"],
          "schedule": [
              "Mon, Tue, Wed | online at Morning 6am - 12pm",
              "Sun, Sat | F2F at Afternoon 12pm - 6pm"

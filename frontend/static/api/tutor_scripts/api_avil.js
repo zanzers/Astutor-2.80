@@ -154,44 +154,44 @@ $(document).ready(function () {
 
 
 
-    $('.btn-avail').on('click', function (e) {
-        e.preventDefault();
+    // $('.btn-avail').on('click', function (e) {
+    //     e.preventDefault();
         
-        console.log("submit")
+    //     console.log("submit")
 
-        const tutorID= sessionStorage.getItem("tutorID");
-        if (!availabilityList.length) {
-            messageBox.textContent = "Please add at least one availability entry before continuing.";
-            return;
-          }
+    //     const tutorID= sessionStorage.getItem("tutorID");
+    //     if (!availabilityList.length) {
+    //         messageBox.textContent = "Please add at least one availability entry before continuing.";
+    //         return;
+    //       }
       
 
-      let avail_form = {
-            tutorID: tutorID,
-            availability: availabilityList
-          };
+    //   let avail_form = {
+    //         tutorID: tutorID,
+    //         availability: availabilityList
+    //       };
 
-          console.log(avail_form);
+    //       console.log(avail_form);
 
-        // NOTE: save this in the db tutor Id, Day, Time, Method see the website...
-        // user can enter multiple array of availability  
-        // return should be console.log('response.message:', Save);
+    //     // NOTE: save this in the db tutor Id, Day, Time, Method see the website...
+    //     // user can enter multiple array of availability  
+    //     // return should be console.log('response.message:', Save);
 
         
-        // $.ajax({
-        //   url: '',
-        //   type: 'POST',
-        //   contentType: 'application/json',
-        //   ata: JSON.stringify(avail_form),
-        //   success: function (response) {
-        //     console.log('Server response:', response);
+    //     // $.ajax({
+    //     //   url: '',
+    //     //   type: 'POST',
+    //     //   contentType: 'application/json',
+    //     //   ata: JSON.stringify(avail_form),
+    //     //   success: function (response) {
+    //     //     console.log('Server response:', response);
      
-        //   },
-        //   error: function (xhr, status, error) {
-        //     console.error('Error:', error);
-        //   }
-        // });
-      });
+    //     //   },
+    //     //   error: function (xhr, status, error) {
+    //     //     console.error('Error:', error);
+    //     //   }
+    //     // });
+    //   });
       
   });
   

@@ -92,11 +92,11 @@ $(document).ready(function() {
         $('.error-payment').text('');
         $('#paymentMethod, #paymentNumber').removeClass('is-invalid');
 
-        if(!methodSelected || number.length !== 9){
+        if(!methodSelected || number.length !== 10){
             $('.error-payment').text("Please select a payment method and enter a valid 9-digit number.");
         
             if (!methodSelected) $('#paymentMethod').addClass('is-invalid');
-            if (number.length !== 9) $('#paymentNumber').addClass('is-invalid');
+            if (number.length !== 10) $('#paymentNumber').addClass('is-invalid');
     
             return;
         }
@@ -118,7 +118,7 @@ $(document).ready(function() {
         
 
          $.ajax({
-          url: '/api/getting-started/without_the_account',
+          url: '/api/getting-started/payment_method',
           type: 'POST',
           contentType: 'application/json',
           data: JSON.stringify(accountData),
@@ -148,14 +148,16 @@ $(document).ready(function() {
     // Complete
     $('.complete_registration').on('click', function(){
 
-        console.log("object");
-        
+
         const pricing  = $('#pricing').val();
 
         const pricingData = {
             tutorID: tutorID,
             pricing: pricing
         }
+
+
+
 
         if(!accountSetup){
            

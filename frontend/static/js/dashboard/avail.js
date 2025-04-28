@@ -68,7 +68,7 @@
       if (value.startsWith('0')) {
           value = value.slice(1);
       }
-      value = value.slice(0, 9);
+      value = value.slice(0, 10);
   
       $(this).val(value);
   });

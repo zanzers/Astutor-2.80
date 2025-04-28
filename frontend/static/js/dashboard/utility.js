@@ -12,6 +12,10 @@ $(document).ready(function() {
     const currentTarget = $currentTab.data('target');
     const $currentSection = $('#' + currentTarget);
 
+
+
+    console.log("cuurentSection", $currentSection)
+
     if (currentTarget === 'video-section'){
         const videoElem = $('#recordVideo').get(0);
         if(!videoElem.src || videoElem.src === window.location.href){
