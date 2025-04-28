@@ -139,8 +139,8 @@ def get_user_id(name, email):
 
 
     # otp_store = {} global var
-    # otp, expiry_time, generated_at = generate_otp()
-    # otp_store[username] = {"otp": otp, "expires_at": expiry_time, "generated_exprires": generated_at + expiry_time}
+    # otp, generated_at = generate_otp()
+    # otp_store[username] = {"otp": otp, "generated_exprires": generated_at + expiry_time}
     # print("stored", otp_store)
     # print("input HERE:","Name:", name, "Email:", username,"Password", password, "confimt", confirm)
     # print("erors:", errors_found)
