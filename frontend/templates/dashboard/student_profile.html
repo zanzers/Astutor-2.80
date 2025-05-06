@@ -1,4 +1,4 @@
-{% extends 'getting-started.html'%}
+{% extends 'getting-started-student.html'%}
 {% set namespace = 'Student_profile'%}
 {% block title %}Tutor Profile {% endblock %}
 
@@ -132,16 +132,16 @@
                                             
                                             </li>
 
-                                            <li class="atr-switch-tab_tag" data-target="education-section">
+                                            <li class="atr-switch-tab_tag" data-target="Focus-section">
                                                 <span class="atr-switch-tab_label">
-                                                    <span>Foces</span>
+                                                    <span>Focus</span>
                                                 </span>
                                             
                                             </li>
 
-                                            <li class="atr-switch-tab_tag" data-target="video-section">
+                                            <li class="atr-switch-tab_tag" data-target="learning-section">
                                                 <span class="atr-switch-tab_label">
-                                                    <span>Topic</span>
+                                                    <span>Learning</span>
                                                 </span>
                                             
                                             </li>
@@ -173,83 +173,17 @@
 
                             <div class="atr-acount-center-content-container-fillup">
 
-                                  <div class="form-section" id="about-section">
-                                        <h2>About</h2>
-                                        <span>Start by creating your tutor profile. Your progress will be saved automatically as you go. You can return and continue at any time. </span>
-                                        <form action="form-action" id="about-form" autocomplete="off">
-                                            
-                                            <div class="form-group">
-                                                <label for="fname"> First Name </label>
-                                                <input type="text" id="fname" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="lname"> Last Name </label>
-                                                <input type="text" id="lname" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="email"> Email </label>
-                                                <input type="email" id="email" class="form-control" required>
-                                            </div>
-                                             
-                                          
+                                {% block content%}
+                                    {% include "student/about.html"%}
+                                    {% include "student/photo.html"%}
+                                    {% include "student/Focus.html"%}
+                                    {% include "student/Learning.html"%}
+                                    {% include "student/availability.html"%}
+                                    {% include "student/setup.html"%}
 
-                                            <div class="form-group">
-                                                <input type="checkbox" id="confirm-age" name="confirm-age" class="form-control" required>
-                                                <label for="first-name"> I confirm I'am over 18 </label>
-                                            </div>
-
-                                            <button type="submit" class="btn btn-primary">Save and Continue</button>
-
-                                        </form>
-                                  </div>
-
-                                  <div class="form-section d-none" id="photo-section">
-
-                                    <h2>Profile Photo</h2>
-                                    <p>Choose a photo that helps learners get to know you better.</p>
-                                
-                                    <div class="row align-items-center">
-                                        <!-- Photo Upload Box -->
-                                        <div class="col-md-4">
-                                            <div class="photo-upload-box text-center">
-                                                <label for="profile-photo" class="upload-label">
-                                                    <img src="/static/slide-img/default-img.png" alt="Upload" class="img-fluid mb-2" id="photo-preview" />
-                                                    <input type="file" id="profile-photo" accept="image/*" hidden />
-                                                    <div class="btn btn-outline-primary">Upload Photo</div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                
-                                        <!-- Basic Info Display -->
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" id="display-name" class="form-control" disabled value="Marcelo">
-                                            </div>
-                                
-                                            <div class="form-group">
-                                                <label>Subject</label>
-                                                <input type="text" id="display-subject" class="form-control" disabled value="P.E">
-                                            </div>
-                                        </div>
-                                    </div>
-                                
-                                    <button type="submit" class="btn btn-primary mt-4">Save and Continue</button>
-                                    
-                                  </div>
-                                  <div class="form-section d-none" id="education-section">
-                                    <h2>Education</h2>
-                                  </div>
-                                  <div class="form-section d-none" id="video-section">
-                                    <h2>Video</h2>
-                                  </div>
-                                  <div class="form-section d-none" id="availability-section">
-                                    <h2>Availability</h2>
-                                  </div>
-                                  <div class="form-section d-none" id="setup-section">
-                                    <h2>Setup</h2>
-                                  </div>
-
+                
+                            
+                              {% endblock %}
 
                             </div>  
                         </div>

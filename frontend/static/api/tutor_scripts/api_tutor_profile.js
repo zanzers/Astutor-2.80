@@ -53,7 +53,7 @@ $(document).ready(function () {
     })
 
     // SENT ABOUT-DATA ************
-    $('#about-form').on('submit', function (e){
+    $('#about-form-tutor').on('submit', function (e){
         e.preventDefault();
         
         let subjectVal = $('#subject').val();

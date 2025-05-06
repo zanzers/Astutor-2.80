@@ -39,6 +39,8 @@ $(document).ready(function() {
             $('.chats-wrp').append(myMessage);
             $('.chat-input').val('');
             $('.chats-container').scrollTop($('.chats-container')[0].scrollHeight);
+
+            
         }
     });
 
@@ -83,8 +85,11 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
+
+    let attemp = 3
+
     $('.chat-header-menu').click(function(e) {
-        e.stopPropagation(); // Prevents closing immediately
+        e.stopPropagation(); 
         $('.chat_menu-option').toggleClass('d-none');
 
 
@@ -101,5 +106,64 @@ $(document).ready(function() {
             $('.chat_menu-option').addClass('d-none'); // Close the menu if clicked outside
         }
     });
+
+
+    $('.closed-btn').on('click', function(){
+        console.log("closed")
+        $('.transaction-modal').addClass('d-none');
+    })
+
+
+
+
+
+    $('#cancelBtn').on('click', function(){
+
+        $('.transaction-modal').addClass('d-none');
+        $('.transaction-modal-content').removeClass('d-none');
+        $('#transactionFailed').addClass('d-none');
+
+    })
+    $('#Dmi-confirm').on('click', function(){
+
+        $('.transaction-modal').addClass('d-none');
+        $('.transaction-modal-content').removeClass('d-none');
+        $('#transactionSuccess').addClass('d-none');
+
+    })
+
+
+
+    $('#retryBtn').on('click', function(){
+
+        $('#transactionFailed').addClass('d-none');
+        $('.transaction-modal-content').removeClass('d-none');
+
+
+        if (attemp > 0){
+            attemp--;
+
+            $('#attempt').text(`(${attemp})`)
+            $('#transaction-fname').val('');
+            $('#transaction-lname').val('');
+            $('#transaction-email').val('');
+            $('#transaction-number').val('');
+        }
+        else{
+
+            $('.transaction-modal').addClass('d-none');
+            $('#transactionFailed').addClass('d-none');
+            $('.transaction-modal-content').removeClass('d-none');
+            $('.transaction-modal-content').addClass('d-none');
+    
+
+            $('#attempt').text('(0)');
+            $('#retryBtn').prop('disabled', true); 
+            $('.chat-menu-item').addClass('disabled');
+            alert('Online Payment Disable. Please contact support.');
+        }
+
+
+    })
 
 });

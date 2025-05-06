@@ -31,7 +31,7 @@
                     <div class="header_inner">
                         <div class="header_left">
                             <div class="header-logo">
-                                <i class="atr-icon iconfont icon-logo">Astutor</i>
+                                <a href="http://127.0.0.1:5000/" class="atr-icon iconfont icon-logo">Astutor</a>
                             </div>
                             <div class="header-tab-wrp">
                                 <div class="header-tab">
@@ -209,10 +209,14 @@
 <script src="{{ url_for('static', filename='js/dashboard/education.js') }}"></script>
 <script src="{{ url_for('static', filename='js/dashboard/video.js') }}"></script>
 <script src="{{ url_for('static', filename='js/dashboard/setup.js') }}"></script>
-    <script src="{{ url_for('static', filename='api/api_tutor_profile.js') }}"></script>
-    <script src="{{ url_for('static', filename='api/tutor_scripts/api_tutor_profile.js') }}"></script>
-    <script src="{{ url_for('static', filename='api/tutor_scripts/api_avil.js') }}"></script>
-    <script src="{{ url_for('static', filename='api/tutor_scripts/api_video.js') }}"></script>
-    <script src="{{ url_for('static', filename='api/tutor_scripts/api_setup.js') }}"></script>
+
+<script src="{{ url_for('static', filename='api/api_tutor_profile.js') }}"></script>
+<script src="{{ url_for('static', filename='api/api_student_profile.js') }}"></script>
+
+
+<script src="{{ url_for('static', filename='api/tutor_scripts/api_tutor_profile.js') }}"></script>
+<script src="{{ url_for('static', filename='api/tutor_scripts/api_avil.js') }}"></script>
+<script src="{{ url_for('static', filename='api/tutor_scripts/api_video.js') }}"></script>
+<script src="{{ url_for('static', filename='api/tutor_scripts/api_setup.js') }}"></script>
 </body>
 </html>

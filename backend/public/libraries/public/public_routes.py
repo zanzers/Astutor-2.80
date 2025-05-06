@@ -22,11 +22,20 @@ def signup():
     
     return render_template("account.html")
 
+@public_routes.route("/api/login-Astutor")
+def login():  
+    
+    if request.method == 'POST':
+        response = login()
+        return response
+
+    return render_template("login.html")
+
 
 
 @public_routes.route("/api/getting-Started")
-@requires_auth
-def gettingStarteed():
+# @requires_auth
+def gettingStarted():
     return render_template("getting-started.html")
 
 

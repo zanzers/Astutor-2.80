@@ -2,7 +2,11 @@ from flask import Blueprint, render_template, request
 from public.tutor_Dashboard.tutor_utility import *
 from public.libraries.auth.auth_token import *
 from public.libraries.functions.global_fucntions import *
+from public.libraries.functions.utility import *
 from public.libraries.db.conn import db_read, db_write
+from io import BytesIO
+import base64
+from PIL import Image, ImageDraw, ImageFont
 
 
 def tutor_education():
@@ -66,3 +70,74 @@ def avail():
 
 
     print(tutorId)
+
+def transaction():
+    data = request.get_json()
+    ttutorID = data.get("ttutorID") 
+    tfname = data.get("tfname") 
+    tlname = data.get("tlname") 
+    temail = data.get("temail") 
+    tnumber = data.get("tnumber")
+
+    print("data",ttutorID, tfname, tlname, temail, tnumber) 
+
+    try:
+        check_query = """SELECT fname, lname, email, user_number FROM dmi WHERE user_id = %s"""
+        result = db_read(check_query, (ttutorID,))
+
+    
+
+        print("Resutl", result)
+
+        if not result:
+            return jsonify({
+                "success": False, "message": "No DMI record found for this tutor ID"
+                })
+        else:
+
+            dmi_data = result[0]
+            match = (
+                dmi_data['fname'] == tfname and
+                dmi_data['lname'] == tlname and
+                dmi_data['email'] == temail and 
+                dmi_data['user_number'] == tnumber
+            )
+
+            if match:
+
+                img_io = generate_dmi(ttutorID, tfname, tlname, temail, tnumber)
+                img_64 = base64.b64encode(img_io.getvalue()).decode('utf-8')
+
+                print("Match!!!!!!")
+
+                return jsonify({
+                    "success": True,
+                    "dmi_img": img_64
+                })
+                
+
+            else:
+
+                print("Not matching!!")
+                return  jsonify({
+                      "success": False,
+                })
+
+        
+
+       
+
+
+       
+    except Exception as e:
+        print("DMI check failed:", e)
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+
+<div class="form-section d-none" id="availability-section">
+  <h2>Availability</h2>
+
+
+  <div class="form-group avail_wrp">
+    <label class="section-label">Day:</label>
+    <div class="days-selector">
+      <button class="day-btn" data-day="Mon">Mon</button>
+      <button class="day-btn" data-day="Tue">Tue</button>
+      <button class="day-btn" data-day="Wed">Wed</button>
+      <button class="day-btn" data-day="Thu">Thu</button>
+      <button class="day-btn" data-day="Fri">Fri</button>
+      <button class="day-btn" data-day="Sat">Sat</button>
+      <button class="day-btn" data-day="Sun">Sun</button>
+    </div>
+  </div>
+
+  <div class="form-group preference-selector">
+    <p>Preferred Method:</p>
+    <div class="pref-btn-group">
+      <button class="pref-btn" data-pref="online">Online</button>
+      <button class="pref-btn" data-pref="InPerson">In Person</button>
+    </div>
+  </div>
+
+  
+<div class="form-group">
+  <div class="time-selector">
+    <p>Select time for: <span id="selectedDay"></span></p>
+    <button class="time-btn" data-time="morning">Morning (6AM–12PM)</button>
+    <button class="time-btn" data-time="afternoon">Afternoon (12PM–6PM)</button>
+    <button class="time-btn" data-time="evening">Evening (6PM–10PM)</button>
+    <button id="setAvailabilityBtn" class="btn btn-success btn-sm mt-2">Set Availability</button>
+  </div>
+</div>
+
+
+
+<div class="form-group confirm_schedule d-none mt-3">
+  <h5>Confirmed Schedule</h5>
+  <ul id="availabilitySummary" class="list-group"></ul>
+</div>
+
+
+<div class="form-group avail-message"></div>
+
+
+<div class="form-group btn-groups">
+  <button type="button" class="btn btn-secondary btn-prev">Back</button>
+  <button type="submit" class="btn btn-avail btn-next btn-primary">Save and Continue</button>
+</div>
+
+
+</div>
+
+
+
+

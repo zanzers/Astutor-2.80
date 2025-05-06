@@ -8,16 +8,10 @@ $(document).ready(function() {
     $('#togglePaymentDetails').on('click', function(){
 
         const otpData = {
-            userId: id
+            userId: id,
         };
 
         console.log("Request OTP: ", otpData)
-
-
-        // check the request userId and generate the OTP 
-        // along side of  the email then return the value.
-        // Note in the backend save the email and OTP and compare them
-        // if the user request the verification see at line 40;
 
         $.ajax({
           url: '/api/getting-started/setup',
@@ -33,7 +27,7 @@ $(document).ready(function() {
      
           },
           error: function (xhr, status, error) {
-            alert('Failed to request OTP. Please try again.');
+            alert('Failed to request OTP. Please try again by togglePaymentDetails.');
             console.error('Error:', error);
           }
         });
@@ -56,10 +50,6 @@ $(document).ready(function() {
         }
         
         console.log("Entered OTP:", otpValidation)
-
-        // check the input otp and email validation if they match 
-        // return success: true
-
 
          $.ajax({
           url: '/api/getting-started/verify',
@@ -84,7 +74,6 @@ $(document).ready(function() {
 
     // Method part
     $('#MethodBtn').on('click', function(){
-
         const methodSelected = $('#paymentMethod').val();
         const pricing  = $('#pricing').val();
         let number = $('#paymentNumber').val();
@@ -111,12 +100,6 @@ $(document).ready(function() {
 
         console.log("Account:", accountData);
         
-        // option are base if user dint provide the Online payment 
-        // so just save the Pricing, tutorId check line 145. 
-        // Save tutorId , Pricing, paymentMethod, phoneNumber in the db return will be
-        // success: true | name, lastname(if tutor), email, Gcash number and pricing;
-        
-
          $.ajax({
           url: '/api/getting-started/payment_method',
           type: 'POST',
@@ -152,16 +135,12 @@ $(document).ready(function() {
         const pricing  = $('#pricing').val();
 
         const pricingData = {
-            tutorID: tutorID,
+            userId: id,
             pricing: pricing
         }
 
-
-
-
         if(!accountSetup){
            
-
             console.log("acount1")
             $.ajax({
                 url: '/api/getting-started/without_the_account',
@@ -187,14 +166,12 @@ $(document).ready(function() {
             const con_number = $('#confirmedPhoneNumber').text()
 
             const confirm_data = {
+                tutorID: tutorID,
                 fname: con_fname,
                 lname: con_lname,
                 email: con_email,
-                number: con_number
-
-      
-             
-
+                number: con_number,
+                userId: id,
             }
 
             $.ajax({

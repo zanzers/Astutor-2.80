@@ -1,0 +1,73 @@
+
+  <div class="form-section d-none" id="Focus-section">
+    <h2>Education</h2>
+    <p> Share the degrees you've completed or what you're currently studying. This helps students understand your academic journey and qualifications</p>
+
+   <div class="education-wrapper">
+    <div class="education_entry" data-credential-id = "1">
+        <form id="education-form" autocomplete="off">
+            
+            <div class="form-group">
+                <label for="school"> School or Institution </label>
+                <input type="text" id="school" class="form-control" placeholder="Full name of school or training center" required>
+            </div>
+            <div class="form-group">
+                <label for="degree"> Degree or Certification </label>
+                <input type="text" id="degree" class="form-control" placeholder="e.g., BS in Math, NCII Computer Systems Servicing" required>
+            </div>
+            <div class="form-group">
+                <label for="status"> Status </label>
+                <select id="education-status" class="form-control" required>
+                    <option value="" disabled selected>Select your current status</option>
+                    <option value="graduated">Graduated</option>
+                    <option value="studying">Currently Studying</option>
+                    <option value="certified">Completed Certification</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="field_study"> Field of Study </label>
+                <input type="text" id="field_study" class="form-control" placeholder="e.g., Education, Engineering, TVL">
+            </div>
+
+            <div class="form-group">
+                <label for="grad-year">Year of Study</label>
+                <div class="d-flex gap-2">
+                    <select id="start_year" class="form-control" required>
+                        <option value="" disabled selected>Select</option>
+                    </select>
+
+                    <span class="mx"> - </span>
+
+                    <select id="end_year" class="form-control" required>
+                        <option value="" disabled selected>Select</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group deploma-upload">
+                <h5 class="mt-4">Get Verified with Your Diploma</h5>
+                <p class="diploma-txt">
+                    Upload your diploma to earn a “Diploma Verified” badge on your profile. This helps boost your credibility and trust with students.
+                    Once reviewed by our team, your file will be permanently deleted for your privacy.
+                    <br>Accepted formats: <strong>JPG or PNG</strong> · Max size: <strong>20MB</strong>
+                </p>
+                <label for="diploma-upload">Upload</label>
+                <!-- <input type="file" id="diploma-upload" accept=".jpg, .jpeg, .png" class="form-control-file" required> -->
+                <input type="file" accept=".jpg, .jpeg, .png" class="form-control-file" required>
+            </div>
+
+
+        
+        </form>
+
+    </div>
+
+</div>
+
+    <button type="button" id="add-education-btn">Add another education</button>
+
+    <div class="form-group btn-groups">
+        <button type="button" id="btn-next" class="btn btn-primary btn-prev"> Back </button>
+        <button type="submit" id="btn-prev" class="btn btn-primary btn-next education-btn">Save and Continue</button>
+    </div>
+  </div>

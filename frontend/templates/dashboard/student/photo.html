@@ -1,0 +1,45 @@
+   <!-- PHOTO SECTION -->
+   <div class="form-section d-none" id="photo-section">
+
+    <h2>Profile Photo</h2>
+    <p>Choose a photo that helps learners get to know you better.</p>
+    
+    <div class="separator_line"></div>
+
+
+    <div class="form-group photo_upload">
+        <div class="photo-upload">
+            <label for="profile-photo" class="custom-upload-label">
+                <picture>
+                    <img id="photo-preview" src="/static/slide-img/default-img.png" alt="Profile Photo">
+                </picture>
+
+            </label>
+        </div>
+        <div class="user-info">
+            <div class="user user_fname">
+                <h4 class="fullname"></h4>
+            </div>
+            <div class="user user_subject">
+                <i class='bx bxs-graduation'></i>
+                <h4 class="subject"></h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="separator_line"></div>
+
+    <div class="form-group upload-btn ">
+        <label for="profile-photo">Upload Photo</label>
+       <div class="form-group upload-input">
+        <i class='bx bx-x photo-clear' style="display:none"></i>
+        <input type="file" id="profile-photo" accept="image/*" required>
+       </div>
+    </div>
+    
+    <div class="form-group btn-groups">
+        <button type="button" id="btn-next" class="btn btn-primary btn-prev"> Back </button>
+        <button type="submit" id="btn-prev" class="btn btn-primary btn-next profile-btn">Save and Continue</button>
+    </div>
+    
+  </div>
