@@ -43,6 +43,11 @@ def avail():
     print(response)
     return result
 
+
+
+# GLOBAL FUNCTION and GLOBAL ROUTES 
+# NOTE: DONT TOUCH unless you have permission or ask the project manager!!!!!!
+
 @tutor_routes.route("/api/getting-started/setup", methods=['GET', 'POST'])
 def setup():
     response = request_otp()
@@ -80,14 +85,19 @@ def without_method():
 
 
 
-@tutor_routes.route('/api/dashboard/load_profile', methods = ['GET'])
+@tutor_routes.route('/api/dashboard/load_profile', methods = ['POST'])
 def load_profile():
     print("LOAD USER")
-    response = load_user()
-    load_profile = response.get_json()
+    load_profile = load_user()
+    print("load", load_profile)
     return load_profile
 
 
+@tutor_routes.route('/api/dashboard/transactions', methods = ['POST'])
+def DMI_process():
+
+    transaction_result = transaction()
+    return transaction_result
 
 
 
@@ -96,13 +106,6 @@ def load_profile():
 
 
 
-
-
-
-
-
-# GLOBAL FUNCTION and GLOBAL ROUTES 
-# NOTE: DONT TOUCH unless you have permission or ask the project manager!!!!!!
 
 @tutor_routes.route("/api/getting-started/subjects", methods = ["GET"])
 def get_subjects():
@@ -136,8 +139,6 @@ def tutorDashboard():
 @tutor_routes.route('/api/dashboard/create-lesson', methods=['GET'])
 # @requires_auth
 def create_lesson():
-
-
     return render_template("create_lesson.html")
 
 

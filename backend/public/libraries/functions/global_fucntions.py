@@ -39,10 +39,6 @@ def insert_user():
 
 
 
-
-
-
-
 # NOTE: handle diploma upload and profile
 def fetch_subjects():
     
@@ -54,7 +50,7 @@ def fetch_subjects():
         if results is None:
             raise ValueError("Database read failed")
 
-        subjects = [row['subjects'] for row in results]
+        subjects = list(set(row['subjects'] for row in results))
         print("Subjects fetched:", subjects)
 
         return jsonify({
@@ -77,7 +73,7 @@ def save_photo():
 
         try:
             insert_query = """ UPDATE user SET image_path = %s WHERE id =%s """
-            db_write(insert_query, (uploaded, userId))
+            db_write(insert_query, (img_url, userId))
 
         except Exception as e:
                 return jsonify({
@@ -92,9 +88,6 @@ def save_photo():
              'image_url': img_url
              }), HTTPStatus.OK
 
-
-
-
 def upload(userId, file):
 
     if not file or file.filename == "":
@@ -104,8 +97,8 @@ def upload(userId, file):
 
     safe_filename = secure_filename(file.filename)
     ext = safe_filename.rsplit('.', 1)[-1].lower()
-
     filename = f"{userId}_profile.{ext}"
+
     user_folder = os.path.join(current_app.root_path, 'backend', 'user', str(userId))
     os.makedirs(user_folder, exist_ok=True)
 
@@ -113,6 +106,8 @@ def upload(userId, file):
     file.save(save_path)
 
     image_url = f"/user_uploads/{userId}/{filename}"
+
+    print("SAVE PATH", save_path)
 
     return save_path, image_url
 
@@ -199,40 +194,55 @@ def verify_otp():
      }) 
      
 def payment():
+
      data = request.get_json()
      userId = data.get("userId")
-     tutorId = data.get("tutorID")
-     pricing = data.get("pricing")
+     rate = data.get("pricing")
      paymentMethod = data.get("paymentMethod")
      phoneNumber = data.get("phoneNumber")
-     print(tutorId, pricing, paymentMethod, phoneNumber)
+     tutorId = getId(userId, 'tutor','tutor_id', 'user_id' )
+
+     print(userId, rate, paymentMethod, phoneNumber)
 
      try:
-          insert_query = """INSERT INTO payment_method(tutor_id, Online_payment, number) VALUES (%s, %s, %s)"""
-          db_write(insert_query, (tutorId, paymentMethod, phoneNumber))
+          print(userId,tutorId, rate, paymentMethod, phoneNumber)
+
+          insert_query = """INSERT INTO payment_method(user_Id, payment_method, phonenumber) VALUES (%s, %s, %s)"""
+          db_write(insert_query, (userId, paymentMethod, phoneNumber,))
+
           insert_query = """INSERT INTO rate(tutor_id, per_rate) VALUES (%s, %s)"""
-          db_write(insert_query, (tutorId, pricing))
-          read_query = """SELECT firstName FROM tutor WHERE tutor_id = %s"""
-          firstname_result = db_read(read_query, (tutorId,))
-          read_query = """SELECT lastName FROM tutor WHERE tutor_id = %s"""
-          lastname_result = db_read(read_query, (tutorId,))
-          read_query = """SELECT email FROM user WHERE id = %s"""
-          email_result = db_read(read_query, (userId,))
-          read_query = """SELECT number FROM payment_method WHERE tutor_id = %s"""
-          number_result = db_read(read_query, (tutorId,))
-          read_query = """SELECT per_rate FROM rate WHERE tutor_id = %s"""
-          rate_result = db_read(read_query, (tutorId,))
-          print(firstname_result, lastname_result, email_result, number_result, rate_result)
+          db_write(insert_query, (tutorId, rate,))
 
-          return jsonify({
-               "firstname": firstname_result[-1]['firstName'],
-               "lastname": lastname_result[-1]['lastName'],
-               "email": email_result[-1]['email'],
-               "number": number_result[-1]['number'],
-               "rate": rate_result[-1]['per_rate']
-          })
+          read_query = """
+               SELECT 
+                    t.firstName,
+                    t.lastName,
+                    u.email,
+                    pm.phonenumber  AS number,
+                    r.per_rate
+               FROM tutor t
+               JOIN user u ON t.user_id = u.id
+               LEFT JOIN payment_method pm ON t.user_id = pm.user_id
+               LEFT JOIN rate r ON t.tutor_id = r.tutor_id
+               WHERE t.tutor_id = %s"""
+          result = db_read(read_query,(tutorId, ))
 
-          
+          if result:
+               data = result[0]
+
+               return jsonify({
+                    "firstname": data.get('firstName'),
+                    "lastname": data.get('lastName'),
+                    "email": data.get('email'),
+                    "number": data.get('number'),
+                    "rate": data.get('per_rate')
+               })
+          else:
+               return jsonify({
+                    "error": "No user data Found!"
+               })
+
+
      except Exception as e:
           print("Error: {e}")
           return jsonify({
@@ -242,16 +252,29 @@ def payment():
 
 def confirm():
      data = request.get_json()
+     userId = data.get("userId")
      fname = data.get("fname")
      lname = data.get("lname")
      email = data.get("email")
      number = data.get("number")
 
+     print("Confirm ",userId)
+     tutorId = getId(userId, 'tutor','tutor_id', 'user_id' )
+
+
+
      try:
-          insert_query = """INSERT INTO dmi (firstname, lastname, email, number) VALUES ( %s, %s , %s, %s)"""
-          db_write (insert_query,(fname, lname, email, number))
+          insert_query = """INSERT INTO dmi (user_id, fname, lname, email, user_number) VALUES ( %s ,%s, %s , %s, %s)"""
+          db_write (insert_query,(tutorId, fname, lname, email, number))
+
+          insert_request = """INSERT INTO request (tutor_id) VALUES(%s)"""
+          db_write(insert_request, (tutorId, ))
+
+
+          print("confirm")
 
           return  jsonify({
+               "message": "user Confirm",
                "success": True
           })
 
@@ -264,15 +287,14 @@ def confirm():
      
 def without_account():
           data = request.get_json()
-          tutorId = data.get("tutorID")
+          userId = data.get("userId")
           pricing = data.get("pricing")
+
+          tutorId = getId(userId, 'tutor','tutor_id', 'user_id' )
 
           try:
                insert_query = """INSERT INTO rate(tutor_id, per_rate) VALUES (%s, %s)"""
                db_write (insert_query,(tutorId, pricing))
-          
-
-
                return  jsonify({
                     "success": True
           })
@@ -284,24 +306,47 @@ def without_account():
                     "success": False
           })
 
-         
-
-
 def load_user():
-
-      data = request.get_json()
-      userId = data.get("userId")
-      print("Load fucnrtion", userId)
-
-
-      read_query =""" SELECT username, image_path From user where id = %s"""
-      user = db_read(read_query, (userId,))
-      print("User", user)
-
-
-      return jsonify({
-           "name": user['username'],
-           "img_url": user['image_path']
-      })
+    try:
+        data = request.get_json()
+        userId = data.get("userId")
+        
+        read_query = """SELECT
+          CONCAT(t.lastname, ', ' , t.firstName) AS full_name,
+            u.image_path FROM user u JOIN tutor t ON t.user_id = u.id WHERE u.id = %s"""
+        load_result = db_read(read_query, (userId,))
+        
+        if not load_result:
+            return jsonify({"error": "User not found", "success": False}), 404
+        
+        first_result = load_result[0]
      
+        print("first_result", first_result)
+        return jsonify({
+            "name": first_result['full_name'],   
+            "img_url": first_result['image_path']
+        })
+    
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({
+            "error": "Internal server error",
+            "success": False
+        }), 500
 
+def getId(id, table_name, column_name, pk_id):
+
+     print(id, table_name, column_name, pk_id)
+
+     if not table_name.isidentifier() or not column_name.isidentifier() or not pk_id.isidentifier():
+          raise ValueError("Invalid Table or column name")
+
+     
+     query = f"SELECT {column_name} FROM {table_name} WHERE {pk_id} = %s"
+     result = db_read(query, (id,))
+     
+     print("Get ID:", result)
+     if result:
+          return result[0][column_name]
+     return None
+    

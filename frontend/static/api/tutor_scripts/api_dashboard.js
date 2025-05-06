@@ -14,7 +14,7 @@ $(document).ready(function(){
     $.ajax({
 
             url: '/api/dashboard/load_profile',
-            type: 'GET',
+            type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(user_data),
             success: function (response) {
@@ -27,7 +27,7 @@ $(document).ready(function(){
             
             },
             error: function (xhr, status, error) {
-              alert('Failed to request OTP. Please try again.');
+              alert('Failed to load load_profile.');
               console.error('Error:', error);
             }
 

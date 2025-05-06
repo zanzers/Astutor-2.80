@@ -43,7 +43,11 @@ $(document).ready(function() {
       afterEnter(){
         initHomeScript();
       }
-    }
+    },
+   { namespace: 'login',
+    afterEnter(){
+      initLogin();
+    }}
     ]
   });
   

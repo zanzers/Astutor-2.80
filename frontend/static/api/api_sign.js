@@ -11,7 +11,8 @@ function initSignupApi(){
             let signForm = {
                  name: $(".name input").val().trim(),
                  email: $(".email input").val().trim(),
-                 password: $(".password input").val().trim()
+                 password: $(".password input").val().trim(),
+                 confirm: $(".confirm_password.input").val().trim()
     
             };
             
