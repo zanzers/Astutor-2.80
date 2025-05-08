@@ -71,6 +71,7 @@ $(document).ready(function () {
 
 
         let createData = {
+            userId: userId,
             subject: subject,
             topic: topic,
             description: description,

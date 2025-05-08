@@ -180,3 +180,43 @@ def check_subject(sub_name):
 
           return insert_result[0]['subject_id']
      
+def insert_topic():
+
+     data = request.get_json()
+     userId = data.get("userId")
+     subject = data.get("subject")
+     topic = data.get("topic")
+     day = data.get("days")
+     method = data.get("method")
+     time = data.get("range")
+     description = data.get("description")
+     barter = data.get("barter")
+
+
+     print("subject", subject, 'userId', userId)
+
+     tutorId = getId(userId, 'tutor','tutor_id', 'user_id')
+     subject_id = getId(subject, 'subjects', 'subject_id', "subject_name")
+     print(tutorId, subject_id, "dsfsdfj")
+
+
+
+     try:
+          insert_query = """INSERT INTO schedule (subject_id, tutor_id, topic, day, method, time, description, barter) VALUES ( %s ,%s, %s , %s, %s, %s , %s, %s)"""
+          db_write (insert_query,(subject_id, tutorId, topic, day, method, time, description, barter))
+
+          print("confirm", data)
+
+          return  jsonify({
+               'return_url': '/api/dashboard/Astutor-tutor',
+               'message': 'Save Success',
+               "success": True,
+          
+          })
+
+     except Exception as e:
+          print("Error: {e}")
+          return jsonify({
+               "error": "Internal server error",
+               "success": False
+          })
