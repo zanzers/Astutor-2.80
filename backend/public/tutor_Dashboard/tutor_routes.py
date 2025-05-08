@@ -15,15 +15,6 @@ tutor_routes = Blueprint("tutor_routes", __name__)
 def tutorProfile():    
     return render_template("tutor_profile.html")
 
-
-@tutor_routes.route("/api/getting-started/about", methods=['GET', 'POST'])
-def about_info():
-    
-    response, status_code = insert_user()
-    result = response.get_json()
-    return result
-
-
 @tutor_routes.route("/api/getting-started/education", methods=['GET', 'POST'])
 def education_info():
     
@@ -31,18 +22,6 @@ def education_info():
     response, status_code = tutor_education()
     result = response.get_json()
     return result
-
-
-@tutor_routes.route("/api/getting-started/avail", methods=['GET', 'POST'])
-def avail():
-    
-    print("avail")
-    response = avail()
-    result = response.get_json()
-
-    print(response)
-    return result
-
 
 
 # GLOBAL FUNCTION and GLOBAL ROUTES 
@@ -153,22 +132,14 @@ def create_lesson():
 # simulation test for Create Lesson
 
 # fecth data
-@tutor_routes.route('/api/dashboard/test', methods=['POST'])
+@tutor_routes.route('/api/dashboard/topics', methods=['POST'])
 # @requires_auth
-def simulatuion_test():
+def topics():
 
-    data = request.get_json()
-    print("Create fetch Data Recieved:", data)
-
-    return  jsonify({
-        'default_subject': 'Computer',
-         "subjects": ["English", "Science", "Filipino", "Math", "Computer"],
-         "schedule": [
-             "Mon, Tue, Wed | online at Morning 6am - 12pm",
-             "Sun, Sat | F2F at Afternoon 12pm - 6pm"
-         ],
-        'rate': '150'
-    })
+    print("Topics Call()")
+    response = fetch_topics()
+    print("DATA ", response)
+    return response
 
 # save data
 @tutor_routes.route('/api/dashboard/test1', methods=['POST'])

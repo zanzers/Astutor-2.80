@@ -20,7 +20,7 @@
                         <div class="lesson_editor">
 
                             <div class="editor-item-container">
-                                <span class="editor-label">Topic</span>
+                                <span class="editor-label">Subject</span>
                                 
                                 <div class="subject-selector">
                                     <div role="button" class="subject-selected subject-outline">
@@ -58,31 +58,6 @@
                                 </div>
                             </div>
 
-                            <div class="editor-item-container">
-                                <span class="editor-label">Schedule</span>
-                                
-                                <div class="sched-selector">
-                                    <div role="button" class="sched-selected subject-outline">
-                                        <div class="sched-container">
-                                            <span class="sched-label">
-                                                <span class="sched-val"></span>
-                                            </span>
-                                            <i class='sched-arrow-icon bx bx-chevron-down'></i>
-                                        </div>
-                                        
-
-                                        <div class="shed-menu d-none">
-                                            <div class="shed-menu_section">
-                                                <div role="" title="" class="shed-menu_biz"> </div>
-                                            </div>
-                                            <div class="shed-menu_section">
-                                                <div title="" class="shed-menu_biz"> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
                             
                             <div class="editor-item-container">
                                 
@@ -101,7 +76,7 @@
                                   </div>
                                 </div>
 
-                                <div class="editor-item-container rate">
+                            <div class="editor-item-container rate">
                                     <span class="editor-label">50mins-Rate</span>
                                     <div class="editor_input title-text ">
                                         <div class="editor-input_container rate_underline">
@@ -110,6 +85,71 @@
                                           
                                         </div>
                                     </div>
+                                </div>
+
+                                
+                                <div class="barter-option" style="margin-top: 8px;">
+                                    <label>
+                                    <input type="checkbox" id="accept-barter"> Can accept barter as payment option
+                                    </label>
+                                </div>
+                                </div>
+                         
+
+                                <div class="editor-item-container">
+                                    <h1>Schedule</h1>
+                                    <div class="separation"></div>
+                                    <div class="sched-selector">
+                                        <div class="sched sched-wrp">
+                                            <label class="section-label">Day:</label>
+                                            <div class="days-selector">
+                                              <button class="day-btn sched-btn" data-day="Mon">Mon</button>
+                                              <button class="day-btn sched-btn" data-day="Tue">Tue</button>
+                                              <button class="day-btn sched-btn" data-day="Wed">Wed</button>
+                                              <button class="day-btn sched-btn" data-day="Thu">Thu</button>
+                                              <button class="day-btn sched-btn" data-day="Fri">Fri</button>
+                                              <button class="day-btn sched-btn" data-day="Sat">Sat</button>
+                                              <button class="day-btn sched-btn" data-day="Sun">Sun</button>
+                                            </div>
+                                          </div>
+    
+                                          <div class="sched sched-wrp">
+                                            <label class="section-label">Preferred Method:</label>
+                                            <div class="method-selector">
+                                                <button class="pref-btn sched-btn" data-pref="online">Online</button>
+                                                <button class="pref-btn sched-btn" data-pref="InPerson">Meetup</button>
+                                                <button class="pref-btn sched-btn" data-pref="Both">Both</button>
+                                            </div>
+                                    </div>
+                                    
+                                       
+                                        
+                                          <div class="sched sched-wrp">
+                                            <label class="section-label">Select time for:</label>
+                                            <div class="time-selector">
+                                                <button class="time-btn sched-btn" data-time="morning">Morning
+                                                     <span class="span_time"> 6am - 12pm</span>
+                                                </button>
+                                                <button class="time-btn sched-btn" data-time="afternoon">Afternoon
+                                                     <span class="span_time"> 12pm - 6pm</span>
+                                                </button>
+                                                <button class="time-btn sched-btn" data-time="evening">Evening
+                                                     <span class="span_time"> 6pm - 10pm</span>
+                                                </button>
+                                                
+                                                <button id="setsched_Btn" class="btn set_sched btn-success mt-2" disabled>Set Schedule</button>
+                                            </div>
+                                          </div>
+    
+                                          <div class="sched-summary-list d-none">
+                                            <div class="sched-summary-card">
+                                              <div class="sched-core-info"></div>
+                                              <div class="sched-schedules"></div>
+                                            </div>
+                                          </div>
+                                          
+                                        
+           
                                 </div>
     
                             </div>
@@ -120,9 +160,7 @@
                             <button class="back_dashboard pub-button normal-primary atr-button-L">
                                 <span class="publish-txt"> Back</span>
                             </button>
-                            <button class="pub-button normal-primary atr-button-L">
-                                <span class="publish-txt"> Publish</span>
-                            </button>
+                            <button class="pub-button normal-primary atr-button-L">Publish</button>
                         </div>
                     </div>
                 </div>

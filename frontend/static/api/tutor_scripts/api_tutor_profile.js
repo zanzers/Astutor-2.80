@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-    // Retrieve User Data from Session
     const name = sessionStorage.getItem("tempName");
     const email= sessionStorage.getItem("tempEmail");
     const id= sessionStorage.getItem("userID");
@@ -28,7 +27,7 @@ $(document).ready(function () {
             console.log(response.subjects)
 
             response.subjects.forEach(subject => {
-                subjectSelected.append(`<option value=${subject}>${subject}</option>`)
+                subjectSelected.append(`<option value=${subject.name}>${subject.name}</option>`)
             });
 
             subjectSelected.append(`<option value="other">Other</option>`)
@@ -52,7 +51,7 @@ $(document).ready(function () {
         }
     })
 
-    // SENT ABOUT-DATA ************
+
     $('#about-form-tutor').on('submit', function (e){
         e.preventDefault();
         
