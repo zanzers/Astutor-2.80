@@ -141,17 +141,11 @@ def topics():
     print("DATA ", response)
     return response
 
-# save data
+
 @tutor_routes.route('/api/dashboard/test1', methods=['POST'])
 # @requires_auth
-def simulatuion_test1():
-
-    data = request.get_json()
-    print("Create Save Data Recieved:", data)
-    return  jsonify({
-        'return_url': '/api/dashboard/Astutor-tutor',
-        'message': 'Save Success',
-         "success": True,
-    
-    })
-
+def creating_topic():
+    print("insert_topic Call()")
+    response = insert_topic()
+    print("DATA ", response)
+    return response
