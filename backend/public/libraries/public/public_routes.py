@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request
 from public.libraries.auth.sign import *
+from public.libraries.functions.global_fucntions import *
+from public.libraries.functions.global_extend import *
 from public.libraries.auth.auth_token import *
 
 
@@ -9,6 +11,13 @@ public_routes = Blueprint("public_routes", __name__)
 @public_routes.route("/")
 def index():
     return render_template("index.html")
+
+@public_routes.route("/api/getting-started/about", methods=['GET', 'POST'])
+def about_info():
+    
+    response, status_code = insert_user()
+    result = response.get_json()
+    return result
 
 @public_routes.route("/api/account", methods = ['GET', 'POST'])
 def signup():

@@ -4,106 +4,89 @@ $(document).ready(function () {
     const userId= sessionStorage.getItem("userID");
     const tutorId= sessionStorage.getItem("tutorID");
 
-    // request the subject of the user 
-    // fectch all the subjects in the db and provide the defaul price
-    // see the tutor_routes line 88 for more info. 
-    // Note that the expected return are already define their just update() and change everything.
     
     console.log("create user:", userId);
-    console.log("create user:", tutorId);
-
+    
     let requesttutor = {
       tutorId: tutorId
     }
+    console.log("create user:", requesttutor.tutorId);
 
-    // Update this see line 90 for the expected value
-    // request 
+
     $.ajax({
-      url: "/api/dashboard/test",
+      url: "/api/dashboard/topics",
       method: "POST",
       contentType: "application/json",
       data: JSON.stringify(requesttutor),
       dataType: "json",
       success: function (response) {
-
-        console.log("response",response)
+    
+        console.log("response", response);
         console.log(response.schedule);
-
+    
         $('.selected-val').text(response.default_subject);
-        $('.sched-val').text(response.schedule);
         $('#default-rate').val(response.rate);
         $('.selector-menu').empty();
-
+    
+        // Eliminate duplicate subjects
+        const seenSubjects = new Set();
         response.subjects.forEach(subject => {
-          const subjectItem = `
-            <div class="selector-menu_section">
-              <div class="selector-menu_biz" title="${subject}">${subject}</div>
-            </div>
-          `;
-          $('.selector-menu').append(subjectItem);
+          const name = subject.name.trim().toLowerCase();
+          if (!seenSubjects.has(name)) {
+            seenSubjects.add(name);
+            const subjectItem = `
+              <div class="selector-menu_section">
+                <div class="selector-menu_biz" title="${subject.name}">${subject.name}</div>
+              </div>
+            `;
+            $('.selector-menu').append(subjectItem);
+          }
         });
-
-        
-        
-        $('.sched-val').text(response.schedule[0]);
-        if (response.schedule.length > 1) {
-          $('.shed-menu').empty();
-   
-          response.schedule.forEach((schedule) => {
-              const scheduleItem = `
-                  <div class="shed-menu_section">
-                      <div class="shed-menu_biz" title="${schedule}">${schedule}</div>
-                  </div>
-              `;
-              $('.shed-menu').append(scheduleItem); 
-          });
-      
-         
-          $('.sched-val').text(response.schedule[0]);
-      } else {
-          $('.shed-menu').addClass('d-none'); 
-      }
-      
+    
       },
       error: function (xhr, status, error) {
         console.error("Error loading tutor info:", error);
       }
     });
+    
+
+
+
 
 
     $('.pub-button ').on('click', function(e){
         e.preventDefault();
 
-        let hasError = false;
-        const subject = $('.selected-val').text().trim();
-        const topic = $('#topic').val().trim();
-        const description = $('#description').val().trim();
-        const rate = $('#default-rate').val().trim();
-        $('.error').text('').hide();
+        
+        const barter = $('#accept-barter').is(':checked') ? 1 : 0;
+        const scheduleSummary = JSON.parse(sessionStorage.getItem('sched'));
+        const { subject, topic, description, rate} = extract_values();
 
-      
-        if (!topic) {
-          $('.msg-error-topic').text("Please enter a Topic.").show();
-          hasError = true;
-      }
-  
-      if (!description) {
-          $('.msg-error-des').text("Please enter a Description.").show();
-          hasError = true;
-      }
 
-      if (hasError) return;
+
+
+        const inputError = checkVal(topic, description);
+
+        if (inputError ) return;
+
 
         let createData = {
             subject: subject,
             topic: topic,
             description: description,
-            rate: rate
-        }
+            rate: rate,
+            barter: barter,
+            days: scheduleSummary.days,
+            method: scheduleSummary.method,
+            time: scheduleSummary.time,
+            range: scheduleSummary.range
 
-        console.log(createData);
+        };
 
-        // Update this
+
+        console.log("CREATED",createData);
+
+  
         $.ajax({
             url: "/api/dashboard/test1",
             method: "POST",
@@ -112,6 +95,8 @@ $(document).ready(function () {
             dataType: "json",
             success: function(response){
 
+              alert(response.message)
+                sessionStorage.removeItem('sched');
                 window.location.href = response.return_url;
             },
             error: function(xhr){
@@ -127,4 +112,38 @@ $(document).ready(function () {
     
   });
   
+
+
+  function checkVal(topic, description){
+    
+      let hasError = false;
+        
+        if (!topic) {
+          $('.msg-error-topic').text("Please enter a Topic.").show();
+          hasError = true;
+      }
+
+      if (!description) {
+          $('.msg-error-des').text("Please enter a Description.").show();
+          hasError = true;
+      }
+
+      return hasError;
+  }
+
+  function extract_values() {
+    const subject = $('.selected-val').text().trim();
+    const topic = $('#topic').val().trim();
+    const description = $('#description').val().trim();
+    const rate = $('#default-rate').val().trim();
+    $('.error').text('').hide();
+
+    return {
+        subject,
+        topic,
+        description,
+        rate
+    };
+}
+
 

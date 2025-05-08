@@ -55,7 +55,8 @@
     padding: 0 34px 50px;
 }
 
-.lesson_header h1{
+.lesson_header h1,
+.editor-item-container h1{
     padding-top: 10px;
     font-size: 16px;
     letter-spacing: 1px;
@@ -74,7 +75,7 @@
     font-size: 16px;
     font-weight: 700;
     color: var(--white-txt85);
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     line-height: 20px;
     display: flex;
     align-items: center;
@@ -203,7 +204,7 @@ textarea#description {
 .subject-selector{
     display: flex;
     align-items: center;
-    width: 150px;
+    width: 180px;
 }
 .subject-selector .subject-selected{
     height: 40px;
@@ -235,7 +236,7 @@ textarea#description {
 }
 .selected-label, .sched-label{
     height: 100%;
-    width: 100px;
+    width: 140px;
     display: flex;
     align-items: center;
     line-height: 20px;
@@ -262,7 +263,6 @@ textarea#description {
 }
 
 .selector-menu{
-   
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -277,6 +277,7 @@ textarea#description {
     height: fit-content;
     z-index: 20;
     padding: 10px 0;
+    width: 180px;
 }
 .selector-menu_biz{
     margin: 0 12px 8px;
@@ -284,6 +285,8 @@ textarea#description {
     display: flex;
     align-items: center;
     cursor: pointer;
+    border-bottom: 2px dotted var(--white-06);
+
 }
 
 .quill-editor_count{
@@ -386,9 +389,145 @@ textarea#description {
     padding: 10px;
 }
    
-  
-.sched-selector {
-    width: 430px;
+
+.sched-wrp{
+    width: 100%;
+    padding: 1rem;
+}
+
+.sched-wrp .section-label{
+    margin-bottom: 1rem;
+}
+
+.days-selector{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.method-selector,
+.time-selector{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 }
 
 
+.day-btn,
+.pref-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 40px;
+}
+.time-btn{
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.time-btn .span_time{
+    font-size: 12px;
+}
+
+.set_sched{
+    width: 130px !important;
+}
+.sched-btn{
+    color: var(--white-txt85) !important;
+    background: transparent !important;
+}
+
+.selected {
+    color: var(--white-accent) !important;
+    background-color: var(--dark-btn) !important;
+    border: none !important;
+    font-weight: 600;
+    box-shadow: 0 0 5px rgba(255, 101, 0, 0.3);
+  }
+
+
+  .separation{
+    border-top: 1px solid var(--white-06);
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .sched-summary-list {
+    margin-top: 1rem;
+  }
+  
+  .sched-summary-card {
+    background: var(--dark-bg);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .sched-core-info {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .sched-core-info div {
+    font-weight: 500;
+  }
+  
+  .sched-schedules {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .schedule-item {
+    padding: 0.5rem 1rem;
+    background: var(--dark-fg);
+    border-left: 4px solid var(--dark-btn);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    min-width: 44%;
+    max-width: 70%;
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  
+  .day-btn.disabled,
+  .pref-btn.disabled,
+  .time-btn.disabled{
+    border: 1px solid var(--dark-fg1);
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  
+
+  
+  .edit-sched-btn {
+    padding: 4px 10px;
+    font-size: 13px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .edit-sched-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .active-selector {
+    cursor: not-allowed !important;
+    user-select: none;
+    pointer-events: none;
+}
