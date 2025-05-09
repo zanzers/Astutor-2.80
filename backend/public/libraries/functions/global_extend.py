@@ -220,3 +220,92 @@ def insert_topic():
                "error": "Internal server error",
                "success": False
           })
+
+def load_content():
+     
+     
+     data = request.get_json()
+     userId = data.get("userId")
+
+     print("load", userId)
+
+     load_query = """
+        SELECT 
+          s.schedule_id, 
+          s.subject_id, 
+          sub.subject_name,
+          s.topic, 
+          s.day, 
+          s.method, 
+          s.time, 
+          s.description,
+          s.barter
+          FROM schedule s
+          JOIN subjects sub ON s.subject_id = sub.subject_id
+          WHERE s.tutor_id = %s """
+     
+     enrolled_query = """
+               SELECT 
+
+                    e.schedule_id,
+                    stu.firstName,
+                    stu.lastName,
+                    u.image_path,
+                    u.id AS user_id
+               FROM enroll e
+               JOIN student stu ON e.student_id = stu.student_id
+               JOIN user u ON stu.user_id = u.id
+               WHERE e.schedule_id = %s """
+
+     
+     lessons = db_read(load_query, (userId,))
+     for lesson in lessons:
+        schedule_id = lesson["schedule_id"]
+        student_list = db_read(enrolled_query, (schedule_id,))
+        lesson['student_list'] = student_list
+        print(f"Lesson {lesson}")
+
+       
+
+     return jsonify(lessons)
+
+def load_sub(userId):
+
+     
+     gettutor_ID = getId(userId, 'tutor', 'tutor_id', 'user_id');
+
+     top_panel_query = """
+
+               SELECT 
+                    COUNT(s.schedule_id) AS total_lessons,
+                    r.per_rate
+               FROM tutor t
+               LEFT JOIN schedule s ON t.tutor_id = s.tutor_id
+               LEFT JOIN rate r ON t.tutor_id = r.tutor_id
+               WHERE t.tutor_id = %s
+               GROUP BY r.per_rate """
+     
+     result = db_read(top_panel_query, (gettutor_ID,))
+
+     print("LOAD_SUB", result)
+     return result
+
+     
+def load_acontact():
+     
+     contact_query = """
+
+     SELECT 
+          u.id AS userId,
+          COALESCE(s.firstName, t.firstName) AS firstName,
+          COALESCE(s.lastName, t.lastName) AS lastName,
+          u.image_path
+          FROM user u
+          LEFT JOIN student s ON s.user_id = u.id
+          LEFT JOIN tutor t ON t.user_id = u.id
+          """
+     
+     contact_user = db_read(contact_query,)
+
+     print("contact_user", contact_user);
+     return contact_user

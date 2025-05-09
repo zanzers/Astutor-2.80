@@ -11,23 +11,33 @@ import os
 otp_store = {}
 def load_user():
     try:
+
         data = request.get_json()
         userId = data.get("userId")
-        
+
         read_query = """SELECT
           CONCAT(t.lastname, ', ' , t.firstName) AS full_name, u.image_path FROM user u JOIN tutor t ON t.user_id = u.id WHERE u.id = %s"""
         load_result = db_read(read_query, (userId,))
+
+        content = load_sub(userId);
+        content_data = content[0]
+        print("ratetete", content_data['total_lessons'], content_data['per_rate'])
+
         
         if not load_result:
             return jsonify({"error": "User not found", "success": False}), 404
         
         first_result = load_result[0]
-     
+ 
+
         print("first_result", first_result)
         return jsonify({
-            "name": first_result['full_name'],   
-            "img_url": first_result['image_path']
-        })
+          "name": first_result['full_name'],   
+          "img_url": first_result['image_path'],
+          "total_lessons": content_data['total_lessons'],
+          "per_rate": content_data['per_rate']
+          })
+
     
     except Exception as e:
         print(f"Error: {e}")
@@ -35,7 +45,6 @@ def load_user():
             "error": "Internal server error",
             "success": False
         }), 500
-
 
 def insert_user():
      
@@ -274,5 +283,23 @@ def payment():
                "success": False
           })
 
+def sent_msg():
+
+     data = request.get_json()
+     senderId = data.get("senderId")
+     receiverId = data.get("receiverId")
+     newMessage = data.get("newMessage")
+     dmi_img = data.get("dmi_img")
+
+     # print("SENT MSG", data)
+
+     imagePath = upload_img(dmi_img, senderId, "message") if dmi_img else None
+
+
+     inser_msg =""" INSERT INTO message (sender_id, reciever_id, message, image_path, is_read) VALUES(%s, %s, %s, %s, %s)"""
+     result = db_write(inser_msg, (senderId, receiverId, newMessage, imagePath, 0));
+ 
+
+     return jsonify({"success": True})
 
 

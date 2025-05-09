@@ -41,7 +41,7 @@ $(document).ready(function(){
             $('#my-float-dialog').removeClass('d-none');
         },
         function () {
-            // Mouse left either element — wait briefly to see if it enters the other
+     
             hideTimeout = setTimeout(function () {
                 if (!isHovering) {
                     $('#my-float-dialog').addClass('d-none');
@@ -68,6 +68,23 @@ $(document).ready(function(){
 
 
 })
+
+
+// DMI number
+
+$('#transaction-number').on('input', function(){
+
+    let input = $(this).val().replace(/\D/g, '');
+
+    input = input.substring(0, 11);
+
+    let formatted = input.replace(/(\d{4})(\d{3})(\d{0,4})/, function(_, a, b, c){
+        return [a, b, c].filter(Boolean).join(' ');
+    });
+
+    $(this).val(formatted);
+
+});
 
 
 

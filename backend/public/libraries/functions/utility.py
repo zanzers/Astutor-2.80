@@ -3,9 +3,10 @@ import hashlib
 import random
 import time
 import re
+import base64
 from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont
-
+import os
 
 def generate_otp() -> tuple[str, int]:
     otp_code = str(random.randint(10000, 99999))
@@ -46,24 +47,35 @@ def generate_dmi(UID, fname, lname, email, number):
     width, height = 360, 300
     img = Image.new("RGB", (width, height), color = (255,255,255))
     draw = ImageDraw.Draw(img)
-    font_path = "Roboto/Roboto-Italic-VariableFont_wdth,wght.ttf"
+    font_path = "Figtree/Figtree-VariableFont_wght.ttf"
+
 
     try:
 
-        font = ImageFont.truetype(font_path, 20)
+        title_font = ImageFont.truetype(font_path, 24)
+        body_font = ImageFont.truetype(font_path, 26)
+        verified_font = ImageFont.truetype(font_path, 20)
     except IOError:
+        
         print("Font not found. Using default.")
-        font = ImageFont.load_default()
+        title_font = body_font = verified_font = ImageFont.load_default()
+        
+    draw.rectangle([(0, 0), (width, 50)], fill="#FF6500")  
+    draw.text((20, 12), "DMI Verification", fill="black", font=title_font)
 
-    y_start = 30
-    line_height = 40 
+    x_label = 30
+    x_value = 150 
+    y_start = 100
+    line_spacing = 40 
 
-    draw.text((30, y_start), f"UID: {UID}", fill="black", font=font)
-    draw.text((30, y_start + line_height * 1), f"Name: {lname}, {fname}", fill="black", font=font)
-    draw.text((30, y_start + line_height * 2), f"Email: {email}", fill="black", font=font)
-    draw.text((30, y_start + line_height * 3), f"Phone: {number}", fill="black", font=font)
-    draw.text((30, y_start + line_height * 4), "Account verified by DMI", fill="green", font=font)
+    draw.text((x_label, y_start), "UID:", fill="black", font=body_font)
+    draw.text((x_value, y_start), UID, fill="black", font=body_font)
 
+    draw.text((x_label, y_start + line_spacing), "Name:", fill="black", font=body_font)
+    draw.text((x_value, y_start + line_spacing), f"{lname}, {fname}", fill="black", font=body_font)
+
+    draw.text((x_label, y_start + line_spacing * 2), "Phone:", fill="black", font=body_font)
+    draw.text((x_value, y_start + line_spacing * 2), number, fill="black", font=body_font)
 
     img_io = BytesIO()
     img.save(img_io, "PNG")
@@ -96,3 +108,29 @@ def find_user_id(user_info):
         except Exception as e:
             print("Error in Find_user_id():", str(e))
             return None
+
+
+def upload_img(file, user,subfolder):
+
+    print("Utility", file, user)
+
+    if not file or not user:
+        return None
+
+    folder = os.path.join("backend", subfolder)
+    os.makedirs(folder, exist_ok = True)
+
+    if file.startswith("data:image"):
+        file = file.split(",")[1]
+
+    filename = f"msg_{user}.png"
+    full_path = os.path.join(folder, filename)
+
+    
+    try:
+        with open(full_path, "wb") as img_file:
+            img_file.write(base64.b64decode(file))
+        return full_path
+    except Exception as e:
+        print("Image upload error:", e)
+        return None

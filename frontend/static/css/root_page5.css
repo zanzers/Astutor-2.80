@@ -104,3 +104,231 @@
 .logout-card h4{
     color: var(--white-txt);
 }
+
+
+/* Transaction */
+
+  
+  .transaction-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .transaction-modal-overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .transaction-modal-content {
+    background: rgba(49, 54, 63, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white-txt);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 480px;
+  }
+  
+
+  .dmi_close{
+    cursor: pointer;
+    position: relative;
+    bottom: 12px;
+    font-size: 30px;
+  }
+
+  .transaction-modal-header {
+    margin-bottom: 20px;
+  }
+  
+  .transaction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  
+  .dmi_title {
+    font-size: 24px;
+    color: var(--white-txt);
+    margin: 0;
+    flex: 1;
+  }
+  
+  i.closed-btn.bx.bx-x {
+    top: 14px;
+    font-size: 30px;
+    position: absolute;
+    left: 430px;
+}
+
+.trancation-header {
+    padding: 16px;
+    border-bottom: 1px solid var(--white-06);
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 1rem;
+  }
+
+  .transaction-header .closed-btn {
+    font-size: 24px;
+    color: var(--white-accent);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  
+  .transaction-header .closed-btn:hover {
+    opacity: 0.7;
+  }
+  .transaction-modal-header span {
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  .transaction-modal-header a {
+    color: var(--white-accent);
+    text-decoration: underline;
+    font-size: 13px;
+  }
+  
+  
+  .closed-btn {
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--white-txt);
+  }
+  
+  .closed-btn:hover {
+    color: var(--white-accent);
+  }
+  
+  .transaction-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .transaction-form label {
+    display: block;
+    color: var(--white-txt);
+    margin-bottom: 5px;
+  }
+  
+  .transaction-form input[type="text"],
+  .transaction-form input[type="email"],
+  .transaction-form input[type="tel"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+  }
+  .transaction-form input {
+    background-color: #2e333d;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+  }
+  
+  .transaction-form input:focus {
+    border-color: var(--white-accent);
+    outline: none;
+  }
+  
+  
+  .form-action {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+
+
+  .verify-button {
+    background-color: var(--white-accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: transform 0.2s ease, background 0.3s ease;
+  }
+  
+  .verify-button:hover {
+    transform: translateY(-2px);
+    background-color: #e55900;
+  }
+  
+
+
+  .chat-message {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    margin: 8px 0;
+    padding: 10px 15px;
+    border-radius: 16px;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.outgoing {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    text-align: left;
+    border-bottom-right-radius: 0;
+}
+
+.chat-msg-content p {
+    margin: 0 0 8px 0;
+}
+
+.dmi-verification-msg .chat-msg-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.dmi-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.chat-message {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.chat-msg-content p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--white-txt);
+  }
+  

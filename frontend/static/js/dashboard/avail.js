@@ -61,17 +61,20 @@
     }
     });
 
-    $('#paymentNumber').on('input', function () {
-      let value = $(this).val();
+  $('#paymentNumber').on('input', function(){
 
-      value = value.replace(/\D/g, '');
-      if (value.startsWith('0')) {
-          value = value.slice(1);
-      }
-      value = value.slice(0, 10);
-  
-      $(this).val(value);
-  });
+    let input = $(this).val().replace(/\D/g, '');
+
+    input = input.substring(0, 11);
+
+    let formatted = input.replace(/(\d{4})(\d{3})(\d{0,4})/, function(_, a, b, c){
+        return [a, b, c].filter(Boolean).join(' ');
+    });
+
+    $(this).val(formatted);
+
+});
+
   
     $('#goBackBtn').on('click', function () {
       $('.container').addClass('d-none');
@@ -85,6 +88,7 @@
 
   });
 
+  
 
 
 
