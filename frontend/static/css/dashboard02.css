@@ -224,22 +224,6 @@ input[type=number]::-webkit-inner-spin-button {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-
-i.closed-btn.bx.bx-x {
-    cursor: pointer;
-    position: relative;
-    bottom: 12px;
-    font-size: 24px;
-}
-
-.trancation-header {
-    flex-direction: row;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}
-
 .chat-msg-content {
   display: flex;
   flex-direction: column;
@@ -255,12 +239,6 @@ i.closed-btn.bx.bx-x {
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   image-rendering: crisp-edges; /* optional for pixel clarity */
-}
-
-.chat-msg-content p {
-  margin: 0;
-  font-size: 14px;
-  color: #333;
 }
 
 

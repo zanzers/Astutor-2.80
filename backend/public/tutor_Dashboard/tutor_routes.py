@@ -71,17 +71,19 @@ def load_profile():
     print("load", load_profile)
     return load_profile
 
+@tutor_routes.route('/api/dashboard/content', methods = ['POST'])
+def load_content_tutor():
+    print("LOAD USER")
+    content_result = load_content()
+    print("load", content_result)
+    return content_result
+
 
 @tutor_routes.route('/api/dashboard/transactions', methods = ['POST'])
 def DMI_process():
 
     transaction_result = transaction()
     return transaction_result
-
-
-
-
-
 
 
 
@@ -123,29 +125,28 @@ def create_lesson():
 
 
 
-
-
-
-
-
-
-# simulation test for Create Lesson
-
 # fecth data
 @tutor_routes.route('/api/dashboard/topics', methods=['POST'])
 # @requires_auth
 def topics():
-
-    print("Topics Call()")
     response = fetch_topics()
-    print("DATA ", response)
     return response
 
 
-@tutor_routes.route('/api/dashboard/test1', methods=['POST'])
+@tutor_routes.route('/api/dashboard/create_topic', methods=['POST'])
 # @requires_auth
 def creating_topic():
-    print("insert_topic Call()")
     response = insert_topic()
-    print("DATA ", response)
+    return response
+
+@tutor_routes.route('/api/dashboard/contact', methods=['POST'])
+# @requires_auth
+def contact_user():
+    response = load_acontact()
+    return response
+
+@tutor_routes.route('/api/dashboard/sent', methods=['POST'])
+# @requires_auth
+def sentding():
+    response = sent_msg()
     return response

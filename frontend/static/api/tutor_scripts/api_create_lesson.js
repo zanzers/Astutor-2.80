@@ -89,7 +89,7 @@ $(document).ready(function () {
 
   
         $.ajax({
-            url: "/api/dashboard/test1",
+            url: "/api/dashboard/create_topic",
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify(createData),

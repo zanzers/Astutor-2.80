@@ -87,9 +87,24 @@
 
                         <div class="header_right">
                             <div class="header-item header-message">
-                                <div role="button" title="Message" class="header-item_button">
+                                <div role="button" id="header-message" title="Message" class="header-item_button">
                                     <div class="header-item_icon">
                                         <i class='bx bxs-chat icon-chat'></i>
+                                    </div>
+                                </div>
+
+                                <div id="my-float-dialog-msg" class="my-float-dialog-msg header-message-menu d-none">
+                                    <h1 class="header-message-menu_title">Chat</h1>
+                                    <div class="search-contact-wrp">
+                                        <input type="text" class="chat-search" placeholder="Search contacts...">
+                                    </div>
+                                    
+                                    <div class="contacts-container">
+                                        <div class="contats_list">
+                                          <ul class="ul-list-contact">
+                                        
+                                          </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -196,25 +211,25 @@
                                             </div>
                                             <div class="account-rows account-rows--bottom">
                                                 <div class="account-info-items">
-                                                    <div class="acount-info-number">0</div>
+                                                    <div id="reviers_count" class="acount-info-number">0</div>
                                                     <div class="acount-info-name">Reviews</div>
                                                     <div class="acount-info-slit">|</div>
     
                                                 </div>
                                                 <div class="account-info-items">
-                                                    <div class="acount-info-number">0</div>
+                                                    <div id="lesson_count" class="acount-info-number">0</div>
                                                     <div class="acount-info-name">Lessons</div>
                                                     <div class="acount-info-slit">|</div>
     
                                                 </div>
                                                 <div class="account-info-items">
-                                                    <div class="acount-info-number">0</div>
+                                                    <div id="save_count" class="acount-info-number">0</div>
                                                     <div class="acount-info-name">Save</div>
                                                     <div class="acount-info-slit">|</div>
     
                                                 </div>
                                                 <div class="account-info-items">
-                                                    <div class="acount-info-number">0</div>
+                                                    <div id="rate_count" class="acount-info-number">0</div>
                                                     <div class="acount-info-name">50min rate</div>
                                              
     
@@ -271,13 +286,6 @@
                                                                 </span>
                                                                 
                                                             </li>
-                                                    
-                                                            <li class="account-switch-tab_tag account-tab_tab-active">
-                                                                <span class="account-switch-tab_label">
-                                                                    <span>Chat</span>
-                                                                </span>
-                                                                
-                                                            </li>
                                                             <li class="account-switch-tab_tag account-tab_tab-active">
                                                                 <span class="account-switch-tab_label">
                                                                     <span>Notification</span>
@@ -302,7 +310,7 @@
                                                 id="youtube-preview"
                                                 width="100%"
                                                 height="100%"
-                                                src="https://www.youtube.com/embed/iIxZrYzJJ7I"
+                                                
                                                 frameborder="0"
                                                 allowfullscreen
                                                 style="display: block;"
@@ -350,127 +358,7 @@
                                             <div class="lesson-data lesson-log" style="display: none;">
                                                 
                                                 <div class="lesson-list_container">
-
-                                                    <div class="lessons-items">
-                                                        
-                                                        <div class="lesson-wrp">
-                                                            <div class="lesson_header">
-                                                            <h2 class="subject-type">Math</h2>
-                                                           <div class="option_container">
-                                                            <i class='bx bx-video' data-tooltip="call"></i>
-                                                            <i id="edit-lesson" class='edit-lesson bx bx-dots-horizontal-rounded' data-tooltip="Edit Menu"></i>
-                                                           </div>
-                                                        </div>
-
-                                                        <div class="lesson-option_dropdown d-none">
-                                                            <span class="dropdown-option edit-option-lesson">Edit</span>
-                                                            <span class="dropdown-option delete-option-lesson">Delete</span>
-                                                        </div>
-
-                                                        <div class="lesson-body_content">
-                                                            
-                                                            <div class="lesson_topic">Topic
-                                                                <div class="topic_container">
-                                                                    <div class="topic_box">
-                                                                        Data Structures and Algorithms       
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="lesson_topic">Description
-                                                                
-                                                                <div class="description-container">
-                                                                    <div class="description-box">
-                                                                        DSA is the foundation of efficient problem-solving and software development. Mastering DSA enhances logical thinking and coding skills.
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                            </div>
-                                                            <div class="lesson_topic">Schedule
-                                                                    <div class="schedule-container">
-
-                                                                        <div class="schedule-box">
-                                                                            <div class="schedule-days">Monday, Tue, Wed</div>
-                                                                            <div class="schedule-method">Online</div>
-                                                                            <div class="schedule-time">Morning 6–12PM</div>
-                                                                          </div>
-                                                                        
-                                                                    </div>
-                                                                
-                                                            </div>
-                                                            <div class="lesson_topic">Enrolled 
-                                                                
-                                                                <div class="enrolled_profile-container">
-                                                                    <div class="enrolled-box">
-                                                                        <img src="profile1.jpg" class="enrolled_profile">
-                                                                        <img src="profile2.jpg" class="enrolled_profile">
-                                                                        <img src="profile3.jpg" class="enrolled_profile">
-                                                                        <img src="profile4.jpg" class="enrolled_profile">
-                                                                        <span class="enrolled_more">+5 more</span>
-                                                                      </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="chat-data chat-log" style="display: none;">
-                                                <div class="chat-room-container">
-                                        
-
-                                                    <div class="chat-contacts">
-                                                        <input type="text" class="chat-search" placeholder="Search contacts...">
-                                                        <div class="contact-list-container">
-
-                                                            <div class="contact-item unread">
-                                                                <img src="/static/slide-img/default-img.png" class="contact-pic">
-                                                                <div class="contact-info">
-                                                                    <span class="contact-name">Xi</span>
-                                                                    <!-- <p class="current-msg">Hello, how are you?</p> -->
-                                                                </div>
-                                                            </div>
-                                                        
-                                                            <!-- <div class="contact-item read">
-                                                                <img src="/static/slide-img/13.jpg" class="contact-pic">
-                                                                <div class="contact-info">
-                                                                    <span class="contact-name">Alice</span>
-                                                                    <p class="current-msg">See you later!</p>
-                                                                </div>
-                                                            </div> -->
-                                        
-
-                                                        </div>
-                                                    </div>
-                                                
-                                               
-                                                    <div class="chat-main">
-                                                     
-                                                        <div class="chat-header">
-                                                            <img src="/static/slide-img/default-img.png" class="chat-header-pic">
-                                                            <span class="chat-header-name">Xi</span>
-                                                            <i class="bx bx-dots-horizontal-rounded chat-header-menu"></i>
-
-
-
-                                                            <div class="chat_menu-option d-none">
-                                                                <span class="chat-menu-item">Add Transaction</span>
-                                                            </div>
-                                                        </div>
-                                            
-                                                       
-                                                        <div class="chats-container">
-                                                            <div class="chats-wrp"></div>
-                                                        </div>
-                                                
-                                                        <div class="chat-footer">
-                                                            <input type="text" class="chat-input" placeholder="Type a message...">
-                                                            <button class="chat-send-btn">Send</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
                                             </div>
 
                                             <div class="notification-data notification-log" style="display: none;">
@@ -482,6 +370,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="main_content-right">
                             <div class="right_layout-sub">
                                 <div class="right-stickly-scroll-wrp" style="height: 1539px;">
@@ -538,9 +428,10 @@
             {% block content%}
 
             {% include 'tutor/transaction-modal.html' %}
-
-        
+            {% include 'chat.html' %}
+       
           {% endblock %}
+
 
 
 
@@ -561,8 +452,10 @@
 <script src="{{ url_for('static', filename='api/tutor_scripts/api_dashboard.js') }}"></script>
 <script src="{{ url_for('static', filename='api/tutor_scripts/api_create_lesson.js') }}"></script>
 <script src="{{ url_for('static', filename='api/tutor_scripts/api_transacttion_modal.js') }}"></script>
+<script src="{{ url_for('static', filename='api/api_chats.js') }}"></script>
 <script src="{{ url_for('static', filename='api/tutor_scripts/api_edit_lesson.js') }}"></script>
 <script src="{{ url_for('static', filename='js/dashboard/tutor_load.js') }}"></script>
+<script src="{{ url_for('static', filename='js/chats.js') }}"></script>
 <script src="{{ url_for('static', filename='js/dashboard/create_lessons.js') }}"></script>
 </body>
 </html>

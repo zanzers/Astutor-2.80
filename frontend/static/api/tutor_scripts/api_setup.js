@@ -77,12 +77,11 @@ $(document).ready(function() {
         const methodSelected = $('#paymentMethod').val();
         const pricing  = $('#pricing').val();
         let number = $('#paymentNumber').val();
-        const fullNumber = `+63${number}`;
         $('.error-payment').text('');
         $('#paymentMethod, #paymentNumber').removeClass('is-invalid');
 
-        if(!methodSelected || number.length !== 10){
-            $('.error-payment').text("Please select a payment method and enter a valid 9-digit number.");
+        if(!methodSelected){
+            $('.error-payment').text("Please select a payment method");
         
             if (!methodSelected) $('#paymentMethod').addClass('is-invalid');
             if (number.length !== 10) $('#paymentNumber').addClass('is-invalid');
@@ -95,7 +94,7 @@ $(document).ready(function() {
             tutorID: tutorID,
             pricing: pricing,
             paymentMethod: methodSelected,
-            phoneNumber: fullNumber
+            phoneNumber: number
         }
 
         console.log("Account:", accountData);
