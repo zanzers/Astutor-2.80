@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+    const userID = sessionStorage.getItem('userID');
     const selectedDays = new Set();
     let selectedTime = '';
     let availabilityList = [];
@@ -154,44 +156,57 @@ $(document).ready(function () {
 
 
 
-    // $('.btn-avail').on('click', function (e) {
-    //     e.preventDefault();
+    $('.btn-avail').on('click', function (e) {
+        e.preventDefault();
         
-    //     console.log("submit")
-
-    //     const tutorID= sessionStorage.getItem("tutorID");
-    //     if (!availabilityList.length) {
-    //         messageBox.textContent = "Please add at least one availability entry before continuing.";
-    //         return;
-    //       }
+        console.log("submit")
+        if (!availabilityList.length) {
+            messageBox.textContent = "Please add at least one availability entry before continuing.";
+            return;
+          }
       
 
-    //   let avail_form = {
-    //         tutorID: tutorID,
-    //         availability: availabilityList
-    //       };
+         let avail_form = {
+            'userID': userID,
+            'availability': availabilityList
+          };
 
-    //       console.log(avail_form);
+          console.log(avail_form);
 
-    //     // NOTE: save this in the db tutor Id, Day, Time, Method see the website...
-    //     // user can enter multiple array of availability  
-    //     // return should be console.log('response.message:', Save);
+          
+         $.ajax({
+            url: '/api/dashboard/submit-focus',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({avail_form}),
+            success: function(response) {
+                console.log('Successfully submitted availability:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error submitting subjects:', error);
+            }
+        });
 
-        
-    //     // $.ajax({
-    //     //   url: '',
-    //     //   type: 'POST',
-    //     //   contentType: 'application/json',
-    //     //   ata: JSON.stringify(avail_form),
-    //     //   success: function (response) {
-    //     //     console.log('Server response:', response);
-     
-    //     //   },
-    //     //   error: function (xhr, status, error) {
-    //     //     console.error('Error:', error);
-    //     //   }
-    //     // });
-    //   });
+      });
       
   });
+
+     const selected = {
+            'userID': userID,
+            'selectedSubjects':selectedSubjects
+        }
+
+         $.ajax({
+            url: '/api/dashboard/student_submit',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({selected}),
+            success: function(response) {
+                console.log('Successfully submitted subjects:', response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error submitting subjects:', error);
+            }
+        });
+
   

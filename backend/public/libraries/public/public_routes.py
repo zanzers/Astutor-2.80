@@ -49,8 +49,10 @@ def gettingStarted():
 
 
 
+@public_routes.route("/api/Astutor|home")
 
-
+def homePage():
+    return render_template("Astutor_home.html")
 
 
 

@@ -1,0 +1,50 @@
+ <!-- SETUP PAYMENT -->
+<div class="form-section " id="budget-section">
+
+<div class="budget-container text-center py-4">
+  <label for="budgetRange" class="form-label fw-bold text-white">What is your initial budget?</label>
+  
+  <div class="slider-wrapper mx-auto mb-2">
+    <input type="range" id="budgetRange" class="form-range styled-range" min="500" max="9000" step="100" value="500">
+    <div class="budget-value">₱ <span id="budgetValue">500</span></div>
+  </div>
+
+  <div id="coinContainer" class="coin-stack"></div>
+</div>
+
+
+  <div class="form-group btn-groups mt-4">
+    <button type="button" id="btn-next" class="btn btn-secondary btn-prev">Back</button>
+    <button type="submit" id="btn-prev" class="btn btn-primary complete_Student btn-next">Complete Registration</button>
+  </div>
+
+
+
+
+
+
+
+<div class="complete d-none" id="confirmationCard">
+  <div class="float-msg">
+      <div class="card confirmation-card">
+                
+      <div class="greating-wrp">
+        <h5 class="card-title">Registration Complete</h5>
+      </div>
+    <div class="card-body text-center">
+ 
+      <h1 class="welcome-text">Welcome to Astutor</h1>
+      <p>Processing you Registration please wait</p>
+
+      <i class='bx bx-loader-alt'></i>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+
+
+
+
+</div>
