@@ -64,13 +64,6 @@ def without_method():
 
 
 
-@tutor_routes.route('/api/dashboard/load_profile', methods = ['POST'])
-def load_profile():
-    print("LOAD USER")
-    load_profile = load_user()
-    print("load", load_profile)
-    return load_profile
-
 @tutor_routes.route('/api/dashboard/content', methods = ['POST'])
 def load_content_tutor():
     print("LOAD USER")

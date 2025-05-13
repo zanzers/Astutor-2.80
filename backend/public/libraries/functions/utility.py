@@ -2,6 +2,7 @@ from public.libraries.db.conn import db_read
 import hashlib
 import random
 import time
+import hmac
 import re
 import base64
 from io import BytesIO
@@ -83,9 +84,6 @@ def generate_dmi(UID, fname, lname, email, number):
     return img_io
 
 
-
-
-
 def find_user_id(user_info):
         
         user_id = user_info[0]['id'];
@@ -134,3 +132,32 @@ def upload_img(file, user,subfolder):
     except Exception as e:
         print("Image upload error:", e)
         return None
+
+
+def check_login_errors(email, password):
+
+    errorList = []
+
+
+    if not email or not password:
+            errorList.append("Email and password are required")
+            return errorList, None
+
+    query = "SELECT id, email, password FROM USER WHERE email = %s"
+    result = db_read(query, (email,))
+
+    if not result:
+        errorList.append('Email not found')
+        return errorList, None
+
+
+    user = result[0]
+    hashed_input = hash_password(password)
+
+    if not hmac.compare_digest(user["password"], hashed_input):
+        errorList.append("Email or password is invalid")
+        return errorList, None
+    
+    print(errorList,errorList)
+    return [], user    
+

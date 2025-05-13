@@ -46,7 +46,7 @@ $(document).ready(function() {
     },
    { namespace: 'login',
     afterEnter(){
-      initLogin();
+      initLoginApi();
     }}
     ]
   });

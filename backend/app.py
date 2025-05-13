@@ -11,6 +11,7 @@ app = Flask(__name__, static_folder="../frontend/static")
 template_loader = ChoiceLoader([
     FileSystemLoader("../frontend/templates/public/"),
     FileSystemLoader("../frontend/templates/dashboard/"),
+    FileSystemLoader("../backend/backend/message/"),
 ])
 
 app.jinja_loader = template_loader

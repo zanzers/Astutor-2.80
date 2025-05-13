@@ -32,12 +32,26 @@ $(document).ready(function() {
         }
     }
 
-    function appendMessage(chatItem, message, messageType) {
-        const messageHTML = `<div class="chat-message ${messageType}">${message}</div>`;
-        const chatBody = chatItem.find('.chat-card-body'); 
+    window.appendMessage = function(chatItem, messageText, messageType, imagePath = null) {
+        const chatBody = chatItem.find('.chat-card-body');
+
+        let messageHTML = `<div class="chat-message ${messageType}">`;
+
+        if (messageText) {
+            messageHTML += `<p>${messageText}</p>`;
+        }
+
+        if (imagePath) {
+            const fixedPath = imagePath.replace(/\\/g, '/');
+            messageHTML += `<img src="/${fixedPath}" alt="Attachment" class="chat-image" />`;
+        }
+
+        messageHTML += `</div>`;
+
         chatBody.append(messageHTML);
         chatBody.scrollTop(chatBody[0].scrollHeight);
-    }
+    };
+
 
 });
 
@@ -76,6 +90,7 @@ function sendMessage(senderId,receiverId,newMessage, dmi_img = null ){
 
 
 
+
 $(document).on('click', '.sent-dmi',function(e) {
     e.stopPropagation(); 
 
@@ -85,8 +100,6 @@ $(document).on('click', '.sent-dmi',function(e) {
     console.log("sent-dmisent-dmisent-dmisent-dmi")
     $('.transaction-modal').removeClass('d-none');
 
-
-    });
 
     $(document).click(function(e) {
         if (!$(e.target).closest('.chat-header-menu, .chat_menu-option').length) {
@@ -146,13 +159,17 @@ $(document).on('click', '.sent-dmi',function(e) {
 
             $('#attempt').text('(0)');
             $('#retryBtn').prop('disabled', true); 
-            $('.chat-menu-item').addClass('disabled');
+            $('.sent-dmi').addClass('d-none');
             alert('Online Payment Disable. Please contact support.');
         }
 
 
     })
 
+
+    });
+
+    
 
 
 

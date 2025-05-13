@@ -28,7 +28,8 @@ $(document).on('click', '.chat_person', function () {
                     </div>
                     <div class="chat-actions">
 
-                        <i class='icon sent-dmi bx transaction-icon bx-shield-alt-2' title="Add Online Transaction"></i>
+                        <i class="icon sent-dmi bx transaction-icon bx-shield-alt-2" title="Add Online Transaction"></i>
+
                 
                     
                         <i class='icon bx bx-x close-icon' title="closed"></i>
@@ -49,6 +50,39 @@ $(document).on('click', '.chat_person', function () {
         `;
 
         $('#chatContainer').append(chatItemHTML);
+
+        let chatItem = $(`.chat_item[data-id="${userId}"]`);
+        const myId = sessionStorage.getItem("userID");
+        
+
+        $.ajax({
+            url: "/api/messages",
+            type: "GET",
+            data: {
+                sender_id: myId,
+                receiver_id: userId
+            },
+            success: function(response) {
+                if (response.success && response.messages.length > 0) {
+                    console.log("History msg", response)
+                    response.messages.forEach(msg => {
+                        const type = msg.sender_id == myId ? 'outgoing' : 'incoming';
+                        let imagePath = msg.image_path;
+
+                        if (imagePath) {
+                           
+                            const fileName = imagePath.split(/[/\\]/).pop(); 
+                            imagePath = `api/message-images/${fileName}`;
+                        }
+                        
+                        appendMessage(chatItem, msg.message, type, imagePath);
+                    });
+                }
+            },
+            error: function(err) {
+                console.error("Failed to load messages", err);
+            }
+        });
     }
 });
 

@@ -9,43 +9,31 @@ import os
 
 # NOTE: handle both about-profile of tutor & student, Subjects
 otp_store = {}
+
 def load_user():
-    try:
-
-        data = request.get_json()
-        userId = data.get("userId")
-
-        read_query = """SELECT
-          CONCAT(t.lastname, ', ' , t.firstName) AS full_name, u.image_path FROM user u JOIN tutor t ON t.user_id = u.id WHERE u.id = %s"""
-        load_result = db_read(read_query, (userId,))
-
-        content = load_sub(userId);
-        content_data = content[0]
-        print("ratetete", content_data['total_lessons'], content_data['per_rate'])
-
-        
-        if not load_result:
-            return jsonify({"error": "User not found", "success": False}), 404
-        
-        first_result = load_result[0]
- 
-
-        print("first_result", first_result)
-        return jsonify({
-          "name": first_result['full_name'],   
-          "img_url": first_result['image_path'],
-          "total_lessons": content_data['total_lessons'],
-          "per_rate": content_data['per_rate']
-          })
-
     
+    try:
+        data = request.get_json()
+        user_id = data.get("userId")
+        account_type = find_user_default(user_id)
+
+
+        if (account_type == "student"):
+                return load_student_user(user_id, account_type)
+        else:
+             return load_tutor_user(user_id, account_type)
+
     except Exception as e:
-        print(f"Error: {e}")
+        print("Exception in load_user:", e)
         return jsonify({
             "error": "Internal server error",
             "success": False
         }), 500
+       
+        
 
+
+      
 def insert_user():
      
      data = request.get_json()
@@ -303,3 +291,29 @@ def sent_msg():
      return jsonify({"success": True})
 
 
+
+
+def load_msg_history():
+    sender = request.args.get('sender_id')
+    receiver = request.args.get('receiver_id')
+
+    if not sender or not receiver:
+        return jsonify({"success": False, "error": "Missing sender or receiver ID"}), 400
+
+    print("Sender:", sender)
+    print("Receiver:", receiver)
+
+    history_query = """
+        SELECT message_id, sender_id, reciever_id, message, image_path, date, is_read
+        FROM message
+        WHERE (sender_id = %s AND reciever_id = %s)
+           OR (sender_id = %s AND reciever_id = %s)
+        ORDER BY date ASC
+    """
+    msg = db_read(history_query, (sender, receiver, receiver, sender))
+
+    print("load_msg_history", msg)
+    return jsonify({
+        "success": True,
+        "messages": msg
+    })

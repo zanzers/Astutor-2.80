@@ -446,9 +446,6 @@ input[type=number]::-webkit-inner-spin-button {
   }
 
 
-
-
- /* Centered card with no overlay */
 .complete {
   position: fixed;
   top: 0;
@@ -504,7 +501,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .card-body p {
   font-size: 1rem;
-  color: #ccc;
+  color: var(--dark-text1);
 }
 
 .card-body i {

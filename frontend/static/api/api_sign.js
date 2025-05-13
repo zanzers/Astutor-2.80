@@ -66,22 +66,22 @@ function initSignupApi(){
                     }
     
 
-errorMsg.empty();
-    errorMsgContainer.removeClass("show");
+                    errorMsg.empty();
+                        errorMsgContainer.removeClass("show");
 
 
-    console.log(xhr.responseJSON);
+                        console.log(xhr.responseJSON);
 
-    if (xhr.responseJSON && xhr.responseJSON.errors && xhr.responseJSON.errors.length > 0) {
-        errorMsgContainer.addClass("show");
-        let errorList = $("<ul></ul>");
-        xhr.responseJSON.errors.forEach(error => {
-            errorList.append(`<li>${error}</li>`);
-        });
-        errorMsg.append(errorList);
-    } else {
-        errorMsg.append(`<p>${errorMessage}</p>`);
-    }
+                        if (xhr.responseJSON && xhr.responseJSON.errors && xhr.responseJSON.errors.length > 0) {
+                            errorMsgContainer.addClass("show");
+                            let errorList = $("<ul></ul>");
+                            xhr.responseJSON.errors.forEach(error => {
+                                errorList.append(`<li>${error}</li>`);
+                            });
+                            errorMsg.append(errorList);
+                        } else {
+                            errorMsg.append(`<p>${errorMessage}</p>`);
+                        }
                 }
             });
         });
@@ -104,3 +104,7 @@ errorMsg.empty();
 
     }
 }
+
+
+
+
