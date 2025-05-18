@@ -5,8 +5,12 @@
     --font-family: 'EB Garamond', serif;
     --font-txt: 'Figtree', serif;
     --dark-bg: #222831;
-    --dark-fg: #31363F;
+    --dark-fg: #1b1d2a;
     --dark-btn: #1A224D;
+    --dark-separator: #343746;
+    --seperator-color: #343746;
+    
+
     --dark-fg1: #5b606893;
     --dark-txt: #9DB2BF;
     --dark-accent: #DDE6ED;
@@ -23,6 +27,15 @@
     
     --white-06:rgba(127, 122, 122, 0.5);
     --error-msg: #ff0000;
+
+    --view-btn: #3F8CFF;     
+    --chat-btn: #00BFA6;     
+    --enrolled-btn: #4CAF50; 
+
+    --btn-bg: #00adb5;
+    --btn-txt: #fff;
+    --btn-hover: #028891;
+
 
 
 

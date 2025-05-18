@@ -125,6 +125,7 @@
   z-index: 800;
   max-height: 700px; 
   overflow-y: auto; 
+  z-index: 999;
 }
 
 

@@ -332,3 +332,133 @@
     color: var(--white-txt);
   }
   
+
+
+
+  .notifiaction-list_container {
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notification-card {
+    background: var(--dark-bg);
+    border-radius: 12px;
+    padding: 1rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notif-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.student-avatar {
+    border: 1px solid var(--white-accent);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.notif-text p {
+    color: var(--white-txt);
+    margin: 0;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.notif-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: var(--white-txt);
+}
+
+.notif-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.accept-btn, .decline-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.accept-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.decline-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+
+.simple-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e0ffe0;  /* greenish for success */
+  border: 1px solid #4caf50;
+  padding: 20px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #2e7d32;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+
+
+.student-task-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--white-06);
+    border-radius: 8px;
+    background-color: var(--dark-bg);
+}
+
+.student-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.student-info h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white-accent);
+}
+
+.student-info p {
+    margin: 2px 0;
+    font-size: 13px;
+    
+}
+
+
+.student-data-list{
+  color: var(--white-txt);
+}

@@ -189,6 +189,24 @@ label {
     color: var(--white-txt);
     box-shadow: 2px 1px 1px var(--white-txt); 
 }
+.login-submit {
+    background: transparent;
+    border: 1px solid var(--white-txt);
+    border-radius: 5px;
+    color: var(--white-txt); 
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-top: 24px;
+
+}
+
+.login-submit:hover {
+    background: var(--white-accent);
+    color: var(--white-txt);
+    box-shadow: 2px 1px 1px var(--white-txt); 
+}
 
 
 

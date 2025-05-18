@@ -136,3 +136,131 @@ def transaction():
 
 
 
+
+
+
+def tutor_notifications():
+        data = request.get_json()
+        userID = data.get("userID")
+
+
+        tutorId = getId(userID, 'tutor', 'tutor_id', 'user_id')
+
+        noti_query = """  
+                    SELECT 
+                        e.enroll_id, 
+                        s.schedule_id,
+                        s.topic,
+                        s.method,
+                        s.time,
+                        s.day,
+                        e.date AS request_date,
+
+                        st.student_id,
+                        st.firstName AS student_firstName,
+                        st.lastName AS student_lastName,
+
+                        u.image_path,
+
+                        sub.subject_name,
+
+                        (
+                            SELECT COUNT(*) 
+                            FROM enroll e2 
+                            WHERE e2.schedule_id = s.schedule_id 
+                            AND e2.approve = 1
+                        ) AS total_enrolled
+
+                    FROM enroll e
+
+                    JOIN schedule s ON e.schedule_id = s.schedule_id
+                    JOIN student st ON e.student_id = st.student_id
+                    JOIN user u ON st.user_id = u.id
+                    JOIN subjects sub ON s.subject_id = sub.subject_id
+
+                    WHERE s.tutor_id = %s AND e.request = 1;
+
+            """
+
+        result = db_read(noti_query,(tutorId,))
+        print("tutor_notifications", userID, "TutorID:", result)
+
+        return jsonify({
+             "success": True,
+             "result": result
+        })
+
+    
+
+
+
+def enroll_actions():
+        data = request.get_json()
+        enrollId = data.get("enrollId") 
+        approveStatus = data.get("approveStatus")
+        studentId = data.get("studentId")
+
+
+        # enrollId None approveStatus None studentId None
+
+        try:
+             if approveStatus == 1:
+                  accept_query = """
+                                 UPDATE enroll SET approve = 1, request = 0
+                                 WHERE enroll_id = %s AND student_id = %s
+                                    """
+                  db_write(accept_query,(enrollId, studentId, ))
+             else:
+                  decline_query ="""
+                                 UPDATE enroll SET request = 0 
+                                 WHERE enroll_id = %s AND student_id = %s
+                                    """
+                  db_write(decline_query, (enrollId, studentId, ))
+
+             return jsonify({
+                  "status": "success",
+                    "message": "Enrollment updated"
+                    }), 200
+
+        except Exception as e:
+             print("Error updating enroll:", e)
+             return jsonify({"status": "error", "message": str(e)}), 500
+
+
+def tutor_students():
+        data = request.get_json()
+        userID = data.get("userID")
+
+
+        tutorId = getId(userID, 'tutor', 'tutor_id', 'user_id')
+
+
+        students_query ="""
+                SELECT 
+                    st.student_id,
+                    st.firstName,
+                    st.lastName,
+                    u.image_path,
+                    sub.subject_name,
+                    s.schedule_id,
+                    s.day,
+                    s.method,
+                    s.time
+                FROM enroll e
+                JOIN schedule s ON e.schedule_id = s.schedule_id
+                JOIN student st ON e.student_id = st.student_id
+                JOIN user u ON st.user_id = u.id
+                JOIN subjects sub ON s.subject_id = sub.subject_id
+                WHERE s.tutor_id = %s
+                AND e.approve = 1
+
+                """
+        students_list = db_read(students_query, (tutorId,))
+        print("STUDENTS:", students_list)
+
+        return students_list   
+
+
+
+
+        

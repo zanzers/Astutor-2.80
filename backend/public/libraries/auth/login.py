@@ -1,57 +1,49 @@
-from flask import jsonify, request
-from public.libraries.db import db_read
-from public.libraries.functions import hash_password
+from flask import jsonify, request, make_response
+from public.libraries.db.conn import db_write
+from public.libraries.functions.utility import *
+from public.libraries.auth.auth_token import generate_token
+from public.libraries.functions.global_extend import *
 from http import HTTPStatus
+import hmac
 
 
 
-
-
-def login_student():
+def login_student_user():
     try:
         data = request.get_json()
-        username = data.get("username")
+        email = data.get("email")
         password = data.get("password")
 
-        print(f"Received: username={username}, password={password}")
+        print(f"Received login attempt: email={email}")
 
-        if not username or not password:
-            print("Missing username or password")
+        errorList, user  = check_login_errors(email, password)
+
+        print("ERRORS:", errorList)
+        if errorList:
             return jsonify({
-                "error": "Username and password are required",
-                "success": False,
-                }), HTTPStatus.BAD_REQUEST
-
-        query = """SELECT id, username, password FROM USER WHERE username = %s"""
-        print(f"Executing query: {query} with username={username}")
-        result = db_read(query, (username,))
-
-
-        if not result:
-            print("No user found, returning error.")
-            return jsonify({
-                "error": "Username not found",
-                 "success": False,
-                }), HTTPStatus.BAD_REQUEST
+                "errors": errorList,
+                "success": False
+            })
         
-        student = result[0]
+        userId = user["id"]
+        role = find_user_default(userId)
 
-        if not hmac.compare_digest(student["password"], hash_password(password)):
-            print("Password does not match, returning error.")
-            return jsonify({
-                "error": "Invalid username or password",
-                "success": False,
-            }), HTTPStatus.BAD_REQUEST
-
-
-        print("Login successful!")
+        if(role == "student"):
+            redirect_url = "/api/Astutor|home"
+        else:
+            redirect_url =  "/api/dashboard/Astutor-tutor"
+        
+        print("Login successful for user ID:", role, "userId", userId)
         return jsonify({
             "message": "Login successful",
             "success": True,
-            "redirect_url": "/api/index",
-            "user": {"id": student["id"], "username": student["username"]}
+            "role": role,
+            "redirect_url": redirect_url,
+            "userId": userId,
+             "email": user["email"]
+            
         }), HTTPStatus.OK
 
     except Exception as e:
-        print(f"Error occurred: {e}")
-        return jsonify({"error": "Internal server error"}), HTTPStatus.BAD_REQUEST
+        print(f"Exception occurred: {e}")
+        return jsonify({"error": "Internal server error"}), HTTPStatus.INTERNAL_SERVER_ERROR

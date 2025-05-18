@@ -64,13 +64,6 @@ def without_method():
 
 
 
-@tutor_routes.route('/api/dashboard/load_profile', methods = ['POST'])
-def load_profile():
-    print("LOAD USER")
-    load_profile = load_user()
-    print("load", load_profile)
-    return load_profile
-
 @tutor_routes.route('/api/dashboard/content', methods = ['POST'])
 def load_content_tutor():
     print("LOAD USER")
@@ -150,3 +143,44 @@ def contact_user():
 def sentding():
     response = sent_msg()
     return response
+
+@tutor_routes.route('/api/dashboard/tutor_notifications', methods=['POST'])
+# @requires_auth
+def tutor_notifi():
+    print("tutor_notifi")
+    response = tutor_notifications()
+    return response
+
+@tutor_routes.route("/api/dashboard/enroll_action", methods=["POST"])
+def accept_student():
+  response = enroll_actions()
+  return response
+
+
+@tutor_routes.route("/api/dashboard/students_list", methods=["POST"])
+def student_lists():
+  response = tutor_students()
+  return response
+
+@tutor_routes.route("/api/getting-started/video", methods=["POST"])
+def upload_video():
+    response, status_code = save_video()
+    video_path = response.get_json()
+    print("Video Path:", video_path, status_code)
+    return video_path
+
+@tutor_routes.route("/api/getting-started/education", methods=["POST"])
+def upload_credentials():
+    user_id = request.form.get("userId")
+    
+    schools = request.form.getlist("school[]")
+    degrees = request.form.getlist("degree[]")
+    statuses = request.form.getlist("status[]")
+    fields = request.form.getlist("field_study[]")
+    start_years = request.form.getlist("start_year[]")
+    end_years = request.form.getlist("end_year[]")
+    diplomas = request.files.getlist("diploma[]")
+
+    # For testing: print or return received data
+    print(request.form)
+    print(request.files)

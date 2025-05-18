@@ -93,6 +93,30 @@ def upload(userId, file):
 
     return save_path, image_url
 
+def upload_vid(userId, file):
+
+    if not file or file.filename == "":
+        print("No file recived by the backend")
+
+    print("Video", file.filename, userId)
+
+    safe_filename = secure_filename(file.filename)
+    ext = safe_filename.rsplit('.', 1)[-1].lower()
+    filename = f"{userId}_profile.{ext}"
+
+    user_folder = os.path.join(current_app.root_path, 'backend', 'user', str(userId))
+    os.makedirs(user_folder, exist_ok=True)
+
+    save_path = os.path.join(user_folder, filename)
+    file.save(save_path)
+
+    video_url = f"/user_uploads/{userId}/{filename}"
+
+    print("SAVE VIDEO PATH", save_path)
+
+    return save_path, video_url
+
+
 def confirm():
      data = request.get_json()
      userId = data.get("userId")
@@ -176,9 +200,9 @@ def check_subject(sub_name):
           return result[0]['subject_id']
      else:
           insert_query ="""INSERT INTO subjects(subject_name) VALUES(%s)"""
-          insert_result = db_write(insert_query, (sub_name,))
+          insert_id  = db_write(insert_query, (sub_name,))
 
-          return insert_result[0]['subject_id']
+          return insert_id
      
 def insert_topic():
 
@@ -227,7 +251,9 @@ def load_content():
      data = request.get_json()
      userId = data.get("userId")
 
-     print("load", userId)
+     tutorID = getId(userId, 'tutor', 'tutor_id', 'user_id')
+
+     print("load", tutorID)
 
      load_query = """
         SELECT 
@@ -258,7 +284,7 @@ def load_content():
                WHERE e.schedule_id = %s """
 
      
-     lessons = db_read(load_query, (userId,))
+     lessons = db_read(load_query, (tutorID,))
      for lesson in lessons:
         schedule_id = lesson["schedule_id"]
         student_list = db_read(enrolled_query, (schedule_id,))
@@ -267,7 +293,13 @@ def load_content():
 
        
 
-     return jsonify(lessons)
+     return jsonify({
+          "success": True,
+          "lessons": lessons,
+          "tutorID": tutorID
+     })
+
+
 
 def load_sub(userId):
 
@@ -277,13 +309,16 @@ def load_sub(userId):
      top_panel_query = """
 
                SELECT 
-                    COUNT(s.schedule_id) AS total_lessons,
-                    r.per_rate
+               COUNT(DISTINCT s.schedule_id) AS total_lessons,
+               r.per_rate,
+               COUNT(DISTINCT e.student_id) AS total_enrolled_students
                FROM tutor t
                LEFT JOIN schedule s ON t.tutor_id = s.tutor_id
                LEFT JOIN rate r ON t.tutor_id = r.tutor_id
+               LEFT JOIN enroll e ON s.schedule_id = e.schedule_id AND e.approve = 1
                WHERE t.tutor_id = %s
-               GROUP BY r.per_rate """
+               GROUP BY r.per_rate
+               """
      
      result = db_read(top_panel_query, (gettutor_ID,))
 
@@ -309,3 +344,96 @@ def load_acontact():
 
      print("contact_user", contact_user);
      return contact_user
+
+def find_user_default(user_id):
+ 
+    student_query = "SELECT 1 FROM student WHERE user_id = %s AND `default` = 1 LIMIT 1"
+    student_result = db_read(student_query, (user_id,))
+    if student_result:
+        return "student"
+    
+    tutor_query = "SELECT 1 FROM tutor WHERE user_id = %s AND `default` = 1 LIMIT 1"
+    tutor_result = db_read(tutor_query, (user_id,))
+
+    if tutor_result:
+        return "tutor"
+        
+    
+    return None 
+
+def load_tutor_user(userId, account_type):
+    print("load_tutor", userId, account_type)
+
+    read_query = """
+        SELECT
+            CASE 
+                WHEN t.lastname IS NULL OR t.lastname = '' 
+                THEN t.firstName 
+                ELSE CONCAT(t.lastname, ', ', t.firstName) 
+            END AS full_name, 
+            u.image_path
+        FROM user u 
+        JOIN tutor t ON t.user_id = u.id 
+        WHERE u.id = %s
+    """
+ 
+    load_result = db_read(read_query, (userId,))
+
+
+    if not load_result:
+        print("No tutor found for user_id", userId)
+        return jsonify({
+            "error": "User not found", 
+            "success": False
+        })
+
+    content = load_sub(userId)
+    content_data = content[0]
+    print("ratetete", content_data['total_lessons'], content_data['per_rate'], content_data['total_enrolled_students'])
+
+    first_result = load_result[0]
+    print("Tutor first_result:", first_result)
+
+    return jsonify({
+        "success": True,
+        "account_type": account_type,
+        "name": first_result['full_name'],   
+        "img_url": first_result['image_path'],
+        "total_lessons": content_data['total_lessons'],
+        "per_rate": content_data['per_rate'],
+        "total_students": content_data['total_enrolled_students']
+    })
+
+
+def load_student_user(userId, account_type):
+        
+    read_query = """
+        SELECT 
+            CASE 
+                WHEN s.lastname IS NULL OR s.lastname = '' 
+                THEN s.firstName 
+                ELSE CONCAT(s.lastname, ', ', s.firstName) 
+                END AS full_name, 
+                u.image_path 
+                FROM user u 
+                JOIN student s ON s.user_id = u.id 
+                WHERE u.id = %s
+             """
+
+    load_result = db_read(read_query, (userId,))
+    print("Student load_result:", load_result)
+
+    if not load_result:
+        print("No student found for user_id", userId)
+        return jsonify({
+            "error": "User not found", 
+            "success": False
+        })
+
+    first_result = load_result[0]
+    return jsonify({
+        "success": True,
+        "role": account_type,
+        "name": first_result['full_name'],
+        "img_url": first_result['image_path']
+    })

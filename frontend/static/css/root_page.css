@@ -316,7 +316,7 @@
     
 }
 .atr-group-b .section-title{
-    margin-top: 16px;
+    margin: 14px;
     color: var(--white-txt85);
     font-weight: 700;
     font-size: 18px;
@@ -420,3 +420,4 @@
 .top-bar-unfixed{
     height: auto;
 }
+
