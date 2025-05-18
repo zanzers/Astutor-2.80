@@ -93,6 +93,30 @@ def upload(userId, file):
 
     return save_path, image_url
 
+def upload_vid(userId, file):
+
+    if not file or file.filename == "":
+        print("No file recived by the backend")
+
+    print("Video", file.filename, userId)
+
+    safe_filename = secure_filename(file.filename)
+    ext = safe_filename.rsplit('.', 1)[-1].lower()
+    filename = f"{userId}_profile.{ext}"
+
+    user_folder = os.path.join(current_app.root_path, 'backend', 'user', str(userId))
+    os.makedirs(user_folder, exist_ok=True)
+
+    save_path = os.path.join(user_folder, filename)
+    file.save(save_path)
+
+    video_url = f"/user_uploads/{userId}/{filename}"
+
+    print("SAVE VIDEO PATH", save_path)
+
+    return save_path, video_url
+
+
 def confirm():
      data = request.get_json()
      userId = data.get("userId")
