@@ -1,4 +1,8 @@
-
+.atr-group-b .main_content-center {
+    flex: 1;
+    max-width: 1210px;
+    border-radius: 16px;
+}
 
 .tutor_lessons-list {
   color: var(--white-txt);
@@ -96,6 +100,117 @@ p.tutor-name {
     color: white;
     justify-content: center;
     align-items: center;
-    display: flex
-;
+    display: flex;
+}
+
+.total_students {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 90%;
+}
+
+.student-card {
+  position: relative;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: #fff;
+}
+
+.student-card__actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.dropdown-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 24px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 0;
+  list-style: none;
+  z-index: 100;
+}
+
+.dropdown-menu li a {
+  padding: 6px 16px;
+  display: block;
+  color: red;
+  text-decoration: none;
+}
+
+.dropdown-btn:hover + .dropdown-menu,
+.dropdown-menu:hover {
+  display: block;
+}
+
+.student-card__content {
+  display: flex;
+  gap: 16px;
+}
+
+.student-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+
+.student-info {
+  flex-grow: 1;
+}
+
+.student-name {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.student-topics,
+.student-tutors {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.topic-tag {
+  background-color: #f0f0f0;
+  padding: 2px 8px;
+  margin-left: 6px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+.tutor-img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 6px;
+  border: 1px solid #aaa;
+}
+
+
+
+.lessons_student-list {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

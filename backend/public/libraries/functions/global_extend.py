@@ -413,3 +413,49 @@ def load_student_user(userId, account_type):
         "name": first_result['full_name'],
         "img_url": first_result['image_path']
     })
+
+
+
+
+
+# ADMIN 
+
+
+def admin_content():
+     
+     feacth_students = """
+           SELECT 
+            u.id AS user_id,
+            u.username,
+            u.email,
+            u.image_path,
+            s.firstName,
+            s.lastName
+        FROM user u
+        JOIN student s ON u.id = s.user_id     
+     """
+
+     students = db_read(feacth_students)
+
+     feacth_tutors = """
+          SELECT 
+            u.id AS user_id,
+            u.username,
+            u.email,
+            u.image_path,
+            t.firstName,
+            t.lastName,
+            t.about,
+            t.video_url
+        FROM user u
+        JOIN tutor t ON u.id = t.user_id
+     """
+
+     tutors = db_read(feacth_tutors)
+     print("feacth_students", students)
+     print("feacth_tutors", tutors)
+
+     return jsonify({
+          "students": students,
+          "tutors": tutors
+     })

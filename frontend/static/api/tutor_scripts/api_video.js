@@ -10,7 +10,7 @@ $(document).ready(function () {
     const $msg = $('#videoMsg');
     const $errorBox = $('.video-error');
     const $videoError = $('#videoError'); 
-    const $btnVideo = $('#btn-video'); 
+    // const $btnVideo = $('#btn-video'); 
   
     function formatTime(sec) {
       const min = String(Math.floor(sec / 60)).padStart(2, '0');
@@ -124,6 +124,10 @@ $(document).ready(function () {
     });
   
 
+    $('#btn-video').on('click', function(){
+      
+    })
+
     $btnVideo.on('click', function () {
       const id= sessionStorage.getItem("userID");
       const videoBlob = $video.data('videoBlob');
@@ -132,7 +136,7 @@ $(document).ready(function () {
       formData.append(id)
 
 
-      console.log("Video:", formData)
+      console.log("Video: ", formData, id, videoBlob)
   
 
 
