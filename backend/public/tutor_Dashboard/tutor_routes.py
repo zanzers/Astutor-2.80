@@ -181,6 +181,7 @@ def upload_credentials():
     end_years = request.form.getlist("end_year[]")
     diplomas = request.files.getlist("diploma[]")
 
+
     # For testing: print or return received data
     print(request.form)
     print(request.files)
