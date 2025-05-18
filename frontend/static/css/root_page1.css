@@ -531,3 +531,8 @@ textarea#description {
     user-select: none;
     pointer-events: none;
 }
+
+
+.barter-option {
+    color: var(--white-txt);
+}

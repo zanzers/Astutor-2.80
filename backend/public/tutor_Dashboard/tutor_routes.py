@@ -143,3 +143,24 @@ def contact_user():
 def sentding():
     response = sent_msg()
     return response
+
+@tutor_routes.route('/api/dashboard/tutor_notifications', methods=['POST'])
+# @requires_auth
+def tutor_notifi():
+    print("tutor_notifi")
+    response = tutor_notifications()
+    return response
+
+@tutor_routes.route("/api/dashboard/enroll_action", methods=["POST"])
+def accept_student():
+  response = enroll_actions()
+  return response
+
+
+@tutor_routes.route("/api/dashboard/students_list", methods=["POST"])
+def student_lists():
+  response = tutor_students()
+  return response
+
+
+

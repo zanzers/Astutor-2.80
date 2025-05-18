@@ -123,3 +123,47 @@ def student_submit():
         return jsonify({"success": False, "message": "Internal error."})
 
 
+
+
+def load_student_list():
+    data = request.get_json()
+    user_id = data.get("UserID")
+
+    studentId = getId(user_id, 'student', 'student_id', 'user_id')
+    try:
+        lessons_query = """
+            SELECT 
+                sch.topic,
+                sch.day,
+                sch.time,
+                sch.method,
+                t.firstName,
+                t.lastName,
+                u.image_path,
+                COUNT(e.enroll_id) OVER (PARTITION BY t.tutor_id) AS total_lessons_per_tutor
+            FROM enroll e
+            JOIN schedule sch ON e.schedule_id = sch.schedule_id
+            JOIN tutor t ON sch.tutor_id = t.tutor_id
+            JOIN user u ON t.user_id = u.id
+            WHERE e.student_id = %s AND e.approve = 1
+            ORDER BY e.date DESC;
+
+        """
+         
+        lessons_list = db_read(lessons_query, (studentId,))
+        print("lessons_list", lessons_list, studentId)
+           
+        return lessons_list
+
+
+    except Exception as e:
+        print("Error loading student list:", e)
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
+
+
+
+
+

@@ -14,9 +14,18 @@ $(document).ready(function(){
                     email: email,
                     password: password
                 };
+
+        
         
         console.log("loginForm", loginForm)
 
+         if (email === "admin" && password === "admin") {
+            console.log("Admin login detected");
+            sessionStorage.setItem("userID", "admin");
+           
+            handleAdminLogin(); 
+            return;
+        }
         
 
         $.ajax({
@@ -105,3 +114,11 @@ $(document).ready(function(){
 });
 
 })
+
+
+ function handleAdminLogin() {
+       
+        alert("Welcome, Admin!");
+        window.location.href = "/api/admin-dashboard"
+
+    }

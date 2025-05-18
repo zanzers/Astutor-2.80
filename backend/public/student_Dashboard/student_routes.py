@@ -6,7 +6,12 @@ from public.student_Dashboard.student import *
 student_routes = Blueprint("student_routes", __name__)
 
 
-# TUTOR ROUTES AND OTHER PARTS:
+# STUDENT ROUTES AND OTHER PARTS:
+@student_routes.route("/api/dashboard/student_dashboard")
+def student_dashboard():
+    return render_template("student_dashboard.html")
+
+
 @student_routes.route("/api/getting-started/student", methods=["GET"])
 # @requires_auth
 def studentProfile():
@@ -22,13 +27,26 @@ def studentfocus():
     return response
 
 
-@student_routes.route("/api/dashboard/student_submit", methods=["POST"])
+# @student_routes.route("/api/load_student-content", methods=["POST"])
+# # @requires_auth
+# def student():
+
+#     print("studentfocus")
+#     response = load_student()
+#     return response
+
+
+@student_routes.route("/api/students/lessons_list", methods=["POST"])
 # @requires_auth
-def submit_focus():
+def lesongs_list():
 
     print("studentfocus")
-    response = student_submit()
+    response = load_student_list()
     return response
+
+
+
+
 
 
 

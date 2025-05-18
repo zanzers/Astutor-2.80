@@ -33,6 +33,9 @@ $(document).ready(function(){
                     fullname.text(response.name)
                     $('#rate_count').text(response.per_rate || 0);
                     $('#lesson_count').text(response.total_lessons || 0);
+                    $('#student_count').text(response.total_students || 0);
+
+
                 }
 
 

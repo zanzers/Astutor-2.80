@@ -14,6 +14,9 @@ public_routes = Blueprint("public_routes", __name__)
 @public_routes.route("/")
 def index():
     return render_template("index.html")
+@public_routes.route("/api/admin-dashboard")
+def admin():
+    return render_template("admin.html")
 
 @public_routes.route("/api/getting-started/about", methods=['GET', 'POST'])
 def about_info():
@@ -58,7 +61,7 @@ def gettingStarted():
 
 # Main Routes
 
-@public_routes.route("/api/Astutor|home")
+@public_routes.route("/api/Astutor-home")
 def homePage():
     return render_template("Astutor_home.html")
 

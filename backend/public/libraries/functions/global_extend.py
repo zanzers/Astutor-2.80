@@ -285,13 +285,16 @@ def load_sub(userId):
      top_panel_query = """
 
                SELECT 
-                    COUNT(s.schedule_id) AS total_lessons,
-                    r.per_rate
+               COUNT(DISTINCT s.schedule_id) AS total_lessons,
+               r.per_rate,
+               COUNT(DISTINCT e.student_id) AS total_enrolled_students
                FROM tutor t
                LEFT JOIN schedule s ON t.tutor_id = s.tutor_id
                LEFT JOIN rate r ON t.tutor_id = r.tutor_id
+               LEFT JOIN enroll e ON s.schedule_id = e.schedule_id AND e.approve = 1
                WHERE t.tutor_id = %s
-               GROUP BY r.per_rate """
+               GROUP BY r.per_rate
+               """
      
      result = db_read(top_panel_query, (gettutor_ID,))
 
@@ -330,6 +333,7 @@ def find_user_default(user_id):
 
     if tutor_result:
         return "tutor"
+        
     
     return None 
 
@@ -348,9 +352,9 @@ def load_tutor_user(userId, account_type):
         JOIN tutor t ON t.user_id = u.id 
         WHERE u.id = %s
     """
-    print("Running tutor query with:", userId)
+ 
     load_result = db_read(read_query, (userId,))
-    print("Tutor load_result:", load_result)
+
 
     if not load_result:
         print("No tutor found for user_id", userId)
@@ -361,7 +365,7 @@ def load_tutor_user(userId, account_type):
 
     content = load_sub(userId)
     content_data = content[0]
-    print("ratetete", content_data['total_lessons'], content_data['per_rate'])
+    print("ratetete", content_data['total_lessons'], content_data['per_rate'], content_data['total_enrolled_students'])
 
     first_result = load_result[0]
     print("Tutor first_result:", first_result)
@@ -372,7 +376,8 @@ def load_tutor_user(userId, account_type):
         "name": first_result['full_name'],   
         "img_url": first_result['image_path'],
         "total_lessons": content_data['total_lessons'],
-        "per_rate": content_data['per_rate']
+        "per_rate": content_data['per_rate'],
+        "total_students": content_data['total_enrolled_students']
     })
 
 
