@@ -10,7 +10,7 @@ $(document).ready(function () {
     const $msg = $('#videoMsg');
     const $errorBox = $('.video-error');
     const $videoError = $('#videoError'); 
-    // const $btnVideo = $('#btn-video'); 
+
   
     function formatTime(sec) {
       const min = String(Math.floor(sec / 60)).padStart(2, '0');
@@ -48,7 +48,7 @@ $(document).ready(function () {
           mediaRecorder.onstop = () => {
             clearInterval(timerInterval);
   
-            if (seconds < 30) {
+            if (seconds < 2) {
               $errorBox.removeClass('d-none').text('Video must be at least 30 seconds long');
               $video.removeAttr('src');
               $video.get(0).srcObject = null;
@@ -124,52 +124,36 @@ $(document).ready(function () {
     });
   
 
-    $('#btn-video').on('click', function(){
-      
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}:`, value);
+      }
+
+      $.ajax({
+        url: '/api/getting-started/video',  
+        type: 'POST',
+        data: formData,
+        contentType: false, 
+        processData: false, 
+        beforeSend: function () {
+          $btnVideo.prop('disabled', true);
+        },
+
+        success: function (response) {
+          if (response.success) {
+            alert('Video uploaded successfully!');
+          } else {
+            $videoError.text(response.error).show();
+          }
+          $btnVideo.prop('disabled', false); 
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          console.error('Error uploading video:', errorThrown);
+          $videoError.text('Error uploading video').show();
+          $btnVideo.prop('disabled', false);
+        }
+      });
     })
-
-    $btnVideo.on('click', function () {
-      const id= sessionStorage.getItem("userID");
-      const videoBlob = $video.data('videoBlob');
-      const formData = new FormData();
-      formData.append('video', videoBlob, 'video.webm'); 
-      formData.append(id)
-
-
-      console.log("Video: ", formData, id, videoBlob)
+     
   
-
-
-
-    //Save the video recoreded in the save folder as the userID 
-
-    //   $.ajax({
-    //     url: '',  
-    //     type: 'POST',
-    //     data: formData,
-    //     contentType: false, 
-    //     processData: false, 
-    //     beforeSend: function () {
-    //       $btnVideo.prop('disabled', true);
-    //     },
-
-    //     success: function (response) {
-    //       if (response.success) {
-    //         alert('Video uploaded successfully!');
-    //       } else {
-    //         $videoError.text(response.error).show();
-    //       }
-    //       $btnVideo.prop('disabled', false); 
-    //     },
-    //     error: function (jqXHR, textStatus, errorThrown) {
-    //       console.error('Error uploading video:', errorThrown);
-    //       $videoError.text('Error uploading video').show();
-    //       $btnVideo.prop('disabled', false);
-    //     }
-    //   });
-    
-
-
 });
-  });
   

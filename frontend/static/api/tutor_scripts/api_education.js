@@ -1,15 +1,11 @@
-$(document).ready(function(){
-    
-    $('.education-btn').on('click', function(){
-        
-        let allEducationData = []
-
-        $('.education_entry').each(function () {
-            const allForms = document.querySelectorAll('.education_entry');
+$(document).ready(function () {
+    $('.education-btn').on('click', function () {
+        const id = sessionStorage.getItem("userID");  // get userId here
+        const allForms = document.querySelectorAll('.education_entry');
         const formData = new FormData();
         formData.append('userId', id);
 
-        allForms.forEach((form, index) => {
+        allForms.forEach((form) => {
             formData.append('school[]', form.querySelector('#school').value);
             formData.append('degree[]', form.querySelector('#degree').value);
             formData.append('status[]', form.querySelector('#education-status').value);
@@ -23,38 +19,21 @@ $(document).ready(function(){
             } else {
                 formData.append('diploma[]', new Blob([], { type: 'application/octet-stream' }));
             }
-
         });
 
-        
 
         $.ajax({
-            url: '',
+            url: '/api/getting-started/education',
             method: 'POST',
             data: formData,
             contentType: false,
             processData: false,
             success: function (response) {
-                console.log(response);
-                // cosole.log the message only as prof of success
-                 
+                console.log("Response:", response);
             },
             error: function (xhr) {
-               
+                console.error("Error:", xhr.responseText);
             }
         });
-        
-        })
-
-
-
-
-    })
-
-})
-
-
-
-
-
-
+    });
+});

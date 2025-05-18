@@ -317,3 +317,27 @@ def load_msg_history():
         "success": True,
         "messages": msg
     })
+
+def save_video():
+        
+        file = request.files.get('video')
+        userId = request.form.get('userID')
+        uploaded, video_url = upload_vid(userId, file)
+
+        print(userId, video_url)
+
+        try:
+            insert_query = """ INSERT INTO video(tutor_id, video_path) VALUES (%s, %s) """
+            db_write(insert_query, (userId, uploaded))
+
+        except Exception as e:
+                return jsonify({
+                'status': 'error',
+                'message': f'Database error: {str(e)}'
+            }), HTTPStatus.INTERNAL_SERVER_ERROR
+                
+        return jsonify({
+             'success': True, 
+             'video_url': video_url
+             }), HTTPStatus.OK
+

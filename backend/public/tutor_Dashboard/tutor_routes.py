@@ -162,5 +162,25 @@ def student_lists():
   response = tutor_students()
   return response
 
+@tutor_routes.route("/api/getting-started/video", methods=["POST"])
+def upload_video():
+    response, status_code = save_video()
+    video_path = response.get_json()
+    print("Video Path:", video_path, status_code)
+    return video_path
 
+@tutor_routes.route("/api/getting-started/education", methods=["POST"])
+def upload_credentials():
+    user_id = request.form.get("userId")
+    
+    schools = request.form.getlist("school[]")
+    degrees = request.form.getlist("degree[]")
+    statuses = request.form.getlist("status[]")
+    fields = request.form.getlist("field_study[]")
+    start_years = request.form.getlist("start_year[]")
+    end_years = request.form.getlist("end_year[]")
+    diplomas = request.files.getlist("diploma[]")
 
+    # For testing: print or return received data
+    print(request.form)
+    print(request.files)
