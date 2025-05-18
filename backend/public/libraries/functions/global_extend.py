@@ -425,14 +425,30 @@ def admin_content():
      
      feacth_students = """
            SELECT 
-            u.id AS user_id,
-            u.username,
-            u.email,
-            u.image_path,
-            s.firstName,
-            s.lastName
-        FROM user u
-        JOIN student s ON u.id = s.user_id     
+          s.student_id,
+          s.firstName AS student_first,
+          s.lastName AS student_last,
+          su.id AS student_user_id,
+          su.image_path AS student_image,
+
+          t.tutor_id,
+          t.firstName AS tutor_first,
+          t.lastName AS tutor_last,
+          tu.id AS tutor_user_id,
+          tu.image_path AS tutor_image,
+
+          sch.topic
+
+          FROM student s
+          JOIN user su ON s.user_id = su.id
+
+          LEFT JOIN enroll e ON e.student_id = s.student_id AND e.approve = 1
+          LEFT JOIN schedule sch ON sch.schedule_id = e.schedule_id
+          LEFT JOIN tutor t ON sch.tutor_id = t.tutor_id
+          LEFT JOIN user tu ON t.user_id = tu.id
+
+          ORDER BY s.student_id, t.tutor_id;
+    
      """
 
      students = db_read(feacth_students)
