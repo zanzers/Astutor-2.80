@@ -20,9 +20,7 @@ $(document).ready(function () {
                 formData.append('diploma[]', new Blob([], { type: 'application/octet-stream' }));
             }
         });
-        for (let [key, value] of formData.entries()) {
-            console.log(key + ':', value);
-        }
+
 
         $.ajax({
             url: '/api/getting-started/education',

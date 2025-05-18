@@ -10,7 +10,7 @@ $(document).ready(function () {
     const $msg = $('#videoMsg');
     const $errorBox = $('.video-error');
     const $videoError = $('#videoError'); 
-    const $btnVideo = $('#btn-prev'); 
+
   
     function formatTime(sec) {
       const min = String(Math.floor(sec / 60)).padStart(2, '0');
@@ -123,13 +123,6 @@ $(document).ready(function () {
       }
     });
   
-    $('.btn-video').on('click', function(){
-      const id = sessionStorage.getItem("userID");
-      const videoBlob = $video.data('videoBlob');
-      const formData = new FormData();
-      formData.append('video', videoBlob, 'video.webm'); 
-      formData.append('userID', id);
-
 
       for (let [key, value] of formData.entries()) {
         console.log(`${key}:`, value);

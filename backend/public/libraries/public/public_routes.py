@@ -18,6 +18,14 @@ def index():
 def admin():
     return render_template("admin.html")
 
+
+@public_routes.route("/api/admin-content", methods=['GET', 'POST'])
+def adminContent():
+    print("adminContent")
+    response = admin_content()
+    return response
+
+
 @public_routes.route("/api/getting-started/about", methods=['GET', 'POST'])
 def about_info():
     
