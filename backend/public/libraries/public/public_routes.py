@@ -19,10 +19,21 @@ def admin():
     return render_template("admin.html")
 
 
-@public_routes.route("/api/admin-content", methods=['GET', 'POST'])
-def adminContent():
+@public_routes.route("/api/admin-content-student", methods=['GET', 'POST'])
+def adminContent_student():
     print("adminContent")
-    response = admin_content()
+    response = admin_content_student()
+    return response
+
+@public_routes.route("/api/admin-content-tutor", methods=['GET', 'POST'])
+def adminContent_tutors():
+    print("adminContent")
+    response = admin_content_tutor()
+    return response
+@public_routes.route("/api/admin-content-request", methods=['GET', 'POST'])
+def adminContent_request():
+    print("adminContent")
+    response = admin_content_request()
     return response
 
 
@@ -83,6 +94,7 @@ def load_profile():
     return load_profile
 
 
+
 @public_routes.route('/api/messages', methods = ['GET'])
 def load_msg():
    return load_msg_history()
@@ -118,4 +130,13 @@ def viewBtn():
 def enrolling():
   response = enrolled_request()
   return response
+
+
+@public_routes.route("/api/dashboard/student_submit", methods=["POST"])
+def student_buget():
+  response = student_submit()
+  return response
+
+
+
 

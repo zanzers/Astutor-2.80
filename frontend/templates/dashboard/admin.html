@@ -277,54 +277,19 @@
                                         <div class="lessons_student-list " data-tab-content="students">
                                             <ul class="total_students">
 
-                                                <li class="student-card">
-  <!-- Right-side dropdown -->
-  <div class="student-card__actions">
-    <button class="dropdown-btn">⋮</button>
-    <ul class="dropdown-menu">
-      <li><a href="#" class="delete-student" data-id="1">Delete</a></li>
-    </ul>
-  </div>
-
-  <!-- Left-side content -->
-  <div class="student-card__content">
-    <img class="student-img" src="/backend/user/1/profile.jpg" alt="Student Image" />
-    <div class="student-info">
-      <div class="student-name">Juan Dela Cruz</div>
-
-      <div class="student-topics">
-        <span>Topics:</span>
-        <span class="topic-tag">Math</span>
-        <span class="topic-tag">Science</span>
-      </div>
-
-      <div class="student-tutors">
-        <span>Tutors:</span>
-        <img class="tutor-img" src="/backend/user/10/profile.jpg" alt="Tutor 1" />
-        <img class="tutor-img" src="/backend/user/11/profile.jpg" alt="Tutor 2" />
-      </div>
-    </div>
-  </div>
-</li>
 
 
                                             </ul>
                                         </div>
                                         <div class="lessons_student-list d-none" data-tab-content="tutor">
                                             <ul class="total_tutors">
-                                                <li>
-                                                   <div class="assignment_wrp">
-                                                     <span>No assignment yet</span>
-                                                   </div>
-                                                </li>
+                                             
                                             </ul>
                                         </div>
                                         <div class="lessons_student-list d-none" data-tab-content="request">
-                                            <ul class="notificaitons-list">
+                                            <ul class="request-list">
                                                 <li>
-                                                    <div class="assignment_wrp">
-                                                     <span>Notifications</span>
-                                                   </div>
+                                                    
                                                 </li>
                                             </ul>
                                         </div>
@@ -366,7 +331,7 @@
 
 <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/dashboard/utility.js') }}"></script>
-<script src="{{ url_for('static', filename='js/dashboard/admin.js') }}"></script>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
 <script src="{{ url_for('static', filename='js/dashboard_util.js') }}"></script>
 <script src="{{ url_for('static', filename='api/api_admin.js') }}"></script>
 <script src="{{ url_for('static', filename='api/api_chats.js') }}"></script>

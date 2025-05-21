@@ -107,7 +107,7 @@ def student_submit():
             db_write(update_query, (budgetValue, student_id))
             return jsonify({
                 "success": True,
-                "home_url": '/api/Astutor|home',
+                "home_url": '/api/Astutor-home',
                 "message": "Budget saved."
             })
 

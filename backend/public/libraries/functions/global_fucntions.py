@@ -23,6 +23,7 @@ def load_user():
         else:
              return load_tutor_user(user_id, account_type)
 
+
     except Exception as e:
         print("Exception in load_user:", e)
         return jsonify({

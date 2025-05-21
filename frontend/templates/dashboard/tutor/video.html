@@ -1,0 +1,73 @@
+
+
+<div class="form-section flex-column gap-2 d-none" id="video-section">   
+
+    <div class="form-group d-flex flex-row">
+        <div class="left-container">
+            <h3>Video introduction</h3>
+    
+            <span> Make a introduction video up to 2 minutes that  introduce yourself to your future students.
+                <a href="#" class="learn-more" style="color: #007bff; cursor: pointer;">Learn more about video guidelines</a> 
+                </span>
+    
+                
+                <div class="video-container">
+                    <video id="recordVideo" autoplay></video>
+                    <div class="video-overlay-msg" id="videoMsg">Your video will appear here</div>
+                    <span id="timer" class="timer d-none">00:00</span>
+                    <div class="countdown d-none" id="countdown"></div>
+                  </div>
+            
+                  <button id="recordBtn" class="record-btn recod-txt" data-step="start"> Start Recording</button>
+                
+                  <div class="form-group d-none video-error"></div>
+        </div>   
+
+        <div class="right-container">
+    
+            <div class="form-group video_require">
+                <h3 class="title-require">Video requirements</h3>
+                <span class="text-require">Fufill the requirements to get aprroved</span>
+            </div>
+    
+            <div class="form-group require-list">
+                <div class="form-group requirements-title">
+                    <i class='requirements-icon bx bx-check' style='color:#00ce3d'></i> 
+                    <h3 class="title-require">Recommended</h3>
+                </div>
+                    <ul class="requirements-list">
+                        <li> Keep the video between <strong>30 seconds to 2 minutes max</strong>.</li>
+                        <li>Record in a <strong>Portrait mode</strong> at eye level.</li>
+                        <li>Use <strong>good lighting</strong> with a neutral background.</li>
+                        <li>Place the camera on a <strong>stable surface</strong> to avoid shakiness.</li>
+                        <li>Ensure your <strong>face and eyes are clearly visible</strong> (unless covered for religious reasons).</li>
+                        <li>Talk about your <strong>teaching experience</strong> and any relevant certifications.</li>
+                        <li><strong>Greet your students warmly</strong> and encourage them to book a lesson.</li>
+                    </ul>
+                
+                    <div class="form-group requirements-title">
+                        <i class='requirements-icon bx bx-x' style='color:#ff0021'></i>
+                        <h3 class="title-require">Avoid </h3>
+                    </div>
+                <ul class="requirements-list">
+                    <li>Your <strong>surname</strong> or any <strong>contact details</strong>.</li>
+                    <li><strong>Logos</strong>, <strong>links</strong>, or branding.</li>
+                    <li><strong>Slideshows</strong> or presentations.</li>
+                    <li><strong>Other people</strong> in the video frame.</li>
+                  </ul>
+            </div>
+        </div>   
+    </div>
+
+
+
+
+    <div class="form-group btn-groups">
+        <button type="button" id="btn-next" class="btn btn-primary btn-prev-home"> Back </button>
+        <button type="button" id="btn-prev" class="btn btn-primary btn-next btn-video">Save and Continue</button>
+    </div>
+
+
+    
+</div>
+

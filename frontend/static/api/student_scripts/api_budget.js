@@ -21,7 +21,7 @@ $(document).ready(function(){
             contentType: 'application/json',
             data: JSON.stringify({sentBudget}),
             success: function(response) {
-                console.log('Successfully submitted buget:', response);
+                console.log('Successfully submitted buget:', response, response.home_url);
                 setTimeout(function () {
 
                 $('#confirmationCard').addClass('d-none');

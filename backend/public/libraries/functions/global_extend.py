@@ -362,24 +362,29 @@ def find_user_default(user_id):
     return None 
 
 def load_tutor_user(userId, account_type):
-    print("load_tutor", userId, account_type)
+   
 
     read_query = """
         SELECT
-            CASE 
-                WHEN t.lastname IS NULL OR t.lastname = '' 
-                THEN t.firstName 
-                ELSE CONCAT(t.lastname, ', ', t.firstName) 
-            END AS full_name, 
-            u.image_path
-        FROM user u 
-        JOIN tutor t ON t.user_id = u.id 
-        WHERE u.id = %s
+    CASE 
+        WHEN t.lastName IS NULL OR t.lastName = '' 
+        THEN t.firstName 
+        ELSE CONCAT(t.lastName, ', ', t.firstName) 
+          END AS full_name,
+          u.image_path,
+          v.video_link,
+          v.video_path
+          FROM user u
+          JOIN tutor t ON t.user_id = u.id
+          LEFT JOIN video v ON v.tutor_id = t.tutor_id
+          WHERE u.id = %s;
+
     """
  
     load_result = db_read(read_query, (userId,))
 
 
+    
     if not load_result:
         print("No tutor found for user_id", userId)
         return jsonify({
@@ -396,6 +401,7 @@ def load_tutor_user(userId, account_type):
 
     return jsonify({
         "success": True,
+        "video_path": first_result['video_path'],
         "account_type": account_type,
         "name": first_result['full_name'],   
         "img_url": first_result['image_path'],
@@ -445,8 +451,7 @@ def load_student_user(userId, account_type):
 # ADMIN 
 
 
-def admin_content():
-     
+def admin_content_student():     
      feacth_students = """
            SELECT 
           s.student_id,
@@ -492,10 +497,93 @@ def admin_content():
      """
 
      tutors = db_read(feacth_tutors)
-     print("feacth_students", students)
-     print("feacth_tutors", tutors)
+     # print("feacth_students", students)
+     # print("feacth_tutors", tutors)
 
      return jsonify({
           "students": students,
           "tutors": tutors
      })
+
+
+def admin_content_tutor():
+     feacth_tutors = """
+          SELECT 
+               u.id AS user_id,
+               u.username,
+               u.email,
+               u.image_path,
+               t.firstName,
+               t.lastName,
+               t.about,
+               t.video_url
+          FROM user u
+          JOIN tutor t ON u.id = t.user_id
+     """
+     tutors = db_read(feacth_tutors)
+
+     feacth_students = """
+          SELECT 
+               t.tutor_id,
+               t.firstName AS tutor_first,
+               t.lastName AS tutor_last,
+               tu.id AS tutor_user_id,
+               tu.image_path AS tutor_image,
+
+               s.student_id,
+               s.firstName AS student_first,
+               s.lastName AS student_last,
+               su.id AS student_user_id,
+               su.image_path AS student_image,
+               sch.topic
+
+          FROM student s
+          JOIN user su ON s.user_id = su.id
+
+          LEFT JOIN enroll e ON e.student_id = s.student_id AND e.approve = 1
+          LEFT JOIN schedule sch ON sch.schedule_id = e.schedule_id
+          LEFT JOIN tutor t ON sch.tutor_id = t.tutor_id
+          LEFT JOIN user tu ON t.user_id = tu.id
+
+          WHERE t.tutor_id IS NOT NULL
+          ORDER BY t.tutor_id, s.student_id
+     """
+     students = db_read(feacth_students)
+     print("tutors", tutors)
+     print("students", students)
+
+     return jsonify({
+          "tutors": tutors,
+          "students": students
+     })
+
+
+def admin_content_request():
+    query = """
+        SELECT 
+            t.tutor_id,
+            t.firstName,
+            t.lastName,
+            t.about,
+            t.video_url,
+            t.subject_id,
+            t.default,
+
+            u.id AS user_id,
+            u.username,
+            u.email,
+            u.image_path,
+            r.date AS request_date
+
+        FROM request r
+        JOIN tutor t ON r.tutor_id = t.tutor_id
+        JOIN user u ON t.user_id = u.id
+
+        ORDER BY r.date DESC
+    """
+
+    requested_tutors = db_read(query)
+
+    return jsonify({
+        "requested_tutors": requested_tutors
+    })

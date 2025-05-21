@@ -23,13 +23,17 @@ $(document).ready(function(){
             success: function (response) {
 
                 if(response.role == "student"){
-                    console.log("load",response.img_url, response.name )
+                    console.log("load student",response.img_url, response.name )
                      profile_path.attr('src', response.img_url)
                     fullname.text(response.name)
 
                 } else {
-                    console.log("load",response.img_url, response.name )
+                    console.log("load tutor",response.video_path, response.img_url, response.name )
+
+                    const videoUrl = getPublicVideoUrl(response.video_path); 
                     profile_path.attr('src', response.img_url)
+                    $("#upload-preview").attr("src", videoUrl).show();
+                    $("#youtube-preview").hide();
                     fullname.text(response.name)
                     $('#rate_count').text(response.per_rate || 0);
                     $('#lesson_count').text(response.total_lessons || 0);
@@ -201,3 +205,16 @@ $(document).ready(function(){
 
 
 })
+
+function getPublicVideoUrl(rawPath) {
+    if (!rawPath) return '';
+
+    // Normalize slashes
+    rawPath = rawPath.replace(/\\/g, '/');
+
+    // Find index of "user/"
+    const match = rawPath.match(/user\/(.+)$/);
+    if (!match || !match[1]) return '';
+
+    return `/user_uploads/${match[1]}`;
+}
